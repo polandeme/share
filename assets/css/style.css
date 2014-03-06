@@ -1,0 +1,137 @@
+.glyphicon {
+    font-size: 1.2em;
+    float: right;
+}
+.wrap {
+    width: 960px;
+    height:1000px;
+}
+.wrap hr {
+    margin-top: 30px;
+    border-top:1px solid #c3c1c1;
+}
+.content {
+    float: left;
+    width: 100%;
+    height: 1000px;
+    margin-top: 10px;
+}
+.per-content {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+.content_title {
+    margin-top: 10px;
+    font-size: 18px;
+    float: left;
+    width: 100%;
+}
+.content_date {
+    float: right;
+}
+/* register page
+ * 2014-03-02
+ *
+ */
+
+.form-control {
+    width: 200px;
+    margin-left: 20px;
+}
+.share-form {
+    padding-left: 10px;
+    margin-right: 0px;
+    position: absolute;
+    right: 52%;
+}
+.search-input {
+    margin-left: 0px;
+    border: none;
+    border-bottom: 1px solid gray;
+    background: none;
+    width: 230px;
+    box-shadow: none;
+    border-radius: 0;
+}
+.btn-search {
+    width: 45px;
+    height: 30px;
+    padding: 0;
+    font-size: 12px;
+}
+.share-input, .input-iam, .input-name{
+    margin-left: 0px;
+    border: none;
+    border-bottom: 1px solid gray;
+    background: none;
+    width: 70px;
+    box-shadow: none;
+    border-radius: 0;
+    left: 0;
+    right: 0;
+}
+.input-name {
+    width: 170px;
+}
+.share-input:focus, .input-iam:focus, .search-input:focus, .input-name:focus {
+    box-shadow: none;
+}
+.input-name {
+    margin-left: 10px;
+}
+.share-btn {
+    width: 45px;
+    height: 30px;
+    padding: 0;
+    font-size: 12px;
+}
+.form-group {
+    border: none;
+}
+.reg-content {
+    margin-top: 30px;
+}
+.center {
+    width: auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-nav {
+    padding-left: 50px;
+    padding-right: 111px;
+}
+.nav-menu {
+    background: #e7f0f7;
+}
+.user-link a{
+    position: absolute;
+}
+.user-link:hover {
+    background: #FFF;
+}
+.user-items {
+    height: 200px;
+    border: 2px solid #D9D9D9;
+    border-top: none;
+    right: -2px;
+    border-radius: 3px;
+    width: 200px;
+    position: absolute;
+    display: none;
+    background: #fff;
+    z-index: 1;
+}
+.navbar {
+    border-bottom: none;
+}
+.border {
+    width: 133px;
+    border: thin solid #E6E3E3;
+}
+.user-avatar img {
+    width: 60px;
+    height: 60px;
+}
