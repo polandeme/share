@@ -1,3 +1,6 @@
+a {
+    text-decoration: none !important;
+}
 .glyphicon {
     font-size: 1.2em;
     float: right;
@@ -6,6 +9,7 @@
     width: 960px;
     height:1000px;
 }
+
 .wrap hr {
     margin-top: 30px;
     border-top:1px solid #c3c1c1;
@@ -35,6 +39,16 @@
  *
  */
 
+.reg-content .form-group , .reg-content input{
+    height: 30px;
+    border-radius: 0;
+}
+.reg-content .form-group {
+    margin-top: 20px;
+}
+.reg-content button[type=submit] {
+    margin-left: 80px;
+}
 .form-control {
     width: 200px;
     margin-left: 20px;
@@ -109,7 +123,7 @@
 .nav-menu {
     background: #e7f0f7;
 }
-.user-link a{
+.userName{
     position: absolute;
 }
 .user-link:hover {
@@ -137,12 +151,54 @@
 .user-avatar img {
     width: 60px;
     height: 60px;
+    float: left;
 }
 .separate {
     border: 1px solid red; 
-    /* border-width: thin; */
     height: 40px;
     width: 2px;
     float: left;
     margin-top: 5px;
+}
+.go-top {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    display: none;
+    bottom: 60px;
+    right: 100px;
+    border-radius: 10px;
+    background-color: #B8B6B6;
+}
+.go-top span {
+    width: 50px;
+    display: block;
+    color: #B8B;
+    font-size: 35px;
+    margin-top: 4px;
+    margin-right: 8px;
+    line-height: 40px;
+    text-align: center;
+}
+.go-top:hover{
+    background-color: rgb(196, 196, 212);
+}
+
+.show-select {
+    cursor: pointer;
+}
+.show-select:hover {
+   float: right;   
+   box-shadow:  3px 3px 3px 0  rgb(113, 113, 128);  
+   margin-right: 1px;
+}
+.logout {
+    float: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.pwd-note {
+    /* float: left; */
+    display: none;
 }

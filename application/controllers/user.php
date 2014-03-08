@@ -113,5 +113,19 @@ class User extends CI_Controller {
             echo "失败"; 
         }
     }
+    public function logout()
+    {
+        $data = array(
+                'userName'  => '',
+                'userEmail' => '', 
+                'regTime'   => '',
+                'userMotto' => '',
+                'userSex'   => '',
+                'userAvat'  => '',
+                'userId'    => ''
+            );
+        $this ->session ->unset_userdata($data);
+        redirect('/');
+    }
 };
 ?>

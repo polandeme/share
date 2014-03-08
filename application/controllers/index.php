@@ -8,23 +8,22 @@ class Index extends CI_Controller {
         $this ->load ->library('session');
     }
 
-    public function index($offset) {
+    public function index() {
         //TO Do 分页操作 
 
         
-        // $this ->load ->library('pagination');
-        // $config['base_url'] = base_url().'index.php/index';
-        // $config['total_rows'] = $this ->m_index ->get_posts_all();
-        // $num = $config['per_page'] = 2;
-        // $config['uri_segment'] = 3;
-        // $config['full_tag_open'] = '<p>';
-        // $config['full_tag_close'] = '</p>';
-        // $config['use_page_numbers'] = true;
-        // $this ->pagination ->initialize($config);
-        // $data['links'] = $this ->pagination ->create_links();
-
-        $num = 1;
-        $data['title'] = $this ->m_index ->get_content_title((($this ->uri ->segment(3)) > 0 ? $this ->uri ->segment(3) : 0), $num);
+        $this ->load ->library('pagination');
+        $config['base_url'] = base_url().'index.php/index/index';
+        $config['total_rows'] = $this ->db ->count_all('sh_posts');
+        $config['per_page'] = 10;
+        $num = $config['per_page'];
+        $config['full_tag_open'] = '<p>';
+        $config['full_tag_close'] = '</p>';
+        $config['use_page_numbers'] = TRUE;
+        $this ->pagination ->initialize($config);
+        $data['links'] = $this ->pagination ->create_links();
+        $offset = $this ->uri ->segment(3);
+        $data['title'] = $this ->m_index ->get_content_title($num , ($offset && $offset >= 0 ? $offset : 0));
         $sessionData = $this ->session ->all_userdata();
         
         $this ->load ->view('template/header', $sessionData);
