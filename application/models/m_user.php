@@ -31,7 +31,7 @@ class M_user extends CI_Model {
     }
 
     /**
-     * 得到用户名 和密码并判断
+     * 得到用户名信息
      *
      * @param   用户输入的 $passward $name
      * @return  bollean 正确返回TRUE, 用户名不存在和密码不正确返回FALSE

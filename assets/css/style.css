@@ -43,7 +43,7 @@
     padding-left: 10px;
     margin-right: 0px;
     position: absolute;
-    right: 52%;
+    right: 50%;
 }
 .search-input {
     margin-left: 0px;
@@ -79,6 +79,9 @@
 }
 .input-name {
     margin-left: 10px;
+}
+.iam-input ,.input-name {
+    display: none;
 }
 .share-btn {
     width: 45px;
@@ -134,4 +137,12 @@
 .user-avatar img {
     width: 60px;
     height: 60px;
+}
+.separate {
+    border: 1px solid red; 
+    /* border-width: thin; */
+    height: 40px;
+    width: 2px;
+    float: left;
+    margin-top: 5px;
 }

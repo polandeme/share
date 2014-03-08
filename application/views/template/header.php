@@ -41,20 +41,23 @@
                             <?php echo $userName;
                                 echo $userEmail;
                                 echo $userMotto;
+                                echo date('Y-m-d H:i:s', $regTime);
+                                echo $userId;
                             ?>                       
                         <div class="user-avatar">
-                                <img src="<?php echo base_url();?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
+                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
                         </div>
                     </div>     
                     </li>
                     </ul> 
                 <?php }?>
-                <form class="navbar-form navbar-right share-form" role="share">
+                <div class="separate"></div>
+                <form class="navbar-form navbar-right share-form" method="post" action="<?php echo base_url(); ?>index.php/posts/submit_posts"role="share">
                     <div class="form-group">
                             <span class="iam"> 我是</span>
-                            <input type="text" class="form-control share-input" id="input-share" placeholder="Share">
+                            <input type="text" class="form-control share-input" id="input-share" name="inputCate" placeholder="Share">
+                            <button type="submit" class="btn btn-default share-btn"> Share</button>
                     </div>
-                    <button type="submit" class="btn btn-default share-btn"> Share</button>
                 </form>
 
             </div>

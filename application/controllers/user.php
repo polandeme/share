@@ -18,8 +18,10 @@ class User extends CI_Controller {
      * @author  Polande
      * @date    Mar 03 2014
      */
-    public function register() {
-        $this ->load ->view('template/header');
+    public function register() 
+    {
+        $sessionData = $this -> session ->all_userdata();
+        $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('register');
     }
 
@@ -62,8 +64,10 @@ class User extends CI_Controller {
          * @date    Mar 04 2014
          * @author  Polande
          */
-        public function login() {
-        $this ->load ->view('template/header');
+    public function login() 
+    {
+        $sessionData = $this ->session ->all_userdata();
+        $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('login');
  
     }
@@ -79,12 +83,13 @@ class User extends CI_Controller {
     public function save_user_info($userdata)
     {
         $data = array(
-                'userName' =>$userdata['u_name'],
+                'userName'  =>$userdata['u_name'],
                 'userEmail' =>$userdata['u_email'],
-                'regTime' => $userdata['u_reg_time'],
-                'userMotto'  => $userdata['u_motto'],
+                'regTime'   => $userdata['u_reg_time'],
+                'userMotto' => $userdata['u_motto'],
                 'userSex'   => $userdata['u_sex'],
-                'userAvat'  => $userdata['u_avatar']
+                'userAvat'  => $userdata['u_avatar'],
+                'userId'    => $userdata['u_id']
             );
         $userSession = $this ->session ->set_userdata($data);
         return  $this ->session ->all_userdata('$suerSession');

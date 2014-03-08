@@ -1,6 +1,7 @@
 <!-- content -->
 <div class="container wrap">
     <div class="reg-content center">
+<?php if(empty($userName)){ ?>
         <form class="form-horizontal" action="<?php echo base_url(); ?>/index.php/user/check_login" method="post" role="form">
             <div class="form-group">
                 <label for="userName" class="col-sm-2 control-label"> userName </label>
@@ -29,6 +30,9 @@
                 </div>
             </div>
         </form>
+<?php }else {
+    echo "你已经登录";
+}?>
     </div>
 </div>
 </body>

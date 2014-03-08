@@ -1,7 +1,8 @@
 <!-- content -->
 <div class="container wrap">
     <div class="reg-content center">
-    <form class="form-horizontal" action="<?php echo base_url(); ?>index.php/user/add_user" method="post"  role="form">
+    <?php if(empty($userName)){?>
+        <form class="form-horizontal" action="<?php echo base_url(); ?>index.php/user/add_user" method="post"  role="form">
             <div class="form-group">
                 <label for="userName" class="col-sm-2 control-label"> UserName </label>
                 <div class="col-sm-10">
@@ -32,6 +33,7 @@
                 </div>
             </div>
         </form>
+    <?php } else {echo redirect('/');}?>
     </div>
 </div>
 <!-- /content -->
