@@ -113,6 +113,23 @@ class User extends CI_Controller {
             echo "失败"; 
         }
     }
+
+    /*
+     * @return  0 不存在用户
+     */
+    public function check_register()
+    {
+        $name = $_GET['name']; 
+        $flag = $this ->m_user ->check_register($name);
+        if($flag)
+        {
+           echo TRUE; 
+        }
+        else {
+        echo FALSE ;
+        }
+    }
+
     public function logout()
     {
         $data = array(

@@ -23,9 +23,9 @@ class Index extends CI_Controller {
         $this ->pagination ->initialize($config);
         $data['links'] = $this ->pagination ->create_links();
         $offset = $this ->uri ->segment(3);
+
         $data['title'] = $this ->m_index ->get_content_title($num , ($offset && $offset >= 0 ? $offset : 0));
         $sessionData = $this ->session ->all_userdata();
-        
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('index', $data);
     }

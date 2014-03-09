@@ -14,7 +14,7 @@ class Posts extends CI_Controller{
         $this ->load ->library('form_validation');
         $this ->form_validation ->set_rules('inputContent','UserName','required');
         $this ->form_validation ->set_rules('inputCate','UserEmail','required|trim');
-        $this ->form_validation ->set_rules('inputRole','UserPassward','required|trim');
+        $this ->form_validation ->set_rules('inputRole','UserPassward','');
 
         $data = array(
             'pt_date' =>date('Y-m-d H:i:s'), 

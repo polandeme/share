@@ -62,21 +62,60 @@ $('.go-top').click(function(){
     }, 200)
 });
 
+/* 验证用户注册数据是否正确
+ * 密码长度至少为六
+ * @date    Mar 09 2014
+ */
+
 var noteArr = new Array(
     '用户名应该在3到12个字符且只能是下划线和数字或字母',
     '该用户名已被注册',
     '密码长度至少六位',
-    '密码不匹配'
+    '密码不匹配',
+    '正确'
 );
 $("#userName").change(function(){
-    if($(this).val().length < 3)
+    if($(this).val().length >= 3)
         {
+            var userName = $(this).val();
+            var patrn =  /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/; 
+            if(patrn.test(userName))
+                {
+                    $.ajax({
+                        type:   "GET",
+                        url:    "check_register",
+                        data:   { 'name' : userName },
+                        success: function(flag){
+                            if(flag){
+                                $(".pwd-note").html(noteArr[1]).show();
+                            }
+                            else{
+                                $(".pwd-note").html(noteArr[4]).show();
+                            }
+                        }
+                    });
+                }
+                else{
+                        $(".pwd-note").html(noteArr[0]).show();
+                }
+        } else{
             $(".pwd-note").html(noteArr[0]).show();
         }
-        else
-            {
-                alert("right");
-            }
+});
+
+// 投票效果
+$(".vote-up").click(function(){
+    var id = $(this).attr("rel");
+    // alert(id);
+    $.ajax({
+        type: 'POST',
+        url: 'rank/up_vote',
+        data: {'id' :id},
+        cache: false,
+        success: function(msg){
+          $("#post-" + id ).next(".vote-up-num").html(msg);  
+        }
+    });
 });
 
 });

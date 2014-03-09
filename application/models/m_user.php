@@ -53,5 +53,12 @@ class M_user extends CI_Model {
             return FALSE;
         }
     }
+
+
+    public function check_register($name)
+    {
+        $query = $this ->db ->query("SELECT u_name FROM sh_user WHERE u_name = '".$name."' limit 1");
+        return $query ->num_rows();
+    }
 };
 ?>

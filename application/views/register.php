@@ -26,7 +26,7 @@
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="userPwd" name="userPwdConfirm" placeholder="请确认密码">
                 </div>
-                    <span class ="pwd-note">请确认密码 </span>
+                    <span class ="pwd-note"></span>
             </div>
             <div class ="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
