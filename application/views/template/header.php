@@ -34,7 +34,7 @@
                         <li><a href="<?php echo base_url(); ?>index.php/user/register">注册</a> </li>
                     </ul> <?php } else {?>
                     <ul class="nav navbar-nav navbar-right">
-                    <li class="user-link"><a  href="<?php echo base_url();?>index.php/user/login"> <?php echo $userName; ?></a>
+                    <li class="user-link"><a  href="<?php echo base_url();?>index.php/user/login" class = "link-user-name"data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
                         <div class="user-items" id="user-tab">
                             <div class="border">
                             </div> 
@@ -44,11 +44,12 @@
                                 echo date('Y-m-d H:i:s', $regTime);
                                 echo $userId;
                             ?>                       
-            <a  class="logout"href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
-                        <div class="user-avatar">
+                            <a  class="logout"href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
+                                <!-- <button class="follow&#45;user"> 关注 </button> -->
+                            <div class="user-avatar">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
-                        </div>
-                    </div>     
+                            </div>
+                        </div>     
                     </li>
                     </ul> 
                 <?php }?>

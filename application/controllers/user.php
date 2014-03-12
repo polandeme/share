@@ -45,8 +45,6 @@ class User extends CI_Controller {
             'userEmail' => $this ->input ->post('userEmail'),
             'userPwd'   => $this ->input ->post('userPwd'), 
             'userIp'    => $this ->input ->ip_address(),
-            'userMott'  => "Hi 空着不好，赶快写上一句话吧,(>_<)",
-            'userAva'   => "default.jpg",
             'regTime'   => time()
         );
         //将用户密码加密
@@ -89,7 +87,8 @@ class User extends CI_Controller {
                 'userMotto' => $userdata['u_motto'],
                 'userSex'   => $userdata['u_sex'],
                 'userAvat'  => $userdata['u_avatar'],
-                'userId'    => $userdata['u_id']
+                'userId'    => $userdata['u_id'],
+                'id'        => $userdata['id']
             );
         $userSession = $this ->session ->set_userdata($data);
         return  $this ->session ->all_userdata('$suerSession');
@@ -143,6 +142,13 @@ class User extends CI_Controller {
             );
         $this ->session ->unset_userdata($data);
         redirect('/');
+    }
+    public function follow()
+    {
+        $userId     = $_POST['userId'];
+        $friendId   = $_POST['friendId'];
+        $relation   = $_POST['relation'];
+        $this ->m_user ->follow($userId, $friendId, $relation);
     }
 };
 ?>

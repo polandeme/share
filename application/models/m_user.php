@@ -22,9 +22,10 @@ class M_user extends CI_Model {
             'u_email' => $user['userEmail'],
             'u_password' => $userPwd,
             'u_motto'   =>  'Hi 不要空着，写上一句话吧! (>_<)', 
-            'u_avatar'  => 'dafault.jpg',
+            'u_avatar'  => 'default.jpg',
             'u_reg_ip' => $user['userIp'],
-            'u_reg_time' => $user['regTime']
+            'u_reg_time' => $user['regTime'],
+            'id'        => SHA1($user['userName'])
         );
 
         $this ->db ->insert('sh_user', $data);
@@ -60,5 +61,44 @@ class M_user extends CI_Model {
         $query = $this ->db ->query("SELECT u_name FROM sh_user WHERE u_name = '".$name."' limit 1");
         return $query ->num_rows();
     }
+
+    /**
+     *  用户关注处理
+     *      如果第一次关注插入一条记录
+     *      如果取消关注update 数据库中的记录
+     *      如果相互关注update 数据库中的记录 3
+     *      没有关系后删除记录
+     *
+     * @param $userId $friendId 关系用户Id
+     * @date    Mar 11 03 2014
+     * @author  Polande
+     */
+    public function follow($userId, $friendId, $relation)
+    {
+        if($relation == 0 ){
+            $sql = "INSERT INTO sh_follow (fw_user_id, fw_friend_id, fw_relation )
+                            VALUE('$userId', '$friendId', 1)";
+        } else if($relation == 2){
+            $sql = "UPDATE sh_follow SET fw_relation = 3 WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
+        } else if($relation == 1 ){
+            $sql = "DELETE FROM sh_follow WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
+        } else {
+            $sql = "UPDATE sh_follow SET fw_relation = 2 WHERE fw_user_id = '$userId AND fw_friend_id = '$friendId'";
+        }
+        $this ->db ->query($sql);
+    }
+
+    public function get_user_relation($userId, $friendId)
+    {
+        $sql = "SELECT fw_relation FROM sh_follow  WHERE (fw_user_id = '$userId' AND fw_friend_id = '$friendId' )
+                OR (fw_user_id = '$friendId' AND fw_friend_id = '$userId') LIMIT 1";
+        $query = $this ->db ->query($sql);
+        $res = $query ->result_array($query);
+        if(isset($res)){
+            return $res;//['fw_relation'];        
+        } else {
+            return '2';
+        }
+}
 };
 ?>

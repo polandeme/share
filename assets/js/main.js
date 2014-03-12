@@ -104,18 +104,70 @@ $("#userName").change(function(){
 });
 
 // 投票效果
+// To Do 赞过之后写入数据库，前后台都不可再赞
+//      优化结构
+//      @date Mar 10 2014
+
 $(".vote-up").click(function(){
     var id = $(this).attr("rel");
-    // alert(id);
+    $(this).text("已赞");
     $.ajax({
         type: 'POST',
         url: 'rank/up_vote',
         data: {'id' :id},
         cache: false,
         success: function(msg){
-          $("#post-" + id ).next(".vote-up-num").html(msg);  
+          $("#post-" + id).next(".vote-up-num").html(msg);  
+          $("#post-" + id).next(".vote-up-num").addClass("voted-up-num").removeClass("vote-up-num");
         }
     });
 });
 
+//用户信息显示
+$(".post-author").mouseover(function(){
+var userId = $(".link-user-name").data('userid'),
+    id = $(this).data('id'),
+    relation = $(".follow").attr('rel');
+if(relation  === 2) {
+ $(".follow").text("回关");
+}
+    $(this).children().show();
+    // alert(id);
+    $.ajax({
+      type: 'GET',
+      url: 'posts/ajax_get_post_author',
+      data: {'id': id , 'userId': userId, 'relation' : relation },
+      dataType: "json",
+      cache: false,
+      success: function(msg){
+        $(".post-author-detail span").text(msg[0].u_up);
+        // $(".post-author-detail span").text(msg[0].u_name);
+        relation = msg[0].relation[0].fw_relation;
+        $(".follow").attr('rel', relation);
+        console.log(relation);
+      }
+
+    });
 });
+$(".post-author").mouseout(function(){
+    $(this).children().hide();
+});
+// follow
+$(".follow").click(function(){
+    var userId = $(".link-user-name").data('userid'); 
+    console.log(userId);
+    var friendId = $(this).data('id');
+    var relation = 0;
+    $.ajax({
+        type: 'POST',
+        url: 'user/follow',
+        data: { userId : userId, friendId : friendId, relation: relation  },
+        cache: false,
+        success: function(){
+            console.log("su");
+        }
+    });  
+}); // follow END
+// 自动加载 判断两个用户状态
+
+});// /END
