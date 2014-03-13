@@ -10,12 +10,12 @@
                     <div class="content_date"> 
                     <?php echo $row ->pt_date; ?>
                </div>
-                            <a class="post-author" data-id = "<?php echo $row ->id; ?>" href="#" ><?php echo '   ' . $row ->u_name ;?>
+                            <a class="post-author" data-id = "<?php echo $row ->id; ?>" rel = "2" href="#" ><?php echo '   ' . $row ->u_name ;?>
                 <div class="post-author-detail" >
                     <div class ="arrow"></div>
                     <div class="post-author-content">
                     <span> </span> 
-                    <button type="button" data-id="<?php echo $row ->id ;?>" rel="2" class="follow">关注 </button>
+                    <button type="button" data-id="<?php echo $row ->id ;?>" data-rela="0" rel=0 class="follow">关注 </button>
                 </div>
             </div>
             </a>

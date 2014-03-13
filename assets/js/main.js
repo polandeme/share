@@ -128,11 +128,8 @@ $(".post-author").mouseover(function(){
 var userId = $(".link-user-name").data('userid'),
     id = $(this).data('id'),
     relation = $(".follow").attr('rel');
-if(relation  === 2) {
- $(".follow").text("回关");
-}
+    var that = $(this).children('.post-author-detail').children('.post-author-content').children('.follow');
     $(this).children().show();
-    // alert(id);
     $.ajax({
       type: 'GET',
       url: 'posts/ajax_get_post_author',
@@ -141,14 +138,26 @@ if(relation  === 2) {
       cache: false,
       success: function(msg){
         $(".post-author-detail span").text(msg[0].u_up);
-        // $(".post-author-detail span").text(msg[0].u_name);
-        relation = msg[0].relation[0].fw_relation;
-        $(".follow").attr('rel', relation);
-        console.log(relation);
-      }
-
-    });
+                try {
+                relation = msg[0].relation.fw_relation;
+                that.attr('rel', relation);
+                if(relation  == 1) {
+                    $(".follow").text("取消").click(function(){
+                    // that.attr('rel', 0);
+                     $(this).text("关注1").attr('rel', 0);
+                    });
+                } else if (relation == 2){
+                     $(".follow").text("回关");
+                } else if(relation == 3) {
+                     $(".follow").text("each");
+                } else if(relation == 0) {
+                     $(".follow").text("关注");
+                } 
+              } catch(e){console.log("fa");}
+          } 
+      });
 });
+
 $(".post-author").mouseout(function(){
     $(this).children().hide();
 });
@@ -157,7 +166,7 @@ $(".follow").click(function(){
     var userId = $(".link-user-name").data('userid'); 
     console.log(userId);
     var friendId = $(this).data('id');
-    var relation = 0;
+    var relation = $(this).attr('rel');
     $.ajax({
         type: 'POST',
         url: 'user/follow',

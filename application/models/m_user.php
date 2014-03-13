@@ -78,7 +78,9 @@ class M_user extends CI_Model {
         if($relation == 0 ){
             $sql = "INSERT INTO sh_follow (fw_user_id, fw_friend_id, fw_relation )
                             VALUE('$userId', '$friendId', 1)";
-        } else if($relation == 2){
+            $this ->db ->query($sql);
+        } 
+        /*else if($relation == 2){
             $sql = "UPDATE sh_follow SET fw_relation = 3 WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
         } else if($relation == 1 ){
             $sql = "DELETE FROM sh_follow WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
@@ -86,19 +88,62 @@ class M_user extends CI_Model {
             $sql = "UPDATE sh_follow SET fw_relation = 2 WHERE fw_user_id = '$userId AND fw_friend_id = '$friendId'";
         }
         $this ->db ->query($sql);
+         */
+        $sql = "SELECT fw_relation FROM sh_follow  WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'"; 
+        $query = $this ->db ->query($sql);
+        $res = $query ->row_array();
+        if ($res) 
+        {
+            if ($relation == 1 )
+            {
+                $sql = "DELETE FROM sh_follow WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
+            } else if($relation == 2) {
+                $sql = "UPDATE sh_follow SET fw_relation = 3 WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
+            } else if ($relation == 3) {
+                $sql = "UPDATE sh_follow SET fw_relation = 2 WHERE fw_user_id = '$userId AND fw_friend_id = '$friendId'";
+            } else { return false; }
+        } else {
+            if ($relation == 1) {
+                $sql = "UPDATE sh_follow SET fw_relation = 3 WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
+            } else if ($relation == 2) {
+                $sql = "DELETE FROM sh_follow WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
+            } else if ($relation == 3) {
+                $sql = "UPDATE sh_follow SET fw_relation = 1 WHERE fw_user_id = '$userId AND fw_friend_id = '$friendId'";
+            } else {
+                return false;
+            }
+        }
+        $this ->db ->query($sql);
     }
 
     public function get_user_relation($userId, $friendId)
     {
-        $sql = "SELECT fw_relation FROM sh_follow  WHERE (fw_user_id = '$userId' AND fw_friend_id = '$friendId' )
-                OR (fw_user_id = '$friendId' AND fw_friend_id = '$userId') LIMIT 1";
+        $sql = "SELECT fw_relation FROM sh_follow  WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'"; 
         $query = $this ->db ->query($sql);
-        $res = $query ->result_array($query);
-        if(isset($res)){
-            return $res;//['fw_relation'];        
+        $res = $query ->row_array();
+        if($res){
+           return $res; 
         } else {
-            return '2';
-        }
-}
+                // try {
+                    $sql = "SELECT fw_relation FROM sh_follow  WHERE fw_user_id = '$friendId' AND fw_friend_id = '$userId'"; 
+                    $query = $this ->db ->query($sql);
+                    $res = $query ->row_array();
+                    if ($res['fw_relation'] == 1)
+                    {
+                        $res['fw_relation'] = $res['fw_relation'] + 1;
+                    }
+                    if ($res['fw_relation'] == 2)
+                    {
+                        $res['fw_relation'] = $res['fw_relation'] - 1;
+                    } else {
+                        $res['fw_relation'] = $res['fw_relation'];
+                    }
+
+                // } catch(e) {
+                    // $res['fw_relation'] = 0;
+                // }
+                return $res;
+            }
+    }
 };
 ?>
