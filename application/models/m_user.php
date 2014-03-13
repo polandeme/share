@@ -80,15 +80,6 @@ class M_user extends CI_Model {
                             VALUE('$userId', '$friendId', 1)";
             $this ->db ->query($sql);
         } 
-        /*else if($relation == 2){
-            $sql = "UPDATE sh_follow SET fw_relation = 3 WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
-        } else if($relation == 1 ){
-            $sql = "DELETE FROM sh_follow WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
-        } else {
-            $sql = "UPDATE sh_follow SET fw_relation = 2 WHERE fw_user_id = '$userId AND fw_friend_id = '$friendId'";
-        }
-        $this ->db ->query($sql);
-         */
         $sql = "SELECT fw_relation FROM sh_follow  WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'"; 
         $query = $this ->db ->query($sql);
         $res = $query ->row_array();
@@ -124,11 +115,14 @@ class M_user extends CI_Model {
         if(!empty($res)){
            return $res; 
         } else {
-            // return 'fal';
                 $sql = "SELECT fw_relation FROM sh_follow WHERE fw_user_id = '$friendId' AND fw_friend_id = '$userId'"; 
                 $query = $this ->db ->query($sql);
                 $res = $query ->row_array();
-                if ($res['fw_relation'] == 1)
+                if(empty($res))
+                {
+                    $res['fw_relation'] = 0; 
+                }
+                else if ($res['fw_relation'] == 1)
                 {
                     $res['fw_relation'] = $res['fw_relation'] + 1;
                 }
@@ -136,7 +130,7 @@ class M_user extends CI_Model {
                 {
                     $res['fw_relation'] = $res['fw_relation'] - 1;
                 } else {
-                    $res['fw_relation'] = $res['fw_relation'];
+                    $res['fw_relation'] = 3; 
                 }
             return $res;
             }

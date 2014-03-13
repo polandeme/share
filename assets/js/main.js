@@ -150,9 +150,13 @@ var userId = $(".link-user-name").data('userid'),
                      $(".follow").text("each");
                     });
                 } else if(relation == 3) {
-                     $(".follow").text("each");
+                    $(".follow").text("each").click(function(){
+                        $(this).text("回关");
+                    });
                 } else if(relation == 0) {
-                     $(".follow").text("关注");
+                    $(".follow").text("关注").click(function() {
+                        $(this).text("取消");
+                    });
                 } 
               } catch(e){console.log("fa");}
           } 
