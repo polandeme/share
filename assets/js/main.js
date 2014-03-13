@@ -127,8 +127,8 @@ $(".vote-up").click(function(){
 $(".post-author").mouseover(function(){
 var userId = $(".link-user-name").data('userid'),
     id = $(this).data('id'),
-    relation = $(".follow").attr('rel');
-    var that = $(this).children('.post-author-detail').children('.post-author-content').children('.follow');
+    relation = $(".follow").attr('rel'),
+    that = $(this).children('.post-author-detail').children('.post-author-content').children('.follow');
     $(this).children().show();
     $.ajax({
       type: 'GET',
@@ -142,12 +142,13 @@ var userId = $(".link-user-name").data('userid'),
                 relation = msg[0].relation.fw_relation;
                 that.attr('rel', relation);
                 if(relation  == 1) {
-                    $(".follow").text("取消").click(function(){
-                    // that.attr('rel', 0);
-                     $(this).text("关注1").attr('rel', 0);
+                    $(".follow").text("取消关注").click(function(){
+                     $(this).text("关注").attr('rel', 0);
                     });
                 } else if (relation == 2){
-                     $(".follow").text("回关");
+                    $(".follow").text("回关").click(function(){
+                     $(".follow").text("each");
+                    });
                 } else if(relation == 3) {
                      $(".follow").text("each");
                 } else if(relation == 0) {
