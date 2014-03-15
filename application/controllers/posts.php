@@ -37,6 +37,25 @@ class Posts extends CI_Controller{
     }
 
     /**
+     *  添加文章详细
+     */
+    public function add_post_detail()
+    {
+        $this ->load ->library('form_validation');
+        $this ->form_validation ->set_rules('postDetail','detail','required');
+        $this ->form_validation ->set_rules('postId','postId','required|trim');
+        $postDetail = $this ->input ->post('postDetail'); 
+        $postId = $this ->input ->post('postId');
+        $postId = (($postId)/10 - 19940309) /1024; 
+
+        if($this ->form_validation ->run() == false ) 
+        {
+            redirect('/');
+        } else {
+            $this ->m_posts ->add_post_detail($postDetail, $postId);
+        }
+    }
+    /**
      * ajax得到用户信息
      * 
      * 

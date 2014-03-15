@@ -25,7 +25,7 @@ class M_user extends CI_Model {
             'u_avatar'  => 'default.jpg',
             'u_reg_ip' => $user['userIp'],
             'u_reg_time' => $user['regTime'],
-            'id'        => SHA1($user['userName'])
+            'u_sec_id'        => SHA1($user['userName'])
         );
 
         $this ->db ->insert('sh_user', $data);

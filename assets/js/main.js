@@ -113,7 +113,7 @@ $(".vote-up").click(function(){
     $(this).text("已赞");
     $.ajax({
         type: 'POST',
-        url: 'rank/up_vote',
+        url: base_url + 'index.php/rank/up_vote',
         data: {'id' :id},
         cache: false,
         success: function(msg){
@@ -125,43 +125,46 @@ $(".vote-up").click(function(){
 
 //用户信息显示
 $(".post-author").mouseover(function(){
-var userId = $(".link-user-name").data('userid'),
-    id = $(this).data('id'),
-    relation = $(".follow").attr('rel'),
-    that = $(this).children('.post-author-detail').children('.post-author-content').children('.follow');
-    $(this).children().show();
-    $.ajax({
-      type: 'GET',
-      url: 'posts/ajax_get_post_author',
-      data: {'id': id , 'userId': userId, 'relation' : relation },
-      dataType: "json",
-      cache: false,
-      success: function(msg){
-        $(".post-author-detail span").text(msg[0].u_up);
+    var userId = $(".link-user-name").data('userid'),
+        id = $(this).data('id'),
+        relation = $(".follow").attr('rel'),
+        that = $(this).children('.post-author-detail').children('.post-author-content').children('.follow');
+        $(this).children().show();
+        $.ajax({
+          type: 'GET',
+          url: base_url + 'index.php/posts/ajax_get_post_author',
+          data: {'id': id , 'userId': userId, 'relation' : relation },
+          dataType: "json",
+          cache: false,
+          success: function(msg){
+            $(".post-author-detail span").text(msg[0].u_up);
                 try {
-                relation = msg[0].relation.fw_relation;
-                that.attr('rel', relation);
-                if(relation  == 1) {
-                    $(".follow").text("取消关注").click(function(){
-                     $(this).text("关注").attr('rel', 0);
-                    });
-                } else if (relation == 2){
-                    $(".follow").text("回关").click(function(){
-                     $(".follow").text("each");
-                    });
-                } else if(relation == 3) {
-                    $(".follow").text("each").click(function(){
-                        $(this).text("回关");
-                    });
-                } else if(relation == 0) {
-                    $(".follow").text("关注").click(function() {
-                        $(this).text("取消");
-                    });
-                } 
-              } catch(e){console.log("fa");}
-          } 
-      });
-});
+                    relation = msg[0].relation.fw_relation;
+                    that.attr('rel', relation);
+                        if(relation  == 1) {
+                        $(".follow").text("取消关注").click(function(){
+                         $(this).text("关注").attr('rel', 0);
+                        });
+                    } else if (relation == 2){
+                        $(".follow").text("回关").click(function(){
+                         $(".follow").text("each");
+                        });
+                    } else if(relation == 3) {
+                        $(".follow").text("each").click(function(){
+                            $(this).text("回关");
+                        });
+                    } else if(relation == 0) {
+                        $(".follow").text("关注").click(function() {
+                            $(this).text("取消");
+                        });
+                    } 
+                  } catch(e)
+                  {
+                      console.log("fa");
+                  }
+              } 
+          });
+    });
 
 $(".post-author").mouseout(function(){
     $(this).children().hide();
@@ -174,7 +177,7 @@ $(".follow").click(function(){
     var relation = $(this).attr('rel');
     $.ajax({
         type: 'POST',
-        url: 'user/follow',
+        url: base_url + 'index.php/user/follow',
         data: { userId : userId, friendId : friendId, relation: relation  },
         cache: false,
         success: function(){
@@ -183,5 +186,14 @@ $(".follow").click(function(){
     });  
 }); // follow END
 // 自动加载 判断两个用户状态
+if(!($(".post-detail-word").text().trim()))
+    {
+       $(".textarea , .submit-detail").remove();
+        CKEDITOR.replace('comment'); 
+    }else {
+        CKEDITOR.replace('postDetail'); 
+        CKEDITOR.replace('comment'); 
+        console.log('无内容');
+    }
 
 });// /END

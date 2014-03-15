@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/bootstrap.min.css" type="text/css" /> 
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery-1.10.2.min.js" ></script>
+    <script> var base_url = "<?php echo base_url(); ?>"; </script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js" ></script>
 </head>
 <body>
@@ -28,16 +29,16 @@
                     </div>
                     <button type="submit" class="btn btn-default btn-search"> 搜索 </button>
                 </form>
-                               <?php if(empty($userName)){ ?>
+                    <?php if(empty($userName)){ ?> <!-- 未登录 -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<?php echo base_url();?>index.php/user/login"> 登录</a> </li>
                         <li><a href="<?php echo base_url(); ?>index.php/user/register">注册</a> </li>
-                    </ul> <?php } else {?>
+                    </ul> 
+                    <?php } else {?> <!-- 登录 -->
                     <ul class="nav navbar-nav navbar-right">
                     <li class="user-link"><a  href="<?php echo base_url();?>index.php/user/login" class = "link-user-name"data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
                         <div class="user-items" id="user-tab">
-                            <div class="border">
-                            </div> 
+                            <div class="border"> </div> 
                             <?php echo $userName;
                                 echo $userEmail;
                                 echo $userMotto;
@@ -45,14 +46,13 @@
                                 echo $userId;
                             ?>                       
                             <a  class="logout"href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
-                                <!-- <button class="follow&#45;user"> 关注 </button> -->
                             <div class="user-avatar">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
                             </div>
                         </div>     
                     </li>
                     </ul> 
-                <?php }?>
+                <?php }?> <!-- /END -->
                 <div class="separate"></div>
                 <form class="navbar-form navbar-right share-form" method="post" action="<?php echo base_url(); ?>index.php/posts/submit_posts"role="share">
                     <div class="form-group">
@@ -61,7 +61,6 @@
                             <button type="submit" class="btn btn-default share-btn"> Share</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </header>

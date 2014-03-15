@@ -202,7 +202,7 @@ a {
     /* float: left; */
     display: none;
 }
-.vote-up , .voted-up {
+.vote-up , .voted-up, .post-author {
     cursor: pointer;
 }
 
@@ -243,4 +243,20 @@ a {
     height: 160px;
     border: 1px solid red;
     /* z-index: 1; */
+}
+.form-ckeditor{
+    width: 610px;
+    height: 100px;
+}
+/*==========================================share page */
+.share-sidebar {
+    height: 1000px;
+    border-left: 1px solid gray;
+}                                                 
+.post-detail-title {
+    border-bottom: 1px solid gray;
+    margin-bottom: 20px;
+}
+.post-detail + hr {
+    margin-top: 120px;
 }

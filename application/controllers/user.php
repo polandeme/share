@@ -6,6 +6,14 @@ class User extends CI_Controller {
         $this ->load ->model('m_user');
         $this ->load ->library('session');
     }
+
+
+    /**
+     * 判断是否登录进入个人中心
+     *
+     * @param   用户id(缩写/name)
+     * @Date    Mar 13 2014
+     */
     public function index() {
         // to do 
         // 判断是否登录
@@ -49,7 +57,7 @@ class User extends CI_Controller {
         );
         //将用户密码加密
         $userPwd = SHA1($data['userPwd'] . $data['regTime']. "ShArE");
-        if($this ->form_validation ->run() == False ) {
+        if ($this ->form_validation ->run() == False ) {
             redirect('/user/register');
         } else {
             $this ->m_user ->add_user($data, $userPwd);
@@ -88,7 +96,7 @@ class User extends CI_Controller {
                 'userSex'   => $userdata['u_sex'],
                 'userAvat'  => $userdata['u_avatar'],
                 'userId'    => $userdata['u_id'],
-                'id'        => $userdata['id']
+                'id'        => $userdata['u_sec_id']
             );
         $userSession = $this ->session ->set_userdata($data);
         return  $this ->session ->all_userdata('$suerSession');
@@ -105,7 +113,7 @@ class User extends CI_Controller {
         $name       = $this ->input ->post('userName');
         $password   = $this ->input ->post('userPwd');
         $userdata = $this ->m_user ->login($name, $password);
-        if($userdata) {
+        if ($userdata) {
            $this ->save_user_info($userdata);
            redirect('/');
         } else {
@@ -113,8 +121,9 @@ class User extends CI_Controller {
         }
     }
 
-    /*
-     * @return  0 不存在用户
+    /**
+     * ajax 注册时检测用户是否存在
+     * @return  FALSE  不存在用户
      */
     public function check_register()
     {
@@ -125,10 +134,11 @@ class User extends CI_Controller {
            echo TRUE; 
         }
         else {
-        echo FALSE ;
+            echo FALSE ;
         }
     }
 
+    // 退出登录跳转到首页
     public function logout()
     {
         $data = array(
@@ -143,6 +153,14 @@ class User extends CI_Controller {
         $this ->session ->unset_userdata($data);
         redirect('/');
     }
+    
+    /**
+     * 用户关注
+     * To Do 过滤接受的字符 
+     * @date    Mar 13 2014
+     * @author  Polande
+     */
+
     public function follow()
     {
         $userId     = $_POST['userId'];
@@ -150,5 +168,6 @@ class User extends CI_Controller {
         $relation   = $_POST['relation'];
         $this ->m_user ->follow($userId, $friendId, $relation);
     }
+
 };
 ?>
