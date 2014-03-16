@@ -22,6 +22,18 @@ class User extends CI_Controller {
     }
 
     /**
+     * 判断用户是否登录
+     * 利用session
+     */
+    public function check_if_login()
+    {
+        $userId = $this ->session ->userdata('userId');
+        if(empty($userId)) 
+        {
+            redirect('/user/login');
+        }
+    }
+    /**
      * load register page
      * @author  Polande
      * @date    Mar 03 2014
@@ -163,6 +175,7 @@ class User extends CI_Controller {
 
     public function follow()
     {
+        $this ->check_if_login();
         $userId     = $_POST['userId'];
         $friendId   = $_POST['friendId'];
         $relation   = $_POST['relation'];

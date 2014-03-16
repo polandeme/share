@@ -9,9 +9,23 @@ class Posts extends CI_Controller{
         $this ->load ->model('m_user');
         $this ->load ->library('session');
     } 
+    
+    /**
+     * 判断用户是否登录
+     * 利用session
+     */
+    public function check_login()
+    {
+        $userId = $this ->session ->userdata('userId');
+        if(empty($userId)) 
+        {
+            redirect('/user/login');
+        }
+    }
 
     public function submit_posts()
     {
+        $this ->check_login();
         $this ->load ->library('form_validation');
         $this ->form_validation ->set_rules('inputContent','UserName','required');
         $this ->form_validation ->set_rules('inputCate','UserEmail','required|trim');

@@ -105,6 +105,7 @@ $("#userName").change(function(){
 
 // 投票效果
 // To Do 赞过之后写入数据库，前后台都不可再赞
+//      不能赞自己 
 //      优化结构
 //      @date Mar 10 2014
 
@@ -123,6 +124,13 @@ $(".vote-up").click(function(){
     });
 });
 
+//前端判断登录 
+$(".share-btn, .comment-submit ,.follow").click(function(){
+    if($(".logout").length == 0){
+            alert("请先登录");
+            window.location.href= base_url + 'index.php/user/login';
+            }
+    });
 //用户信息显示
 $(".post-author").mouseover(function(){
     var userId = $(".link-user-name").data('userid'),
@@ -155,7 +163,7 @@ $(".post-author").mouseover(function(){
                         });
                     } else if(relation == 0) {
                         $(".follow").text("关注").click(function() {
-                            $(this).text("取消");
+                                    $(this).text("取消");
                         });
                     } 
                   } catch(e)
@@ -189,11 +197,16 @@ $(".follow").click(function(){
 if(!($(".post-detail-word").text().trim()))
     {
        $(".textarea , .submit-detail").remove();
-        CKEDITOR.replace('comment'); 
     }else {
         CKEDITOR.replace('postDetail'); 
-        CKEDITOR.replace('comment'); 
         console.log('无内容');
     }
 
+
+    //判断登录
+// $(".submit").click(function(){
+    // if($(".logout").length == 0){
+        // alert("请先登录");
+    // }
+// });
 });// /END

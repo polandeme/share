@@ -36,7 +36,7 @@
                     </ul> 
                     <?php } else {?> <!-- 登录 -->
                     <ul class="nav navbar-nav navbar-right">
-                    <li class="user-link"><a  href="<?php echo base_url();?>index.php/user/login" class = "link-user-name"data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
+                    <li class="user-link"><a  href="<?php echo base_url();?>index.php/user/login" class = "link-user-name" data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
                         <div class="user-items" id="user-tab">
                             <div class="border"> </div> 
                             <?php echo $userName;
@@ -45,7 +45,7 @@
                                 echo date('Y-m-d H:i:s', $regTime);
                                 echo $userId;
                             ?>                       
-                            <a  class="logout"href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
+                            <a  class="logout" href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
                             <div class="user-avatar">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
                             </div>
