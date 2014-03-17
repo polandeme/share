@@ -193,15 +193,21 @@ $(".follow").click(function(){
         }
     });  
 }); // follow END
-// 自动加载 判断两个用户状态
-if(!($(".post-detail-word").text().trim()))
+
+if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).text().trim() == null)
     {
-       $(".textarea , .submit-detail").remove();
+       textares = $(".textarea , .submit-detail").remove();
     }else {
         CKEDITOR.replace('postDetail'); 
         console.log('无内容');
     }
-
+    $(".change-detail").click(function(){
+       $(".post-detail-word").after(textares);
+       $(this).remove();
+       $(".post-detail-word").remove();
+        CKEDITOR.replace('postDetail'); 
+        ("textares")
+    });
 
     //判断登录
 // $(".submit").click(function(){

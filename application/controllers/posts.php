@@ -1,5 +1,5 @@
 <?php
-class Posts extends CI_Controller{
+class Posts extends CI_Controller {
     public function __construct()
     {
         date_default_timezone_set('Asia/Shanghai');
@@ -32,8 +32,8 @@ class Posts extends CI_Controller{
         $this ->form_validation ->set_rules('inputRole','UserPassward','');
 
         $data = array(
-            'pt_date' =>date('Y-m-d H:i:s'), 
-            'pt_cate'  => $this ->input ->post('inputCate'),
+            'pt_date'   => date('Y-m-d H:i:s'), 
+            'pt_cate'   => $this ->input ->post('inputCate'),
             'pt_role'   => $this ->input ->post('inputRole'),
             'pt_content'=> $this ->input ->post('inputContent'),
             'pt_uid'    => $this ->session ->userdata('userId') 
@@ -46,7 +46,10 @@ class Posts extends CI_Controller{
         else 
         {
             $this ->m_posts ->submit_posts($data);
-            redirect('/user/login');
+            $userId = $this ->session ->userdata('userId');
+            $postId = $this ->m_posts ->get_lastest_id($userId);
+            $postId = ($postId*1024+19940309) *10 ;
+            redirect("/share/index/$postId");
         }
     }
 
@@ -67,6 +70,8 @@ class Posts extends CI_Controller{
             redirect('/');
         } else {
             $this ->m_posts ->add_post_detail($postDetail, $postId);
+            $postId = $this ->input ->post('postId');
+            redirect("/share/index/$postId");
         }
     }
     /**

@@ -9,6 +9,11 @@
                     <span><?php if(!empty($post['pt_role'])){ echo $post['pt_role']; } else {echo $post['u_name']; } ?></span>
                         <span> 推荐 </span><?php echo $post['pt_cate']; ?> <span> <?php echo $post['pt_content']; ?>
                     </h4>
+                <div class="vote">
+                    <span class="vote-up" rel ="<?php echo $post['pt_id'] ;?>"  id = "post-<?php echo $post['pt_id']; ?>" > 赞同 </span>
+                    <span class="vote-up-num"><?php echo $post['pt_up']; ?> </span>
+                </div>
+
                     <!-- ajax 获取作者信息  -->
                    <span class="post-author" data-id = "<?php echo $post['u_sec_id']; ?>" rel = "2" href="#" ><?php echo '   ' . $post['u_name'] ;?> 
                         <div class="post-author-detail" >
@@ -23,11 +28,12 @@
                     <!-- /ajax -->
                 </div>
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
-                    <div class ="psot-detail-word"> <?php echo $post['pt_detail']; ?> </div>
-                    <textarea class ="textarea" name="postDetail" rows="10" cols="80" > </textarea>
+                    <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
+                    <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea>
                     <input type="hidden" name = "postId" value = "<?php echo (($post['pt_id'] * 1024 + 19940309) * 10) ; ?>">
                     <button type="submit" class = "submit-detail" name= "submit-detail"> 提交 </button>
                 </form>
+                <div class = "change-detail"> 修改</div>
             </div> <!-- /post-detail -->
             <hr />
             <!-- post comment -->

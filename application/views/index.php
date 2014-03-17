@@ -7,7 +7,7 @@
             <div class="per-content">
             <a class="content_title"  href ="<?php echo base_url() . "index.php/share/index/". ($row->pt_id *1024 + 19940309) * 10; ?>" >
                 <?php if(empty($row->pt_role)){ echo $row ->u_name;  }
-                    else {?> <!-- 我是 --><?php echo $row ->pt_role; ?> <?php }?> 推荐了 <?php echo $row ->pt_cate; echo '      '. $row -> pt_content ?></a> 
+                    else {?> <!-- 我是 --><?php echo $row ->pt_role; ?> <?php }?> 推荐了<?php echo $row ->pt_cate; echo $row -> pt_content ?></a> 
                         <div class="content_date"> 
                             <?php echo $row ->pt_date; ?>
                        </div>

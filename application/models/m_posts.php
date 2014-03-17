@@ -23,6 +23,13 @@ class M_posts extends CI_Model
         $this ->db ->query($sql);
     }
 
+    public function get_lastest_id($userId)
+    {
+        $sql = "SELECT pt_id FROM sh_posts WHERE pt_uid = $userId  order by pt_date desc";
+        $query = $this ->db ->query($sql);
+        $res = $query ->row_array();
+        return $res['pt_id'];
+    }
     /**
      * ajax 得到文章作者信息
      *
