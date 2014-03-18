@@ -12,7 +12,7 @@ class M_posts extends CI_Model
     }
 
     /**
-     * 怎加详细内容更新到数据库
+     * 增加详细内容更新到数据库
      *
      * @param   $postDetail 提交的详细信息 $postId 文章id
      * @date    Mar 15 2014

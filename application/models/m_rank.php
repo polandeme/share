@@ -15,7 +15,6 @@ class M_rank extends CI_Model {
         $uid = $row ->pt_uid ;
         $sql = "update sh_user set u_up = u_up + 1 where u_id = '$uid' ";
         $query = $this ->db ->query($sql);
-
         return $row ->pt_up; 
     }
 };

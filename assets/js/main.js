@@ -174,8 +174,8 @@ $(".post-author").mouseover(function(){
           });
     });
 
-$(".post-author").mouseout(function(){
-    $(this).children().hide();
+$(".post-author ").mouseout(function(){
+    $(this).children().next().hide();
 });
 // follow
 $(".follow").click(function(){

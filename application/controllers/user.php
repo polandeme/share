@@ -14,11 +14,16 @@ class User extends CI_Controller {
      * @param   用户id(缩写/name)
      * @Date    Mar 13 2014
      */
-    public function index() {
+    public function index($name) 
+    {
         // to do 
         // 判断是否登录
         // if 登录 进入个人中心
         // else 进入登录页面
+        $sessionData = $this -> session ->all_userdata();
+        $data['user'] = $this ->m_user ->index($name);
+        $this ->load ->view('template/header', $sessionData);
+        $this ->load ->view('user',$data);
     }
 
     /**

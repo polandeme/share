@@ -16,24 +16,27 @@
 
                     <!-- ajax 获取作者信息  -->
                    <span class="post-author" data-id = "<?php echo $post['u_sec_id']; ?>" rel = "2" href="#" ><?php echo '   ' . $post['u_name'] ;?> 
-                        <div class="post-author-detail" >
-                            <div class ="arrow"></div>
-                            <div class="post-author-content">
-                                <span> </span> 
-                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" width ='40px'  >
-                                <button type="button" data-id="<?php echo $post['u_sec_id'] ;?>" data-rela="0" rel=0 class="follow">关注 </button>
+                        <div class="advance-hover">
+                            <div class="post-author-detail" >
+                                <div class ="arrow"></div>
+                                <div class="post-author-content">
+                                    <span> </span> 
+                                    <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" width ='40px'  >
+                                    <button type="button" data-id="<?php echo $post['u_sec_id'] ;?>" data-rela="0" rel=0 class="follow">关注 </button>
+                                </div> 
                             </div> 
-                        </div> 
+                        </div>
                     </span>
                     <!-- /ajax -->
                 </div>
+                <hr />
+                <span class = "change-detail"> 修改</span>
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
                     <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
                     <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea>
                     <input type="hidden" name = "postId" value = "<?php echo (($post['pt_id'] * 1024 + 19940309) * 10) ; ?>">
                     <button type="submit" class = "submit-detail" name= "submit-detail"> 提交 </button>
                 </form>
-                <div class = "change-detail"> 修改</div>
             </div> <!-- /post-detail -->
             <hr />
             <!-- post comment -->

@@ -7,7 +7,17 @@ class M_user extends CI_Model {
     {
         parent::__construct();
     }
-    
+
+    public function index($name)
+    {
+        // $query = $this ->db ->query("SELECT sh_posts.* , sh_user.* FROM sh_posts, sh_user 
+                    // WHERE sh_user.u_id = sh_posts.pt_uid AND u_name = '$name' ");
+        // $res = $query ->result();
+        $query = $this ->db ->query("SELECT * FROM sh_user WHERE u_name = '$name' LIMIT 1");
+        $res = $query ->row_array();
+        return $res;
+    }
+   
     /**
      * 向数据库添加新注册用户
      * 
