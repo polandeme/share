@@ -124,6 +124,79 @@ $(".vote-up").click(function(){
     });
 });
 
+
+function fetch_progress(){
+    $.get( base_url + 'index.php/user/up_process',
+          function(data){
+                var progress = parseInt(data);
+                        $('#progress .label').html(progress + '%');
+                        $('#progress .bar').css('width', progress + '%');
+                        if(progress <= 100){
+                            setTimeout('fetch_progress()', 1000);
+                        }else{
+                            // var relSrc = $(window.frames[0].document).find("input").attr('rel');
+                            var relSrc = $(window.frames[0].document).find("#ifr-rel");
+                            $('.btn-up-avat').on('',function(){
+                                var relSrc = $(window.frames[0].document).find("input").attr('rel');
+                                console.log(relSrc);
+                            });
+                            $('#progress .label').html('完成!');
+                        }
+    }, 'html');
+}
+
+$('.sub-form').submit(function(){
+    $('#progress').show();
+        setTimeout(fetch_progress(), 1000);
+});
+/*
+//ajax 显示图片
+// $(".btn-up-avat").click(function(){
+function fetch_process(){
+    $.ajax({
+        type: 'GET',
+        url: base_url + 'index.php/user/up_process',
+        // data: {},
+        sucess: function(msg){
+            var process = pareInt(msg);
+            $("#progress .label").html(progress+ '%');
+            if(progress < 100)
+                {
+                    setTimeout('fetch_process', 100);
+                }
+                else{
+                    var relSrc = $(window.frames[0].document).find("input").attr('rel');
+                    console.log(relSrc);
+                }
+        }
+    });
+}
+    var userName = $(".msg-name").attr('rel');
+    $(".sub-form").submit(function(){
+        $('#progress').show();
+         setTimeout('fetch_process', 1000);
+    });
+    // var relSrc = $(window.frames[0].document).find("input").attr('rel');
+    // console.log(relSrc);
+    /*$.ajax({
+        type: 'POST',
+        url: base_url + 'index.php/user/ajax_user_avat',
+        data: {'name': userName},
+        cache: false,
+        success: function(msg){
+            var img = base_url + 'assets/uploads/images/avatar/'+ msg;
+            $('.user-msg-basic img').attr('src', img);
+            console.log(img);
+        }
+    });*/
+// });
+
+/*上传进度 */
+
+
+
+
+
 //前端判断登录 
 $(".share-btn, .comment-submit ,.follow").click(function(){
     if($(".logout").length == 0){
@@ -208,11 +281,10 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
         CKEDITOR.replace('postDetail'); 
         ("textares")
     });
-
-    //判断登录
-// $(".submit").click(function(){
-    // if($(".logout").length == 0){
-        // alert("请先登录");
-    // }
-// });
+$("button").click(function(){
+    console.log("test");
+    var url = base_url + 'assets/uploads/images/avatar/ddd.jpg';
+    $(".user-msg-basic img").attr('src',url);
+});
 });// /END
+

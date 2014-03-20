@@ -29,9 +29,5 @@ class Index extends CI_Controller {
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('index', $data);
     }
-    public function test()
-    {
-        echo "test";
-    }
 };
 ?>

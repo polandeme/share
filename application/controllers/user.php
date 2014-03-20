@@ -129,7 +129,7 @@ class User extends CI_Controller {
     public function check_login(){
         $name       = $this ->input ->post('userName');
         $password   = $this ->input ->post('userPwd');
-        $userdata = $this ->m_user ->login($name, $password);
+        $userdata   = $this ->m_user ->login($name, $password);
         if ($userdata) {
            $this ->save_user_info($userdata);
            redirect('/');
@@ -187,5 +187,55 @@ class User extends CI_Controller {
         $this ->m_user ->follow($userId, $friendId, $relation);
     }
 
+    public function upload_avat()
+    {
+        // header("Content-type:image/png");
+        $config['upload_path'] = './assets/uploads/images/avatar/';
+        $config['allowed_types'] = 'gif|jpg|png';    //设置上传的图片格式
+        // $config['max_size'] = '500';              //设置上传图片的文件最大值
+        $config['max_width']  = '1200';            //设置图片的最大宽度
+        $config['max_height']  = '1200';
+        $userName = $_POST['userName'];
+        $config['file_name'] = $userName . time();
+        $this->load->library('upload', $config);   //加载CI中的图片上传类，并递交设置的各参数值
+        if(!$this->upload->do_upload("file")) {
+            echo $this->upload->display_errors();
+        } else {
+            $data['upload_data'] = $this ->upload->data();  //文件的一些信息
+            $fileName = $data['upload_data']['file_name'];  //取得文件名
+            $res = $this ->m_user ->update_avatar($fileName,$userName);
+            echo "<input rel='$fileName' id ='ifr-rel'/>";
+            // echo base_url(). 'assets/uploads/images/avatar/'. $fileName; 
+            // $userName = $_POST['name'];
+            // $sql = "SELECT u_avatar FROM sh_user WHERE u_name = '$userName' LIMIT 1";
+            // $query = $this ->db ->query($sql);
+            // $res = $query ->row_array();
+            // echo  $res['u_avatar'];
+        }
+    }
+
+    public function up_process()
+    {
+        $i = ini_get('session.upload_progress.name');
+
+        $key = ini_get("session.upload_progress.prefix") . $_GET[$i];
+
+        if (!empty($_SESSION[$key])) {
+                    $current = $_SESSION[$key]["bytes_processed"];
+                            $total = $_SESSION[$key]["content_length"];
+                            echo $current < $total ? ceil($current / $total * 100) : 100;
+        }else{
+                    echo 100;
+        }
+    }
+   
+    public function ajax_user_avat()
+    {
+        $userName = $_POST['name'];
+        $sql    = "SELECT u_avatar FROM sh_user WHERE u_name = '$userName' LIMIT 1";
+        $query  = $this ->db ->query($sql);
+        $res    = $query ->row_array();
+        echo  $res['u_avatar'];
+    }
 };
 ?>

@@ -145,5 +145,11 @@ class M_user extends CI_Model {
             return $res;
             }
     }
+
+    public function  update_avatar($userAvat, $userName)
+    {
+        $sql = "UPDATE sh_user SET u_avatar = '$userAvat' WHERE u_name = '$userName' LIMIT 1";
+        $query = $this ->db ->query($sql);
+    }
 };
 ?>

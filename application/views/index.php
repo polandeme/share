@@ -11,7 +11,10 @@
                         <div class="content_date"> 
                             <?php echo $row ->pt_date; ?>
                        </div>
-                <span class="post-author" data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" href="#" ><a href="#" class = "post-author-name"><?php echo '   ' . $row ->u_name ;?></a>
+                <span class="post-author" data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" >
+                    <a href="<?php echo base_url();?>index.php/user/index/<?php echo $row->u_name;?>" class = "post-author-name">
+                        <?php echo '   ' . $row ->u_name ;?>
+                    </a>
                     <div class="advance-hover">
                         <div class="post-author-detail" >
                             <div class ="arrow"></div>
