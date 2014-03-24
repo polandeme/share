@@ -15,6 +15,11 @@ class M_index extends CI_Model {
     {
         return $this ->db ->count_all_results();
     }
+
+    public function get_hot_cate()
+    {
+
+    }
 };
 
 ?>

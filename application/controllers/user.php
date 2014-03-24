@@ -205,12 +205,6 @@ class User extends CI_Controller {
             $fileName = $data['upload_data']['file_name'];  //取得文件名
             $res = $this ->m_user ->update_avatar($fileName,$userName);
             echo "<input rel='$fileName' id ='ifr-rel'/>";
-            // echo base_url(). 'assets/uploads/images/avatar/'. $fileName; 
-            // $userName = $_POST['name'];
-            // $sql = "SELECT u_avatar FROM sh_user WHERE u_name = '$userName' LIMIT 1";
-            // $query = $this ->db ->query($sql);
-            // $res = $query ->row_array();
-            // echo  $res['u_avatar'];
         }
     }
 

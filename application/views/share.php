@@ -54,7 +54,7 @@
         </div>
         <!-- /left label -->
         <!-- sidebar start -->
-        <div class="col-md-2 share-sidebar">
+        <div class="col-md-2 g-sidebar">
             <?php echo $post['pt_detail']; ?>
         </div>
         <!-- /sidebar -->

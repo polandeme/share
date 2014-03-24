@@ -1,16 +1,14 @@
-a {
-    text-decoration: none !important;
-}
+/* commend */
 .glyphicon {
     font-size: 1.2em;
     float: right;
 }
 .wrap {
     width: 960px;
-    height: auto;
+    height: 850px;
     margin-bottom: 100px;
+    padding-top: 100px;
 }
-
 .wrap hr {
     margin-top: 30px;
     border-top:1px solid #c3c1c1;
@@ -23,23 +21,55 @@ a {
 }
 .per-content {
     float: left;
-    width: 100%;
+    margin-top: 10px;
+    width: 98%;
     border-bottom: 1px solid gray;
 }
 .content_title {
+    float: left;
+    width: 90%;
+    height: auto;
+    margin-left: 20px;
+}
+.content_title a {
     margin-top: 10px;
+    color: #259;
     font-size: 18px;
     float: left;
-    width: 100%;
+    width: auto;
+}
+.content_title a:hover {
+    color: #4e7d9f;
+}
+.content-other-data {
+    margin-left: 50px;
 }
 .content_date {
     float: right;
+    margin-right: 30px;
+    color: rgb(119,120,122);
+
+}
+.post-nav-group {
+    box-shadow: inset 1px 0 0 #e6e6e6;
+    background: -webkit-linear-gradient(left,#f6f6f6 0,#fff 8px);
+
+}
+.post-nav-group, .post-nav-item {
+    border-left: 2px solid transparent;
+}
+.post-nav-item {
+    display: block;
+    padding: 8px 12px;
+    color: #888;
+}
+.post-nav-item:hover ,.actived{
+    border-left: 2px solid #009a61 ;
+    color: #333;
 }
 /* register page
  * 2014-03-02
- *
  */
-
 .reg-content .form-group , .reg-content input{
     height: 30px;
     border-radius: 0;
@@ -119,12 +149,14 @@ a {
 
 .advance-hover {
     width: 230px;
-    height: 30px;
+    height: 180px;;
     position: absolute;
     /* border: 1px solid gray; */
-    margin-top: -1px;
+    z-index: 9999;
+    margin-top: -4px;
     padding-top: 7px;
-    /* padding-top: 10px; */
+    padding-left: 10px;
+    margin-left: -5px;
     display: none;
 }
 .header-nav {
@@ -133,6 +165,10 @@ a {
 }
 .nav-menu {
     background: #e7f0f7;
+    opacity: .95;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
 }
 .userName{
     position: absolute;
@@ -213,24 +249,52 @@ a {
     /* float: left; */
     display: none;
 }
-.vote-up , .voted-up{
+.vote , .voted-up{
     cursor: pointer;
+}
+/* 替换 vote-up */
+.vote{
+    float: left;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 110%;
+    border-radius: 3px;
+    padding-top: 3px;
+    margin-top: 3px;
+    background-color: #eaf3f9;
+    /* border: 1px solid red; */
+}
+.vote:hover {
+    background-color: #def6ff;
 }
 .post-author-name {
     color: blue;
 }
 
-.vote-up, .post-author, .voted-up-num, .vote-up-num {
+.vote-up, .post-author {
     float: left;
 }
 .post-author {
-    color: black;
+    margin-left: 15px;
+}
+.post-author a {
+    color: rgb(119,120,122);
+}
+.post-author > a:hover {
+    background-color: #ecf7fb;
 }
 .post-author-wrap {
     margin: 10px;
-    /* border: 1px solid gray; */
     width: 195px;
     height: 115px; 
+}
+.user-avata-msg {
+    margin-top: -25px;
+    float: right;
+}
+.user-avata-msg img {
+    border-radius: 5px;
 }
 .author-motto {
     margin-bottom: 0;
@@ -259,9 +323,8 @@ a {
 .author-motto {
     margin-top: 50px;
 }
-.vote {
-    float: right;
-    margin-right: 20px;
+.post-author-detail {
+    position: absolute;
 }
 .post-author-content span {
     /* margin-top: 25px; */
@@ -275,30 +338,32 @@ a {
     width: 0;
     height: 0;
     margin-top: -5px;
-    border-left: 10px solid ;
-    border-right: 10px solid ;
-    border-bottom: 10px solid ;
-    border-color:  transparent transparent red transparent;
+    border-left: 12px solid ;
+    border-right: 12px solid ;
+    border-bottom: 12px solid ;
+    border-color:  transparent transparent rgb(106,154,201) transparent;
 }
 .post-author-content {
     position: absolute;
-    margin-top: 5px;
+    margin-top: 7px;
     margin-left: -5px;
     border-radius: 4px;
     width: 220px;
     background-color: white;
     height: 160px;
-    border: 1px solid red;
+    border: 1px solid #768def;
     /* z-index: 1; */
 }
 .form-ckeditor{
     width: 610px;
     height: 100px;
 }
-/*==========================================share page */
-.share-sidebar {
-    height: 1000px;
-    border-left: 1px solid gray;
+/* globel */
+.g-sidebar {
+    height: 700px;
+    /* border-left: 1px solid gray; */
+    margin-left: 45px;
+    padding-left: 0;
 }                                                 
 .post-detail-title {
     border-bottom: 1px solid gray;

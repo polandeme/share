@@ -109,19 +109,22 @@ $("#userName").change(function(){
 //      优化结构
 //      @date Mar 10 2014
 
-$(".vote-up").click(function(){
+$(".vote").click(function(){
     var id = $(this).attr("rel");
-    $(this).text("已赞");
+    // $(this).text("已赞");
     $.ajax({
         type: 'POST',
         url: base_url + 'index.php/rank/up_vote',
         data: {'id' :id},
         cache: false,
         success: function(msg){
-          $("#post-" + id).next(".vote-up-num").html(msg);  
-          $("#post-" + id).next(".vote-up-num").addClass("voted-up-num").removeClass("vote-up-num");
+          $("#post-" + id).children(".vote-up-num").html(msg);  
+          $("#post-" + id).children(".vote-up-num").addClass("voted-up-num").removeClass("vote-up-num");
         }
     });
+    $(this).css(
+        'background-color', '#c2e6f4'
+    );
 });
 
 
@@ -133,69 +136,28 @@ function fetch_progress(){
                         $('#progress .bar').css('width', progress + '%');
                         if(progress <= 100){
                             setTimeout('fetch_progress()', 1000);
-                        }else{
-                            // var relSrc = $(window.frames[0].document).find("input").attr('rel');
-                            var relSrc = $(window.frames[0].document).find("#ifr-rel");
-                            $('.btn-up-avat').on('',function(){
-                                var relSrc = $(window.frames[0].document).find("input").attr('rel');
-                                console.log(relSrc);
-                            });
+                        } else{
+                            
                             $('#progress .label').html('完成!');
+                            setTimeout(function get_rel(){ 
+                            $('#progress .label').html('完成!');
+                            var relSrc = $(window.frames[0].document).find("input").attr('rel');
+                            console.log(relSrc);
+                            var img = base_url + 'assets/uploads/images/avatar/'+ relSrc;
+                            $('.user-msg-basic img').attr('src', img);
+                            },
+300);
                         }
     }, 'html');
-}
+                           }
 
 $('.sub-form').submit(function(){
     $('#progress').show();
-        setTimeout(fetch_progress(), 1000);
+    do{
+        setTimeout(fetch_progress(), 40);
+    }while($(window.frames[0].document).find("input").attr('rel'));
+
 });
-/*
-//ajax 显示图片
-// $(".btn-up-avat").click(function(){
-function fetch_process(){
-    $.ajax({
-        type: 'GET',
-        url: base_url + 'index.php/user/up_process',
-        // data: {},
-        sucess: function(msg){
-            var process = pareInt(msg);
-            $("#progress .label").html(progress+ '%');
-            if(progress < 100)
-                {
-                    setTimeout('fetch_process', 100);
-                }
-                else{
-                    var relSrc = $(window.frames[0].document).find("input").attr('rel');
-                    console.log(relSrc);
-                }
-        }
-    });
-}
-    var userName = $(".msg-name").attr('rel');
-    $(".sub-form").submit(function(){
-        $('#progress').show();
-         setTimeout('fetch_process', 1000);
-    });
-    // var relSrc = $(window.frames[0].document).find("input").attr('rel');
-    // console.log(relSrc);
-    /*$.ajax({
-        type: 'POST',
-        url: base_url + 'index.php/user/ajax_user_avat',
-        data: {'name': userName},
-        cache: false,
-        success: function(msg){
-            var img = base_url + 'assets/uploads/images/avatar/'+ msg;
-            $('.user-msg-basic img').attr('src', img);
-            console.log(img);
-        }
-    });*/
-// });
-
-/*上传进度 */
-
-
-
-
 
 //前端判断登录 
 $(".share-btn, .comment-submit ,.follow").click(function(){
@@ -205,7 +167,7 @@ $(".share-btn, .comment-submit ,.follow").click(function(){
             }
     });
 //用户信息显示
-$(".post-author").mouseover(function(){
+$(".post-author").mouseenter(function(){
     var userId = $(".link-user-name").data('userid'),
         id = $(this).data('id'),
         relation = $(".follow").attr('rel'),
@@ -221,22 +183,27 @@ $(".post-author").mouseover(function(){
             $(".post-author-detail span").text(msg[0].u_up);
                 try {
                     relation = msg[0].relation.fw_relation;
+                    // console.log('relation');
                     that.attr('rel', relation);
                         if(relation  == 1) {
-                        $(".follow").text("取消关注").click(function(){
-                         $(this).text("关注").attr('rel', 0);
+                        $(".follow").attr('rel',1);
+                        $(".follow").text("取消").click(function(){
+                         $(this).text("关注");
                         });
                     } else if (relation == 2){
+                            $(".follow").attr('rel',2);
                         $(".follow").text("回关").click(function(){
-                         $(".follow").text("each");
+                             $(".follow").text("each");
                         });
                     } else if(relation == 3) {
+                            $(".follow").attr('rel',3);
                         $(".follow").text("each").click(function(){
                             $(this).text("回关");
                         });
-                    } else if(relation == 0) {
+                    } else  {
+                        $(".follow").attr('rel',0);
                         $(".follow").text("关注").click(function() {
-                                    $(this).text("取消");
+                                    $(this).text("取消").attr('rel',1); //right
                         });
                     } 
                   } catch(e)
@@ -247,7 +214,7 @@ $(".post-author").mouseover(function(){
           });
     });
 
-$(".post-author ").mouseout(function(){
+$(".post-author ").mouseleave(function(){
     $(this).children().next().hide();
 });
 // follow
@@ -262,11 +229,21 @@ $(".follow").click(function(){
         data: { userId : userId, friendId : friendId, relation: relation  },
         cache: false,
         success: function(){
-            console.log("su");
+            // console.log("su");
         }
     });  
 }); // follow END
 
+//导航active效果，判断当前url
+$(".post-nav-item").each(function(){
+    if(this.href === document.location.href || document.location.href.search(this.href) >= 0)
+        {
+            $(this).addClass("actived");
+        }
+        else{
+        }
+});
+//加载编辑器
 if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).text().trim() == null)
     {
        textares = $(".textarea , .submit-detail").remove();

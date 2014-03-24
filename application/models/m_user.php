@@ -82,6 +82,7 @@ class M_user extends CI_Model {
      * @param $userId $friendId 关系用户Id
      * @date    Mar 11 03 2014
      * @author  Polande
+     *
      */
     public function follow($userId, $friendId, $relation)
     {
@@ -142,8 +143,9 @@ class M_user extends CI_Model {
                 } else {
                     $res['fw_relation'] = 3; 
                 }
+
             return $res;
-            }
+        }
     }
 
     public function  update_avatar($userAvat, $userName)
