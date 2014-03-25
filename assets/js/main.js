@@ -236,13 +236,13 @@ $(".follow").click(function(){
 
 //导航active效果，判断当前url
 $(".post-nav-item").each(function(){
-    if(this.href === document.location.href || document.location.href.search(this.href) >= 0)
+    $name = $(this).attr('name');
+    if(document.location.href.search($name) > 0)
         {
+            $(".link-link").removeClass("actived");
             $(this).addClass("actived");
-        }
-        else{
-        }
-});
+        } 
+    });
 //加载编辑器
 if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).text().trim() == null)
     {
@@ -263,5 +263,6 @@ $("button").click(function(){
     var url = base_url + 'assets/uploads/images/avatar/ddd.jpg';
     $(".user-msg-basic img").attr('src',url);
 });
+
 });// /END
 

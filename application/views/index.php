@@ -12,7 +12,7 @@
                         <div>票</div>
                     </div>
                     <div class = "content_title">
-                            <a href ="<?php echo base_url() . "index.php/share/index/". ($row->pt_id *1024 + 19940309) * 10; ?>" >
+                            <a href ="<?php echo base_url() . "index.php/share/index/". ($row->pt_id *1024 + 19940309) * 10; ?>?aaa=111" >
                             <?php if(empty($row->pt_role)){ echo $row ->u_name;  }
                                 else {?> <!-- 我是 --><?php echo $row ->pt_role; ?> <?php }?> 推荐了<?php echo $row ->pt_cate; echo $row -> pt_content ?></a> 
                     </div>
@@ -70,10 +70,10 @@
         <!-- index sidebar -->
         <div class ="col-md-2 col-md-offset-1 g-sidebar">
             <div class="post-nav-group">
-                <a class="post-nav-item " href="<?php echo base_url(); ?>" > 综合显示</a>
-                <a class="post-nav-item" href="#" > 我的关注</a>
-                <a class="post-nav-item" href="#" >按时间显示</a>
-                <a class="post-nav-item" href="#" > 按热度显示</a>
+                <a class="post-nav-item actived index-link" href="<?php echo base_url(); ?>" > 综合显示</a>
+                <a class="post-nav-item" name = "followposts" href="#" > 我的关注</a>
+                <a class="post-nav-item" href="followposts" >按时间显示</a>
+                <a class="post-nav-item" href="hotposts" > 按热度显示</a>
             </div>
 
             <div class="sd-hot-cate">
