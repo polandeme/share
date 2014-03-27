@@ -46,7 +46,7 @@
 }
 .content_date {
     float: right;
-    margin-right: 30px;
+    margin-right: 10px;
     color: rgb(119,120,122);
 
 }
@@ -411,6 +411,8 @@
     width: 100px;
     height: 100px;
     float: left;
+    border-radius: 3px;
+    margin-top: 10px;
 }
 .user-reg-time {
     float: left;
@@ -427,4 +429,23 @@
     text-align: center;
     font-size: 25px;
     color: #009a61;
+}
+.sub-form {
+    float: left;
+    margin-top: 10px;
+}
+.sub-form input {
+    margin-bottom: 10px;
+}
+.per-cate {
+    background-color: rgb(229,59,102);
+    border-radius: 4px;
+    float: left;
+    margin-top:5px;
+    margin-right: 5px;
+    font-size: 16px;
+    color: #3b4146;
+}
+.sd-hot-role {
+    float: left;
 }

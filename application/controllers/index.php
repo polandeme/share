@@ -8,7 +8,8 @@ class Index extends CI_Controller {
         $this ->load ->library('session');
     }
 
-    public function index() {
+    public function index() 
+    {
         //TO Do 分页操作 
 
         
@@ -25,6 +26,9 @@ class Index extends CI_Controller {
         $offset = $this ->uri ->segment(3);
 
         $data['title'] = $this ->m_index ->get_content_title($num , ($offset && $offset >= 0 ? $offset : 0));
+        $data['cate'] = $this ->m_index ->get_hot_cate();     
+        $data['user'] = $this ->m_index ->get_hot_user();     
+        // $data['role'] = $this ->m_index ->get_hot_role();     
         $sessionData = $this ->session ->all_userdata();
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('index', $data);

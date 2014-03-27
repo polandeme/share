@@ -14,11 +14,9 @@
                     <div class = "content_title">
                             <a href ="<?php echo base_url() . "index.php/share/index/". ($row->pt_id *1024 + 19940309) * 10; ?>?aaa=111" >
                             <?php if(empty($row->pt_role)){ echo $row ->u_name;  }
-                                else {?> <!-- 我是 --><?php echo $row ->pt_role; ?> <?php }?> 推荐了<?php echo $row ->pt_cate; echo $row -> pt_content ?></a> 
+                                else {?> <!-- 我是 --><?php echo $row ->pt_role; ?><?php }?>推荐了<?php echo $row ->pt_cate; echo $row -> pt_content ?></a> 
                     </div>
                     <div class = "content-other-data">
-                            <!-- <div class="content_date">  -->
-                           <!-- </div> -->
                            <div class = "user-avata-msg post-author">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $row ->u_avatar; ?>" width ='40px' height='40px' >
                                 <div class="advance-hover">
@@ -40,6 +38,11 @@
                             </div>
                            </div>
                             <!-- /avata -->
+                            <div class="content_date"> 
+                                <?php 
+                                    $date = $row ->pt_date;
+                                    echo substr($date,0,10); ?>
+                           </div>
                         <span class="post-author post-author-msg" data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" >
                             <a href="<?php echo base_url();?>index.php/user/index/<?php echo $row->u_name;?>" class = "post-author-name">
                                 <?php echo '   ' . $row ->u_name ;?>
@@ -72,20 +75,43 @@
             <div class="post-nav-group">
                 <a class="post-nav-item actived index-link" href="<?php echo base_url(); ?>" > 综合显示</a>
                 <a class="post-nav-item" name = "followposts" href="#" > 我的关注</a>
-                <a class="post-nav-item" href="followposts" >按时间显示</a>
-                <a class="post-nav-item" href="hotposts" > 按热度显示</a>
+                <a class="post-nav-item" href="ptime" >按时间显示</a>
             </div>
 
             <div class="sd-hot-cate">
                 <h4>本周热门类别 </h4>
                 <div class="sd-hot-cate-detail">
-                    <a class="per-cate" href="#"> 
-                    </a>
+                    <?php foreach($cate as $hotCate) { ?>
+                        <span><a class="per-cate" href="#"><?php  echo $hotCate ->pt_cate; ?> </a></span>
+                    <?php } ?>
+                <div>
+            </div>
+            <div class="sd-hot-role">
+                <h4>本周热门角色 </h4>
+                <div class="sd-hot-role-detail">
+                    <?php foreach($user as $hotUser) { ?>
+                    <span><a class="per-role" href="#"><?php  
+                                    // $hotUser = $hotUser['u_name'];
+                                    if($hotUser != '') { echo $hotUser;} ?> 
+                    </a></span>
+                    <?php } ?>
+                <div>
+            </div>
+            <div class="sd-hot-role">
+                <h4>本周热门角色 </h4>
+                <div class="sd-hot-role-detail">
+                    <?php foreach($user  as $hotUser) { ?>
+                    <span><a class="per-role" href="#"><?php  
+                                    // $hotUser = $hotUser['u_name'];
+                                    if($hotUser != '') { echo $hotUser;} ?> 
+                    </a></span>
+                    <?php } ?>
                 <div>
             </div>
         </div>
         <!-- /sidebar -->
     </div>
+</div>
 </div>
     <a href="javascript:;" class="go-top center"><span class="glyphicon glyphicon-arrow-up"></span></a>
     <?php echo $links ?>
