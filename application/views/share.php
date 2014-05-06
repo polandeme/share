@@ -9,28 +9,81 @@
                     <span><?php if(!empty($post['pt_role'])){ echo $post['pt_role']; } else {echo $post['u_name']; } ?></span>
                         <span> 推荐 </span><?php echo $post['pt_cate']; ?> <span> <?php echo $post['pt_content']; ?>
                     </h4>
-                <div class="vote">
-                    <span class="vote-up" rel ="<?php echo $post['pt_id'] ;?>"  id = "post-<?php echo $post['pt_id']; ?>" > 赞同 </span>
-                    <span class="vote-up-num"><?php echo $post['pt_up']; ?> </span>
-                </div>
+ <!--  author name -->
+                        <span class="post-author post-author-msg" data-id = "<?php echo $post['u_sec_id']; ?>" rel = "2" >
+                            <a href="<?php echo base_url();?>index.php/user/index/<?php echo ($post['u_id'] *1024 + 19940309)*10 ;?>" class="post-author-name">
+                                <?php echo '' . $post['u_name'] ;?>
+                            </a>
+                            <div class="advance-hover">
+                                <div class="post-author-detail" >
+                                    <div class ="arrow"></div>
+                                    <div class="post-author-content">
+                                        <div class="post-author-wrap">
+                                            <div class="author-wrap-top">
+                                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" >
+                                                <button type="button" data-id="<?php echo $post['u_sec_id'];?>" data-rale="0" rel="" class="follow">
+                                                    关注 
+                                                </button>
+                                            </div>
+                                            <div class ="author-wrap-bottom">
+                                                <div class="vote-num">赞同 <span></span></div>
+                                                <div class="author-motto"><?php echo $post['u_motto']; ?> </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                        </span>
+<!-- /author name -->
+<div class = "user-avata-msg post-author">
+                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" >
+                                <div class="advance-hover">
+                                <div class="post-author-detail" >
+                                    <div class ="arrow"></div>
+                                    <div class="post-author-content">
+                                        <div class="post-author-wrap">
+                                            <div class="author-wrap-top">
+                                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo  $post['u_avatar'];?>" >
+                                                <button type="button" data-id="<?php echo $post['u_sec_id'];?>" data-rale="0" rel="" class="follow">
+                                                    关注 
+                                                </button>
+                                            </div>
+                                            <div class ="author-wrap-bottom">
+                                                <div class="vote-num">赞同 <span></span></div>
+                                                <div class="author-motto"><?php echo $post['u_motto']; ?> </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div> 
+                            </div>
+                           </div>
+
+<!-- avatar -->
+                <hr />
+                <!-- <div class="vote"> -->
+                    <!-- <span class="vote&#45;up&#45;num"><?php echo $post['pt_up']; ?> </span> -->
+                         <!-- <div>票</div> -->
+                <!-- </div> -->
+
+
+
+
+
+
+                    <div class = "content-other-data">
+                                                       <!-- /avata -->
+                                           </div>
+      <!--      <? //php } ?> -->
+ 
+
 
                     <!-- ajax 获取作者信息  -->
-                   <span class="post-author" data-id = "<?php echo $post['u_sec_id']; ?>" rel = "2" href="#" ><?php echo '   ' . $post['u_name'] ;?> 
-                        <div class="advance-hover">
-                            <div class="post-author-detail" >
-                                <div class ="arrow"></div>
-                                <div class="post-author-content">
-                                    <span> </span> 
-                                    <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" width ='40px'  >
-                                    <button type="button" data-id="<?php echo $post['u_sec_id'] ;?>" data-rela="0" rel=0 class="follow">关注 </button>
-                                </div> 
-                            </div> 
-                        </div>
-                    </span>
                     <!-- /ajax -->
                 </div>
-                <hr />
-                <span class = "change-detail"> 修改</span>
+                <div class="edit-button-box">
+                    <i class="edit-button-icon"> </i>
+                    <span class = "change-detail"> 修改</span>
+                </div>
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
                     <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
                     <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea>

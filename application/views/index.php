@@ -22,6 +22,7 @@
                                 <?php echo $row ->pt_cate; echo $row -> pt_content ?>
                             </a> 
                     </div>
+
                     <div class = "content-other-data">
                            <div class = "user-avata-msg post-author">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $row ->u_avatar; ?>" >
@@ -85,7 +86,7 @@
             <div class="post-nav-group">
                 <a class="post-nav-item actived index-link" href="<?php echo base_url(); ?>" > 综合显示</a>
                 <a class="post-nav-item" name = "followposts" href="#" > 我的关注</a>
-                <a class="post-nav-item" href="ptime" >按时间显示</a>
+                <a class="post-nav-item" href="<?php echo base_url(); ?>index.php/ptime" >按时间显示</a>
             </div>
 
             <div class="sd-hot-cate">

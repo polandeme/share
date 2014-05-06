@@ -354,7 +354,32 @@
     border: 1px solid #768def;
     /* z-index: 1; */
 }
+.edit-button-box {
+    float: right;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+.edit-button-box:hover {
+    background-color: #eff6fa;
+    color: #259;
+    border-radius: 2px;
+}
+.edit-button-icon {
+    float: left;
+    background-image: url(../img/sprites.png); 
+    width: 12px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-position: -118px -50px;
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+    margin-top: 5px;
+    vertical-align: -3px;
+}
 .form-ckeditor{
+    float: left;
+    margin-top: 50px;
     width: 610px;
     height: 100px;
 }
@@ -366,8 +391,8 @@
     padding-left: 0;
 }                                                 
 .post-detail-title {
-    border-bottom: 1px solid gray;
-    margin-bottom: 20px;
+    /* border-bottom: 1px solid gray; */
+    /* margin-bottom: 20px; */
 }
 .post-detail + hr {
     margin-top: 120px;
@@ -446,8 +471,12 @@
     font-size: 16px;
     color: #3b4146;
 }
+.sd-hot-cate {
+    margin-top: 30px;
+}
 .sd-hot-role {
     float: left;
+    margin-top: 30px;
 }
 .user-avata-msg > img, .author-wrap-top > img {
     width: 40px;

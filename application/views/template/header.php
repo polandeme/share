@@ -23,9 +23,9 @@
                 <a class="navbar-brand" href="<?php echo base_url(); ?>"> Logo </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-left form-input" role="serch">
+            <form class="navbar-form navbar-left form-input" action = "<?php echo base_url(); ?>index.php/search"role="serch">
                     <div class="form-group">
-                        <input type="text" class="form-control search-input" id="input-search" placeholder="Search">
+                        <input type="text" name ="search" class="form-control search-input" id="input-search" placeholder="Search">
                     </div>
                     <button type="submit" class="btn btn-default btn-search"> 搜索 </button>
                 </form>

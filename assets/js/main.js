@@ -227,6 +227,8 @@ $(".post-author").mouseenter(function(){
 
 $(".post-author ").mouseleave(function(){
     $(this).children().next().hide();
+    // $(this).children().hide();
+
 });
 // follow
 $(".follow").click(function(){
@@ -265,9 +267,20 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
     $(".change-detail").click(function(){
        $(".post-detail-word").after(textares);
        $(this).remove();
+       $(".edit-button-icon").remove();
        $(".post-detail-word").remove();
-        CKEDITOR.replace('postDetail'); 
-        ("textares")
+        CKEDITOR.replace('postDetail', 
+                         {
+                             on:
+                                 {
+                                    instanceReady: function(ev) 
+                                    {
+                                        this.focus();
+                                    }
+                                 }
+                         }); 
+
+        // ("textares")
     });
 $("button").click(function(){
     console.log("test");
