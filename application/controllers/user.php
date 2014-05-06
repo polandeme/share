@@ -22,6 +22,7 @@ class User extends CI_Controller {
         // else 进入登录页面
         $uid = ($uid/10 -19940309) / 1024;
         $sessionData = $this -> session ->all_userdata();
+        $data['posts'] = $this ->get_user_posts($uid);
         $data['user'] = $this ->m_user ->index($uid);
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('user',$data);
@@ -231,6 +232,17 @@ class User extends CI_Controller {
         $query  = $this ->db ->query($sql);
         $res    = $query ->row_array();
         echo  $res['u_avatar'];
+    }
+
+    /**
+     * 通过用户ID得到用户 发表的文章
+     *
+     * @author  Polande
+     * @date    May 07 2014
+     */
+    public function get_user_posts($uid)
+    {
+       return $this ->m_user ->get_user_posts($uid); 
     }
 };
 ?>

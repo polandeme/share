@@ -32,6 +32,13 @@
 </div>
     </div>
 </div>
+
+<?php foreach($posts as $row) {
+    echo $row ->pt_cate;
+    echo $row ->pt_content;
+}
+?>
+
 <!-- /wrap  -->
 </body>
 </html>

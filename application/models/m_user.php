@@ -153,5 +153,16 @@ class M_user extends CI_Model {
         $sql = "UPDATE sh_user SET u_avatar = '$userAvat' WHERE u_name = '$userName' LIMIT 1";
         $query = $this ->db ->query($sql);
     }
+
+    /**
+     * 得到用户发表的文章
+     */
+    public function get_user_posts($uid)
+    {
+        $sql = "SELECT * FROM sh_posts WHERE pt_uid = '$uid'";
+        $query = $this ->db ->query($sql);
+        $res = $query ->result();
+        return $res;
+    }
 };
 ?>
