@@ -449,3 +449,7 @@
 .sd-hot-role {
     float: left;
 }
+.user-avata-msg > img, .author-wrap-top > img {
+    width: 40px;
+    height: 40px;
+}

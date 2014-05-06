@@ -5,6 +5,7 @@ class Index extends CI_Controller {
         parent::__construct();
         $this ->load ->helper('url');
         $this ->load ->model('m_index');
+        $this ->load ->model('m_rank');
         $this ->load ->library('session');
     }
 
@@ -12,7 +13,6 @@ class Index extends CI_Controller {
     {
         //TO Do 分页操作 
 
-        
         $this ->load ->library('pagination');
         $config['base_url'] = base_url().'index.php/index/index';
         $config['total_rows'] = $this ->db ->count_all('sh_posts');

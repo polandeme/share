@@ -1,3 +1,8 @@
+// $.ready(function(){
+    // $.ajax({
+       // url:  
+    // })
+// })
 $(function() {
     var $addNode = $("<input type='text' class='form-control input-iam' id='iam-input' name='inputRole'placeholder='I am'><span class='share-words'>我推荐 </span>");
     var $addName = $("<input type='text' class='form-control input-name' id='iam-input'name='inputContent' placeholder=''>");
@@ -6,7 +11,7 @@ $(".user-link").hover(function() {
 })
 
 
-    $("#input-search").click(function(){
+$("#input-search").click(function(){
         if($("#input-search").width() <= 90 ){
 $(".input-iam, .input-name , .share-words").remove();
             $(this).animate({
@@ -105,21 +110,27 @@ $("#userName").change(function(){
 
 // 投票效果
 // To Do 赞过之后写入数据库，前后台都不可再赞
+//      判断登录状态
 //      不能赞自己 
 //      优化结构
 //      @date Mar 10 2014
 
 $(".vote").click(function(){
     var id = $(this).attr("rel");
-    // $(this).text("已赞");
     $.ajax({
         type: 'POST',
         url: base_url + 'index.php/rank/up_vote',
         data: {'id' :id},
         cache: false,
         success: function(msg){
-          $("#post-" + id).children(".vote-up-num").html(msg);  
-          $("#post-" + id).children(".vote-up-num").addClass("voted-up-num").removeClass("vote-up-num");
+            if(msg === '已赞') {
+
+            } else if(msg) {
+              $("#post-" + id).children(".vote-up-num").html(msg);  
+              $("#post-" + id).children(".vote-up-num").addClass("voted-up-num").removeClass("vote-up-num");
+            } else {
+                alert("please login ");
+            }
         }
     });
     $(this).css(
