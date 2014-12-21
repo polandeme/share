@@ -38,7 +38,7 @@ class M_index extends CI_Model {
         $query = $this ->db ->query($sql);
         $res = $query ->result();
         foreach ($res as $row)
-        {
+        { 
             $userow = $row ->pt_uid;
             $sql = "SELECT u_name FROM sh_user where u_id = '$userow' LIMIT 1";
             $query = $this ->db ->query($sql);
@@ -50,8 +50,16 @@ class M_index extends CI_Model {
     }
 
     //
-    public function is_up() {
-
+    public function is_uped($pt_id, $u_id) {  
+        $u_id_r = ',' . $u_id . ',';
+        $sql = "select * from sh_posts where locate('$u_id_r', pt_up_uid) AND pt_id = '$pt_id' ";
+        $query = $this ->db -> query($sql);
+        $res = $query ->row_array();
+        if($query->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 };
 

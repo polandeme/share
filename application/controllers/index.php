@@ -26,12 +26,21 @@ class Index extends CI_Controller {
         $offset = $this ->uri ->segment(3);
 
         $data['title'] = $this ->m_index ->get_content_title($num , ($offset && $offset >= 0 ? $offset : 0));
+        $this ->is_uped($data['title']);
         $data['cate'] = $this ->m_index ->get_hot_cate();     
         $data['user'] = $this ->m_index ->get_hot_user();     
         // $data['role'] = $this ->m_index ->get_hot_role();     
         $sessionData = $this ->session ->all_userdata();
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('index', $data);
+    }
+
+    public function is_uped($pt_set) 
+    {
+        $u_id = $this ->session ->userdata('userId');
+        for($i = 0; $i < count($pt_set); $i++) {
+            $pt_set[$i] ->is_up = $this ->m_index ->is_uped($pt_set[$i]->pt_id, $u_id) ? 'voted' : '';
+        }
     }
 };
 ?>

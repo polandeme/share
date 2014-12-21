@@ -482,3 +482,8 @@
     width: 40px;
     height: 40px;
 }
+
+/*index page*/
+.voted {
+    background-color: rgb(194, 230, 244);
+}
