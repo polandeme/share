@@ -102,7 +102,7 @@ class M_user extends CI_Model {
             } else if($relation == 2) {
                 $sql = "UPDATE sh_follow SET fw_relation = 3 WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
             } else if ($relation == 3) {
-                $sql = "UPDATE sh_follow SET fw_relation = 2 WHERE fw_user_id = '$userId AND fw_friend_id = '$friendId'";
+                $sql = "UPDATE sh_follow SET fw_relation = 2 WHERE fw_user_id = '$userId' AND fw_friend_id = '$friendId'";
             } else { return false; }
         } else {
             if ($relation == 2) {

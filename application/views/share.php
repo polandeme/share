@@ -35,7 +35,7 @@
                             </div>
                         </span>
 <!-- /author name -->
-<div class = "user-avata-msg post-author">
+<div class = "post-author user-avata-msg ">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" >
                                 <div class="advance-hover">
                                 <div class="post-author-detail" >
@@ -80,10 +80,13 @@
                     <!-- ajax 获取作者信息  -->
                     <!-- /ajax -->
                 </div>
-                <div class="edit-button-box">
-                    <i class="edit-button-icon"> </i>
-                    <span class = "change-detail"> 修改</span>
-                </div>
+                <?php if($id == $post['u_sec_id']) { ?>
+
+                    <div class="edit-button-box">
+                        <i class="edit-button-icon"> </i>
+                        <span class = "change-detail"> 修改</span>
+                    </div>
+                <?php } ?>
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
                     <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
                     <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea>

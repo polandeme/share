@@ -183,6 +183,11 @@ $(".post-author").mouseenter(function(){
         id = $(this).data('id'),
         relation = $(".follow").attr('rel'),
         that = $(this).children('.post-author-detail').children('.post-author-content').children('.follow');
+        console.log(id);
+        if(userId === id || userId == null) {
+            $(this).find(".follow").hide();
+           // that.children(".follow").hide();
+        }
         $(this).children().show();
         $.ajax({
           type: 'GET',
@@ -198,13 +203,13 @@ $(".post-author").mouseenter(function(){
                     that.attr('rel', relation);
                         if(relation  == 1) {
                         $(".follow").attr('rel',1);
-                        $(".follow").text("取消").click(function(){
+                        $(".follow").text("取消关注").click(function(){
                          $(this).text("关注");
                         });
                     } else if (relation == 2){
                             $(".follow").attr('rel',2);
-                        $(".follow").text("回关").click(function(){
-                             $(".follow").text("each");
+                            $(".follow").text("回关").click(function(){
+                            $(".follow").text("each");
                         });
                     } else if(relation == 3) {
                             $(".follow").attr('rel',3);
@@ -214,7 +219,7 @@ $(".post-author").mouseenter(function(){
                     } else  {
                         $(".follow").attr('rel',0);
                         $(".follow").text("关注").click(function() {
-                                    $(this).text("取消").attr('rel',1); //right
+                                    $(this).text("取消关注").attr('rel',1); //right
                         });
                     } 
                   } catch(e)
@@ -227,7 +232,6 @@ $(".post-author").mouseenter(function(){
 
 $(".post-author ").mouseleave(function(){
     $(this).children().next().hide();
-    // $(this).children().hide();
 
 });
 // follow
@@ -246,6 +250,13 @@ $(".follow").click(function(){
         }
     });  
 }); // follow END
+
+// user center page
+    
+$('.user-avatar-img').click(function(){
+    alert('helo');
+    $(".upload-avatar-btn").show();
+});
 
 //导航active效果，判断当前url
 $(".post-nav-item").each(function(){
@@ -287,6 +298,8 @@ $("button").click(function(){
     var url = base_url + 'assets/uploads/images/avatar/ddd.jpg';
     $(".user-msg-basic img").attr('src',url);
 });
+
+
 
 });// /END
 

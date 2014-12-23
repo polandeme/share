@@ -24,7 +24,7 @@
                     </div>
 
                     <div class = "content-other-data">
-                           <div class = "user-avata-msg post-author">
+                           <div class = "user-avata-msg post-author" data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" >
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $row ->u_avatar; ?>" >
                                 <div class="advance-hover">
                                 <div class="post-author-detail" >
@@ -33,7 +33,7 @@
                                         <div class="post-author-wrap">
                                             <div class="author-wrap-top">
                                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $row ->u_avatar; ?>" >
-                                                <button type="button" data-id="<?php echo $row ->u_sec_id;?>" data-rale="0" rel="" class="follow">
+                                                <button type="button" data-id="<?php echo $row ->u_sec_id;?>" data-rale="0" rel="" class="follow btn btn-default">
                                                     关注 
                                                 </button>
                                             </div>
@@ -52,7 +52,7 @@
                                     $date = $row ->pt_date;
                                     echo substr($date,0,10); ?>
                            </div>
-                        <span class="post-author post-author-msg" data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" >
+                            <span class="post-author post-author-msg " data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" >
                             <a href="<?php echo base_url();?>index.php/user/index/<?php echo ($row->u_id *1024 + 19940309)*10 ;?>" class="post-author-name">
                                 <?php echo '' . $row ->u_name ;?>
                             </a>
@@ -63,7 +63,7 @@
                                         <div class="post-author-wrap">
                                             <div class="author-wrap-top">
                                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $row ->u_avatar; ?>" >
-                                                <button type="button" data-id="<?php echo $row ->u_sec_id ;?>" data-rale="0" rel="" class="follow">
+                                                <button type="button " data-id="<?php echo $row ->u_sec_id ;?>" data-rale="0" rel="" class="follow btn btn-default">
                                                     关注 
                                                 </button>
                                             </div>
