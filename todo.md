@@ -16,3 +16,8 @@
 ###待优化  
 - log表
 	- 使用u_id pt_id ,代替现在的(视图OR ?)  
+
+- relation 
+	- 将sec_id 换成u_id  
+
+- foreach 语法

@@ -78,6 +78,7 @@ class M_user extends CI_Model {
      *      如果取消关注update 数据库中的记录
      *      如果相互关注update 数据库中的记录 3
      *      没有关系后删除记录
+     *      fw_user_id 关注 fw_friend_id 则fw_relation为 1
      *
      * @param $userId $friendId 关系用户Id
      * @date    Mar 11 03 2014

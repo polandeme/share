@@ -8,7 +8,7 @@
     <div class="content">
         <!-- index post list -->
         <div class="col-md-9">
-            <?php foreach ($title as $row) { ?>
+            <?php foreach (array_reverse($log) as $row) { ?>
                 <div class="per-content">
                     <div class="<?php echo 'vote ' . $row->is_up; ?>" rel="<?php echo $row ->pt_id;?>" id="post-<?php echo $row ->pt_id; ?>" > 
                          <div class="vote-up-num"><?php echo $row ->pt_up; ?></div>
@@ -85,7 +85,7 @@
         <div class ="col-md-2 col-md-offset-1 g-sidebar">
             <div class="post-nav-group">
                 <a class="post-nav-item actived index-link" href="<?php echo base_url(); ?>" > 综合显示</a>
-                <a class="post-nav-item" name = "followposts" href="<?php echo base_url(); ?>index.php/following" > 我的关注</a>
+                <a class="post-nav-item" name = "followposts" href="#" > 我的关注</a>
                 <a class="post-nav-item" href="<?php echo base_url(); ?>index.php/ptime" >按时间显示</a>
             </div>
 

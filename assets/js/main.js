@@ -184,8 +184,10 @@ $(".post-author").mouseenter(function(){
         relation = $(".follow").attr('rel'),
         that = $(this).children('.post-author-detail').children('.post-author-content').children('.follow');
         console.log(id);
+        console.log(userId);
         if(userId === id || userId == null) {
             $(this).find(".follow").hide();
+            
            // that.children(".follow").hide();
         }
         $(this).children().show();
@@ -257,6 +259,19 @@ $('.user-avatar-img').click(function(){
     alert('helo');
     $(".upload-avatar-btn").show();
 });
+
+// keycode 
+$("body").on('keydown','.input-name',function(e) {
+    if(e.keyCode == 8) {
+        var is_null = ($('.input-name').val()).length;
+        if(is_null <= 0){
+            $('.share-input').focus();
+            e.preventDefault();
+        }
+    }
+});
+
+
 
 //导航active效果，判断当前url
 $(".post-nav-item").each(function(){

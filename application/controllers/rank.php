@@ -5,6 +5,7 @@ class Rank extends CI_Controller {
         parent::__construct();
         $this ->load ->model('m_rank');
         $this ->load ->library('session');
+        $this ->load ->model('m_log');
     }
 
     public function up_vote()
@@ -16,13 +17,17 @@ class Rank extends CI_Controller {
            echo $_SESSION['login'];
        } else {
            if(!$this ->check_up($userId, $pid)) {
-               echo $this ->m_rank ->add_vote($pid,$userId); 
+            
+              $this ->m_log ->insert_log($userId, $pid, 'zan');
+
+              echo $this ->m_rank ->add_vote($pid,$userId); 
            } else {
                echo '已赞';
            }
        }
     }
     
+    //检查该用户是否赞过这篇文章
     public function check_up($userId, $pid)
     {
         return $this ->m_rank ->check_up($userId, $pid);        
