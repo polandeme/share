@@ -4,8 +4,10 @@
 <title> Share </title>
     <meta charset = "utf-8">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/bootstrap.min.css" type="text/css" /> 
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/jquery.Jcrop.min.css" type="text/css" /> 
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery-1.10.2.min.js" ></script>
+    <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery.Jcrop.min.js" ></script>
     <script> var base_url = "<?php echo base_url(); ?>"; </script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js" ></script>
 </head>
@@ -39,16 +41,14 @@
                     <li class="user-link"><a  href="<?php echo base_url();?>index.php/user/login" class = "link-user-name" data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
                         <div class="user-items" id="user-tab">
                             <div class="border"> </div> 
-                            <?php echo $userName;
-                                echo $userEmail;
-                                echo $userMotto;
-                                echo date('Y-m-d H:i:s', $regTime);
-                                echo '-'.$userId.'-';
-                            ?>                       
+                                              
                             <a  class="logout" href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
                             <div class="user-avatar">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
                             </div>
+                            <?php 
+                                echo $userMotto;
+                            ?>     
                         </div>     
                     </li>
                     </ul> 

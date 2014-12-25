@@ -490,3 +490,27 @@
 .voted {
     background-color: rgb(194, 230, 244);
 }
+
+#preview {
+            width: 300px;
+            margin-left: 50px;
+            /*margin: 0 auto;*/
+        }
+        .crop-img-wrap {
+            width: 100%;
+            /*height: 100%;*/
+            /*position: fixed;*/
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        .crop-img-wrap .crop-img-content{
+            /*top: 50%;
+            left: 50%;
+            margin-top: -300px;
+            margin-left: -200px;
+            position: fixed;*/
+            width: 400px;
+            height: 600px;
+            border: 1px solid red;
+        }

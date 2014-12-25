@@ -153,7 +153,6 @@ function fetch_progress(){
                             setTimeout(function get_rel(){ 
                             $('#progress .label').html('完成!');
                             var relSrc = $(window.frames[0].document).find("input").attr('rel');
-                            console.log(relSrc);
                             var img = base_url + 'assets/uploads/images/avatar/'+ relSrc;
                             $('.user-msg-basic img').attr('src', img);
                             },
@@ -162,13 +161,13 @@ function fetch_progress(){
     }, 'html');
                            }
 
-$('.sub-form').submit(function(){
-    $('#progress').show();
-    do{
-        setTimeout(fetch_progress(), 40);
-    }while($(window.frames[0].document).find("input").attr('rel'));
+// $('.sub-form').submit(function(){
+//     $('#progress').show();
+//     do{
+//         setTimeout(fetch_progress(), 40);
+//     }while($(window.frames[0].document).find("input").attr('rel'));
 
-});
+// });
 
 //前端判断登录 
 $(".share-btn, .comment-submit ,.follow").click(function(){
@@ -248,7 +247,6 @@ $(".follow").click(function(){
         data: { userId : userId, friendId : friendId, relation: relation  },
         cache: false,
         success: function(){
-            // console.log("su");
         }
     });  
 }); // follow END
@@ -282,6 +280,80 @@ $(".post-nav-item").each(function(){
             $(this).addClass("actived");
         } 
     });
+
+
+
+ $(".sub-ava").click(function() {
+        $(".sub-form").submit();
+    })
+        $("#select-file").change(function() {
+            $('.crop-img-wrap').show();
+            change();
+        });
+        function get_position(c) {
+            $('#x').val(c.x);
+            $('#y').val(c.y);
+            $('#w').val(c.w);
+            $('#h').val(c.h);
+        }
+        function Jcrop_api() {
+            $('#preview').Jcrop({
+                onSelect: get_position,
+                aspectRatio: 1
+            });
+        }
+
+        function change() {
+             var pic = document.getElementById("preview");
+             var file = document.getElementById("select-file");
+             var ext=file.value.substring(file.value.lastIndexOf(".")+1).toLowerCase();
+             // gif在IE浏览器暂时无法显示
+             if(ext!='png'&&ext!='jpg'&&ext!='jpeg'){
+                 alert("文件必须为图片！"); return;
+             }
+             // IE浏览器
+             if (document.all) {
+         
+                 file.select();
+                 var reallocalpath = document.selection.createRange().text;
+                 var ie6 = /msie 6/i.test(navigator.userAgent);
+                 // IE6浏览器设置img的src为本地路径可以直接显示图片
+                 if (ie6) pic.src = reallocalpath;
+                 else {
+                     // 非IE6版本的IE由于安全问题直接设置img的src无法显示本地图片，但是可以通过滤镜来实现
+                     pic.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='image',src=\"" + reallocalpath + "\")";
+                     // 设置img的src为base64编码的透明图片 取消显示浏览器默认图片
+                     pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+                 }
+             }else{
+                 html5Reader(file);
+             }
+         }
+ 
+         function html5Reader(file){
+             var file = file.files[0];
+             var reader = new FileReader();
+             reader.readAsDataURL(file);
+             reader.onload = function(e){
+                 var pic = document.getElementById("preview");
+                 pic.src= this.result;
+             }
+         }
+
+         $('#preview').load(function() {
+            Jcrop_api();
+         })
+
+
+
+
+
+
+
+
+
+
+
 //加载编辑器
 if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).text().trim() == null)
     {
@@ -308,11 +380,12 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
 
         // ("textares")
     });
+/*
 $("button").click(function(){
     console.log("test");
     var url = base_url + 'assets/uploads/images/avatar/ddd.jpg';
     $(".user-msg-basic img").attr('src',url);
-});
+});*/
 
 
 

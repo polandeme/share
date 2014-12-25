@@ -60,16 +60,6 @@
 
 <!-- avatar -->
                 <hr />
-                <!-- <div class="vote"> -->
-                    <!-- <span class="vote&#45;up&#45;num"><?php echo $post['pt_up']; ?> </span> -->
-                         <!-- <div>票</div> -->
-                <!-- </div> -->
-
-
-
-
-
-
                     <div class = "content-other-data">
                                                        <!-- /avata -->
                                            </div>
@@ -80,13 +70,12 @@
                     <!-- ajax 获取作者信息  -->
                     <!-- /ajax -->
                 </div>
-                <?php if($id == $post['u_sec_id']) { ?>
+                <?php if((isset($id) ? $id : '0')  == $post['u_sec_id']) {  ?>
 
                     <div class="edit-button-box">
                         <i class="edit-button-icon"> </i>
                         <span class = "change-detail"> 修改</span>
                     </div>
-                <?php } ?>
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
                     <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
                     <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea>
@@ -94,6 +83,8 @@
                     <button type="submit" class = "submit-detail" name= "submit-detail"> 提交 </button>
                 </form>
             </div> <!-- /post-detail -->
+                <?php } ?>
+            
             <hr />
             <!-- post comment -->
             <div class ="comment">

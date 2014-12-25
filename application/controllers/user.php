@@ -5,6 +5,7 @@ class User extends CI_Controller {
         $this ->load ->helper('url');
         $this ->load ->model('m_user');
         $this ->load ->library('session');
+        $this->load->library('image_lib');
     }
 
 
@@ -199,17 +200,52 @@ class User extends CI_Controller {
         // $config['max_size'] = '500';              //设置上传图片的文件最大值
         $config['max_width']  = '1200';            //设置图片的最大宽度
         $config['max_height']  = '1200';
+
         $userName = $_POST['userName'];
+        $targetX = $_POST['x'];
+        $targetY = $_POST['y'];
+        $targetW = $_POST['w'];
+        $targetH = $_POST['h'];
+        // $targetP_K
         $config['file_name'] = $userName . time();
         $this->load->library('upload', $config);   //加载CI中的图片上传类，并递交设置的各参数值
         if(!$this->upload->do_upload("file")) {
             echo $this->upload->display_errors();
         } else {
             $data['upload_data'] = $this ->upload->data();  //文件的一些信息
+            var_dump($data['upload_data']);
             $fileName = $data['upload_data']['file_name'];  //取得文件名
+            $p_k = $data['upload_data']['image_width'] / 300;
+            echo $p_k;
+            $this -> crop_img($targetX, $targetY,$targetW, $targetH, $config['upload_path'], $fileName, $p_k);
             $res = $this ->m_user ->update_avatar($fileName,$userName);
-            echo "<input rel='$fileName' id ='ifr-rel'/>";
+            $userId = (($this ->session ->userdata('userId'))*1024+19940309)* 10 ;
+             redirect(base_url() . '/index.php/user/index/' . $userId);
         }
+    }
+
+    public function crop_img($targetX, $targetY, $targetW, $targetH, $path, $fileName, $p_k) {
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $path .  $fileName;
+        $config['new_image'] = $path .  $fileName;
+        $config['maintain_ratio'] = FALSE;
+        $config['create_thumb'] = FALSE;
+        $config['quality'] = "100%";
+        $config['x_axis'] = $targetX * $p_k;
+        $config['y_axis'] = $targetY * $p_k;
+        $config['width'] = $targetW * $p_k;
+        $config['height'] = $targetH * $p_k;
+        var_dump($config);
+        $this->image_lib->initialize($config);
+        if($this->image_lib->crop()){
+            
+            echo "<img src=" . "'/share/". $config['new_image'] . "'". ">";
+            // redirect("/index.php/");
+        } else {
+            echo 'err';
+            echo $this->upload->display_errors();
+        }
+
     }
 
     public function up_process()
