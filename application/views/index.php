@@ -123,7 +123,7 @@
         <!-- /sidebar -->
     </div>
 </div>
-    <a href="javascript:;" class="go-top center"><span class="glyphicon glyphicon-arrow-up"></span></a>
+    <a href="javascript:;" class="go-top center"><!-- <span class="glyphicon glyphicon-arrow-up"></span> --> <span></span></a>
     <?php echo $links ?>
 </body>
 </html> 

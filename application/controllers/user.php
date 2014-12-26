@@ -206,6 +206,7 @@ class User extends CI_Controller {
         $targetY = $_POST['y'];
         $targetW = $_POST['w'];
         $targetH = $_POST['h'];
+        $targetR = $_POST['r'];
         // $targetP_K
         $config['file_name'] = $userName . time();
         $this->load->library('upload', $config);   //加载CI中的图片上传类，并递交设置的各参数值
@@ -215,8 +216,7 @@ class User extends CI_Controller {
             $data['upload_data'] = $this ->upload->data();  //文件的一些信息
             var_dump($data['upload_data']);
             $fileName = $data['upload_data']['file_name'];  //取得文件名
-            $p_k = $data['upload_data']['image_width'] / 300;
-            echo $p_k;
+            $p_k = $data['upload_data']['image_width'] / $targetR;
             $this -> crop_img($targetX, $targetY,$targetW, $targetH, $config['upload_path'], $fileName, $p_k);
             $res = $this ->m_user ->update_avatar($fileName,$userName);
             $userId = (($this ->session ->userdata('userId'))*1024+19940309)* 10 ;

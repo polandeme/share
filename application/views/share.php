@@ -78,7 +78,8 @@
                     </div>
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
                     <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
-                    <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea>
+                    <!-- <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea> -->
+                    <script id="post-edit-container" class ="textarea" name="postDetail" type="text/plain"><?php echo $post['pt_detail']; ?></script>
                     <input type="hidden" name = "postId" value = "<?php echo (($post['pt_id'] * 1024 + 19940309) * 10) ; ?>">
                     <button type="submit" class = "submit-detail" name= "submit-detail"> 提交 </button>
                 </form>
@@ -88,28 +89,38 @@
             <hr />
             <!-- post comment -->
             <div class ="comment">
+                
+                <?php foreach ($comment as $row){ if(!empty($row ->ct_detail)) { echo $row ->ct_detail; ?><hr /> <?php }else { }}?>
                 <form method = "post" action = "<?php echo base_url(); ?>index.php/comment/insert_comment">
-                    <textarea class ="comment-text" name="comment" style ="display:none" rows="0" cols="0" > 
-                    </textarea>
+                    <!-- <textarea class ="comment-text" name="comment" style ="display:none" rows="0" cols="0" > 
+                    </textarea> -->
+                    <script id="edit-container" name="comment" type="text/plain"></script>
                     <input type ="hidden" name = "postId" value = "<?php echo (($post['pt_id'] * 1024 + 19940309) * 10) ;?>" />
                     <input type ="hidden" name = "userId" value = "<?php if(empty($userId)){ echo 0; }else {echo $userId;} ?> " />
                     <button type="submit" class ="comment-submit"> 提交 </button>
                 </form>
-                <?php foreach ($comment as $row){ if(!empty($row ->ct_detail)) { echo $row ->ct_detail; ?><hr /> <?php }else { }}?>
             </div>
             <!-- /post comment -->
         </div>
         <!-- /left label -->
         <!-- sidebar start -->
         <div class="col-md-2 g-sidebar">
-            <?php echo $post['pt_detail']; ?>
+            <!-- <?php echo $post['pt_detail']; ?> -->
         </div>
         <!-- /sidebar -->
     </div>
 </div>
+    <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
 <!-- /wrap -->
     <script src="<?php echo base_url(); ?>assets/js/lib/ckeditor-basic/ckeditor.js"> </script>
-    <script>CKEDITOR.replace('comment');</script> 
+    <script>//CKEDITOR.replace('comment');</script> 
+    <script src="<?php echo base_url(); ?>assets/edit/ueditor.config.js"> </script>
+    <script src="<?php echo base_url(); ?>assets/edit/ueditor.all.min.js"> </script>
+    <script type="text/javascript">
+        var ue = UE.getEditor('edit-container');
+    </script>
+    <script src="<?php echo base_url(); ?>assets/js/edit.js"> </script>
+    
 </body>
 </html>
 

@@ -284,6 +284,7 @@ $(".post-nav-item").each(function(){
 
 
  $(".sub-ava").click(function() {
+
         $(".sub-form").submit();
     })
         $("#select-file").change(function() {
@@ -341,6 +342,7 @@ $(".post-nav-item").each(function(){
          }
 
          $('#preview').load(function() {
+            $("#r").val(this.width);
             Jcrop_api();
          })
 
@@ -354,38 +356,6 @@ $(".post-nav-item").each(function(){
 
 
 
-//加载编辑器
-if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).text().trim() == null)
-    {
-       textares = $(".textarea , .submit-detail").remove();
-    }else {
-        CKEDITOR.replace('postDetail'); 
-        console.log('无内容');
-    }
-    $(".change-detail").click(function(){
-       $(".post-detail-word").after(textares);
-       $(this).remove();
-       $(".edit-button-icon").remove();
-       $(".post-detail-word").remove();
-        CKEDITOR.replace('postDetail', 
-                         {
-                             on:
-                                 {
-                                    instanceReady: function(ev) 
-                                    {
-                                        this.focus();
-                                    }
-                                 }
-                         }); 
-
-        // ("textares")
-    });
-/*
-$("button").click(function(){
-    console.log("test");
-    var url = base_url + 'assets/uploads/images/avatar/ddd.jpg';
-    $(".user-msg-basic img").attr('src',url);
-});*/
 
 
 
