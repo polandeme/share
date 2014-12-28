@@ -472,13 +472,18 @@
     margin-bottom: 10px;
 }
 .per-cate {
-    background-color: rgb(229,59,102);
+    background-color: #EEF4FF;
     border-radius: 4px;
     float: left;
+    padding: 3px;
     margin-top:5px;
     margin-right: 5px;
     font-size: 16px;
-    color: #3b4146;
+    color: #5171D2;
+    border: 1px solid #b6d5fb;
+}
+.per-cate:hover {
+    background: #82b4ff;
 }
 .sd-hot-cate {
     margin-top: 30px;
@@ -523,4 +528,7 @@
 .post-detail-word img {
     display: block;
     max-width: 400px !important;
+}
+.paginaton {
+    margin：0 auto;
 }

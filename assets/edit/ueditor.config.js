@@ -49,7 +49,7 @@
         toolbars: [[
             'fullscreen','source', '|', 'italic', 'underline', 'strikethrough', 'blockquote',
             'horizontal',  'fontsize', 'link', '|', 'justifyleft', 'justifyright', 'justifycenter','|',
-             'forecolor', 'insertorderedlist', 'insertunorderedlist', '|' ,'simpleupload' ,'insertimage'
+             'forecolor', 'insertorderedlist', 'insertunorderedlist', '|' ,'simpleupload' ,'insertimage', 'insertvideo'
         ]]
         //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         //,labelMap:{
