@@ -47,12 +47,12 @@
 
 $active_group = 'default';
 $active_record = TRUE;
-// $server = $_SERVER['SERVER_NAME'];
-// $dbPwd = (!strstr($server, 'localhost')) ? '' : 'hgr1994030912';
+$server = $_SERVER['SERVER_NAME'];
+$dbPwd = (strstr($server, 'localhost')) ? '' : 'hgr1994030912';
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'hgr1994030912';
+$db['default']['password'] = $dbPwd;
 $db['default']['database'] = 'share';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
