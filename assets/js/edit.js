@@ -18,6 +18,5 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
 /*
 $("button").click(function(){
     
-     = base_url + 'assets/uploads/images/avatar/ddd.jpg';
     $(".user-msg-basic img").attr('src',url);
 });*/
