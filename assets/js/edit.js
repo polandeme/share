@@ -21,4 +21,3 @@ $("button").click(function(){
     var url = base_url + 'assets/uploads/images/avatar/ddd.jpg';
     $(".user-msg-basic img").attr('src',url);
 });*/
-// })();
