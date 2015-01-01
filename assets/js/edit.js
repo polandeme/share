@@ -18,6 +18,6 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
 /*
 $("button").click(function(){
     console.log("test");
-    var url = base_url + 'assets/uploads/images/avatar/ddd.jpg';
+    var  = base_url + 'assets/uploads/images/avatar/ddd.jpg';
     $(".user-msg-basic img").attr('src',url);
 });*/
