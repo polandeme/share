@@ -93,7 +93,7 @@
                 <h4>本周热门类别 </h4>
                 <div class="sd-hot-cate-detail">
                     <?php foreach($cate as $hotCate) { ?>
-                        <span><a class="per-cate" href="#"><?php  echo $hotCate ->pt_cate; ?> </a></span>
+                        <span><a class="per-cate" href="<?php echo base_url(); ?>index.php/search/search_cate?search=<?php echo $hotCate ->pt_cate; ?>"><?php  echo $hotCate ->pt_cate; ?> </a></span>
                     <?php } ?>
                 </div>
             </div>
