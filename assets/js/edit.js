@@ -15,6 +15,3 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
        $(".post-detail-word").remove();
        var pue = UE.getEditor('post-edit-container');
 });
-/*
-12345678
-});*/
