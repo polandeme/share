@@ -16,5 +16,4 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
        var pue = UE.getEditor('post-edit-container');
 });
 /*
-    dddtest reset
 });*/
