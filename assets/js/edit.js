@@ -17,5 +17,4 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
 });
 /*
     
-    $(".user-msg-basic img").attr('src',url);
 });*/
