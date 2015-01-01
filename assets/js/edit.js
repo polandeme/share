@@ -16,7 +16,6 @@ if(!($(".post-detail-word").text().trim()) == '' || !($(".post-detail-word")).te
        var pue = UE.getEditor('post-edit-container');
 });
 /*
-$("button").click(function(){
     
     $(".user-msg-basic img").attr('src',url);
 });*/
