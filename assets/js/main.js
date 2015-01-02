@@ -304,7 +304,7 @@ $(".post-nav-item").each(function(){
         $(".sub-form").submit();
     })
         $("#select-file").change(function() {
-            $('.crop-img-wrap').show();
+            $('.crop-img-wrap, .fixed-opacity').show();
             change();
         });
         function get_position(c) {

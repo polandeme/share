@@ -8,7 +8,7 @@ class Brower extends CI_Controller {
         $this ->load ->helper('url');
         $this ->load ->library('session');
     }
-
+    
     public function index() 
     {
         $this ->load ->view('sorry');

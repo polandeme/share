@@ -1,5 +1,6 @@
 <!-- wrap -->
 <div class = "wrap container">
+
     <div class="row">
         <div class="msg-name" rel = "<?php echo $user['u_name']; ?>" > <?php echo $user['u_name']; ?> </div>
         <div class = "col-md-12 user-msg">
@@ -18,6 +19,7 @@
             </div>
         </div>
     </div>
+    <div class="fixed-opacity"></div>
 
     <?php if(isset($userName)) { ?>
     <div class="upload-avat">
