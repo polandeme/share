@@ -31,7 +31,7 @@ class M_user extends CI_Model {
             'u_name' => $user['userName'],
             'u_email' => $user['userEmail'],
             'u_password' => $userPwd,
-            'u_motto'   =>  'Hi 不要空着，写上一句话吧! (>_<)', 
+            'u_motto'   =>  '比较懒，什么都没写:-D',
             'u_avatar'  => 'default.jpg',
             'u_reg_ip' => $user['userIp'],
             'u_reg_time' => $user['regTime'],
