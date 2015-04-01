@@ -1,6 +1,6 @@
 <!-- wrap -->
 <div class = "wrap container">
-<?php var_dump($user);?>
+<!--<?php var_dump($user);?>-->
     <div class="row">
         <div class="msg-name" rel = "<?php echo $user['u_name']; ?>" > <?php echo $user['u_name']; ?> </div>
         <div class = "col-md-12 user-msg">
@@ -8,9 +8,9 @@
                 <div class ="user-msg-left">
                     <div class = "user-msg-basic">
                         <img src="<?php echo base_url() . "assets/uploads/images/avatar/". $user['u_avatar'];?>" class="user-avatar-img" />
-                        <?php if($user['u_sec_id'] == $id) {?>
+                        <!--<?php if(isset($id) && $user['u_sec_id'] == $id) {?>-->
                         <span class="upload-avatar-btn po-hide">上传头像</span>
-                        <?php }?>
+                        <!--<?php }?>-->
                         <div class ="user-reg-time">加入时间:<?php echo date("Y-m-d",$user['u_reg_time']); ?> </div>
                     </div>
                     <div class="msg-up-num">被赞 <span><?php echo $user['u_up'];?> </span></div>
@@ -26,7 +26,7 @@
     <?php if(isset($userName)) { ?>
     <div class="upload-avat">
         <form enctype="multipart/form-data" class="sub-form"  method="POST" action = "<?php echo base_url(); ?>index.php/user/upload_avat">
-            <?php if($user['u_sec_id'] == $id) {?>
+            <?php if(isset($id) && $user['u_sec_id'] == $id) {?>
                 <input type="file" id ="select-file" name="file" value="选择" >
             <?php }?>
             <input type="hidden" id="x" name='x'>
