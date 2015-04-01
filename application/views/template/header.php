@@ -38,7 +38,9 @@
                     </ul> 
                     <?php } else {?> <!-- 登录 -->
                     <ul class="nav navbar-nav navbar-right">
-                    <li class="user-link"><a  href="<?php echo base_url();?>index.php/user/login" class = "link-user-name" data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
+                    <li class="user-link">
+
+                        <a  href="<?php echo base_url();?>index.php/user/index/<?php echo ($userId *1024 + 19940309)*10 ;?>" class = "link-user-name" data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
                         <div class="user-items" id="user-tab">
                             <div class="border"> </div> 
                                               
