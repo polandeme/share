@@ -122,7 +122,7 @@
     <script src="<?php echo base_url(); ?>assets/js/lib/ckeditor-basic/ckeditor.js"> </script>
     <script>//CKEDITOR.replace('comment');</script> 
     <script src="<?php echo base_url(); ?>assets/edit/ueditor.config.js"> </script>
-    <script src="<?php echo base_url(); ?>assets/edit/ueditor.all.js"> </script>
+    <script src="<?php echo base_url(); ?>assets/edit/ueditor.all.min.js"> </script>
     <script type="text/javascript">
         var ue = UE.getEditor('edit-container');
     </script>
