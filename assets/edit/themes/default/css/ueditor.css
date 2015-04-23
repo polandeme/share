@@ -148,9 +148,9 @@ div.edui-box {
 .edui-default .edui-editor-toolbarbox {
     position: relative;
     zoom: 1;
-    -webkit-box-shadow:0 1px 4px rgba(204, 204, 204, 0.6);
-    -moz-box-shadow:0 1px 4px rgba(204, 204, 204, 0.6);
-    box-shadow:0 1px 4px rgba(204, 204, 204, 0.6);
+    /*-webkit-box-shadow:0 1px 4px rgba(204, 204, 204, 0.6);*/
+    /*-moz-box-shadow:0 1px 4px rgba(204, 204, 204, 0.6);*/
+    /*box-shadow:0 1px 4px rgba(204, 204, 204, 0.6);*/
     border-top-left-radius:2px;
     border-top-right-radius:2px;
 }
@@ -158,11 +158,11 @@ div.edui-box {
 .edui-default .edui-editor-toolbarboxouter {
     border-bottom: 1px solid #d4d4d4;
     background-color: #fafafa;
-    background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-    background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-    background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-    background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+    /*background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);*/
+    /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));*/
+    /*background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);*/
+    /*background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);*/
+    /*background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);*/
     background-repeat: repeat-x;
     /*border: 1px solid #d4d4d4;*/
     -webkit-border-radius: 4px 4px 0 0;
@@ -486,7 +486,19 @@ div.edui-box {
 .edui-default .edui-toolbar .edui-splitbutton .edui-icon {
     height: 20px !important;
     width: 20px !important;
-    background-image: url(../images/icons.png);
+
+
+    /*background-image: url(../images/icons.png);*/
+    background-image: url(../images/editor@2x.png);  /*diy*/
+    /*cursor: pointer;*/
+    /*display: block;*/
+    /*border: 5px solid #FFF;*/
+    /*background-repeat: no-repeat;*/
+    background-size: 380px 60px;
+    /*background-image: url(../img/editor/editor@2x.png);*/
+    /*text-indent: 110%;*/
+    /*white-space: nowrap;*/
+
     background-image: url(../images/icons.gif) \9;
 }
 
@@ -525,11 +537,11 @@ div.edui-box {
 
 /* toolbar icons */
 .edui-default .edui-for-undo .edui-icon {
-    background-position: -160px 0;
+    background-position: -200px 0;
 }
 
 .edui-default  .edui-for-redo .edui-icon {
-    background-position: -100px 0;
+    background-position: -220px 0;
 }
 
 .edui-default  .edui-for-bold .edui-icon {
@@ -537,7 +549,7 @@ div.edui-box {
 }
 
 .edui-default  .edui-for-italic .edui-icon {
-    background-position: -60px 0;
+    background-position: -20px 0;
 }
 
 .edui-default  .edui-for-fontborder .edui-icon {
@@ -560,7 +572,8 @@ div.edui-box {
 }
 
 .edui-default  .edui-for-blockquote .edui-icon {
-    background-position: -220px 0;
+    /*background-position: -220px 0;*/
+    background-position: -60px 0;
 }
 
 .edui-default  .edui-for-forecolor .edui-icon {
@@ -596,11 +609,11 @@ div.edui-box {
 }
 
 .edui-default  .edui-for-insertorderedlist .edui-icon {
-    background-position: -80px 0;
+    background-position: -120px 0;
 }
 
 .edui-default  .edui-for-insertunorderedlist .edui-icon {
-    background-position: -20px 0;
+    background-position: -140px 0;
 }
 
 .edui-default  .edui-for-lineheight .edui-icon {
@@ -616,11 +629,11 @@ div.edui-box {
 }
 
 .edui-default  .edui-for-horizontal .edui-icon {
-    background-position: -360px 0;
+    background-position: -180px 0;
 }
 
 .edui-default  .edui-for-link .edui-icon {
-    background-position: -500px 0;
+    background-position: -40px 0;
 }
 
 .edui-default  .edui-for-code .edui-icon {
@@ -792,7 +805,7 @@ div.edui-box {
 }
 
 .edui-default  .edui-for-fullscreen .edui-icon {
-    background-position: -100px -20px;
+    background-position: -240px 0px;
 }
 
 .edui-default  .edui-for-anchor .edui-icon {
@@ -940,7 +953,7 @@ div.edui-box {
 }
 
 .edui-default  .edui-for-simpleupload  .edui-icon {
-    background-position: -380px 0px;
+    background-position: -100px 0px;
 }
 /*splitbutton*/
 .edui-default .edui-toolbar .edui-splitbutton-body .edui-arrow,

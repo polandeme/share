@@ -21,9 +21,11 @@
                                         <div class="post-author-wrap">
                                             <div class="author-wrap-top">
                                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" >
+                                                <?php if((isset($id) ? $id : '0')  != $post['u_sec_id']) {  ?>
                                                 <button type="button" data-id="<?php echo $post['u_sec_id'];?>" data-rale="0" rel="" class="follow">
                                                     关注 
                                                 </button>
+                                                <?php } ?>
                                             </div>
                                             <div class ="author-wrap-bottom">
                                                 <div class="vote-num">赞同 <span></span></div>
@@ -35,18 +37,21 @@
                             </div>
                         </span>
 <!-- /author name -->
-<div class = "post-author user-avata-msg ">
-                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" >
-                                <div class="advance-hover">
+                        <div class = "post-author user-avata-msg ">
+                            <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" >
+
+                            <div class="advance-hover">
                                 <div class="post-author-detail" >
                                     <div class ="arrow"></div>
                                     <div class="post-author-content">
                                         <div class="post-author-wrap">
                                             <div class="author-wrap-top">
-                                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo  $post['u_avatar'];?>" >
+                                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $post['u_avatar']; ?>" >
+                                                <?php if((isset($id) ? $id : '0')  != $post['u_sec_id']) {  ?>
                                                 <button type="button" data-id="<?php echo $post['u_sec_id'];?>" data-rale="0" rel="" class="follow">
                                                     关注 
                                                 </button>
+                                                <?php } ?>
                                             </div>
                                             <div class ="author-wrap-bottom">
                                                 <div class="vote-num">赞同 <span></span></div>
@@ -56,14 +61,15 @@
                                     </div> 
                                 </div> 
                             </div>
-                           </div>
 
-<!-- avatar -->
+                       </div>
+
+            <!-- avatar -->
                 <hr />
                     <div class = "content-other-data">
-                                                       <!-- /avata -->
-                                           </div>
-      <!--      <? //php } ?> -->
+            <!-- /avata -->
+                    </div>
+            <!--      <? //php } ?> -->
  
 
 
@@ -82,15 +88,15 @@
                     <!-- <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea> -->
                     <script id="post-edit-container" class ="textarea" name="postDetail" type="text/plain"><?php if(isset($post['pt_detail'])){echo $post['pt_detail'];} ?></script>
                     <input type="hidden" name = "postId" value = "<?php echo (($post['pt_id'] * 1024 + 19940309) * 10) ; ?>">
-                    <button type="submit" class = "submit-detail" name= "submit-detail"> 提交 </button>
+                    <button type="submit" class = "submit-detail btn btn-default" name= "submit-detail"> 提交 </button>
                 </form>
             </div> <!-- /post-detail -->
                 
             
             <hr />
             <!-- post comment -->
+            <div class="comment-title">撰写评论</div>
             <div class ="comment">
-                
                 <?php foreach ($comment as $row){ if(!empty($row ->ct_detail)) { echo $row ->ct_detail; ?><hr /> <?php }else { }}?>
                 <form method = "post" action = "<?php echo base_url(); ?>index.php/comment/insert_comment">
                     <!-- <textarea class ="comment-text" name="comment" style ="display:none" rows="0" cols="0" > 
@@ -98,7 +104,7 @@
                     <script id="edit-container" name="comment" type="text/plain"></script>
                     <input type ="hidden" name = "postId" value = "<?php echo (($post['pt_id'] * 1024 + 19940309) * 10) ;?>" />
                     <input type ="hidden" name = "userId" value = "<?php if(empty($userId)){ echo 0; }else {echo $userId;} ?> " />
-                    <button type="submit" class ="comment-submit"> 提交 </button>
+                    <button type="submit" class ="comment-submit btn btn-default"> 提交 </button>
                 </form>
             </div>
             <!-- /post comment -->
@@ -116,7 +122,7 @@
     <script src="<?php echo base_url(); ?>assets/js/lib/ckeditor-basic/ckeditor.js"> </script>
     <script>//CKEDITOR.replace('comment');</script> 
     <script src="<?php echo base_url(); ?>assets/edit/ueditor.config.js"> </script>
-    <script src="<?php echo base_url(); ?>assets/edit/ueditor.all.min.js"> </script>
+    <script src="<?php echo base_url(); ?>assets/edit/ueditor.all.js"> </script>
     <script type="text/javascript">
         var ue = UE.getEditor('edit-container');
     </script>

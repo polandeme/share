@@ -558,3 +558,16 @@
 .jcrop-holder {
     margin: 0 auto;
 }
+
+/* share page */
+.comment-submit {
+    float: right;
+    margin-top: 10px;
+}
+.comment-title {
+    float: left;
+    width: 100%;
+    display: block;
+    font-size: 18px;
+    font-weight: 900;
+}
