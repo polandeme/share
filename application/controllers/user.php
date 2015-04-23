@@ -198,8 +198,8 @@ class User extends CI_Controller {
         $config['upload_path'] = './assets/uploads/images/avatar/';
         $config['allowed_types'] = 'gif|jpg|png';    //设置上传的图片格式
         // $config['max_size'] = '500';              //设置上传图片的文件最大值
-        $config['max_width']  = '1200';            //设置图片的最大宽度
-        $config['max_height']  = '1200';
+        $config['max_width']  = '4000';            //设置图片的最大宽度
+        $config['max_height']  = '4000';
 
         $userName = $_POST['userName'];
         $targetX = $_POST['x'];
@@ -208,6 +208,7 @@ class User extends CI_Controller {
         $targetH = $_POST['h'];
         $targetR = $_POST['r'];
         // $targetP_K
+
         $config['file_name'] = $userName . time();
         $this->load->library('upload', $config);   //加载CI中的图片上传类，并递交设置的各参数值
         if(!$this->upload->do_upload("file")) {
@@ -220,7 +221,7 @@ class User extends CI_Controller {
             $this -> crop_img($targetX, $targetY,$targetW, $targetH, $config['upload_path'], $fileName, $p_k);
             $res = $this ->m_user ->update_avatar($fileName,$userName);
             $userId = (($this ->session ->userdata('userId'))*1024+19940309)* 10 ;
-             redirect(base_url() . '/index.php/user/index/' . $userId);
+//             redirect(base_url() . '/index.php/user/index/' . $userId);
         }
     }
 

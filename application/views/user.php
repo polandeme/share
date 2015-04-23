@@ -36,12 +36,7 @@
             <input type="hidden" id="r" name="r">
             <input type="hidden" name = "userName" value= "<?php echo $userName; ?>" /> 
         </form>
-        <div class="crop-img-wrap">
-            <div class="crop-img-content">
-                预览：<img id="preview" alt="" name="pic" />
-                <button  class="sub-ava" >确认</button>
-            </div>
-        </div>
+
     </div>
 
     <?php }?>
@@ -55,6 +50,20 @@
 ?>
 
 <!-- /wrap  -->
+
+<!-- dialog -->
+
+    <div class="crop-img-wrap">
+        <div class="crop-img-content">
+            <img id="preview" alt="" name="pic" />
+            <button  class="sub-ava" >确认</button>
+            <button  class="cancle-dialog" >取消</button>
+        </div>
+    </div>
+<!-- /dialog -->
+
+
+
 
 </body>
 </html>

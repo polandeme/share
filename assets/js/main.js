@@ -177,13 +177,6 @@ function fetch_progress(){
     }, 'html');
                            }
 
-// $('.sub-form').submit(function(){
-//     $('#progress').show();
-//     do{
-//         setTimeout(fetch_progress(), 40);
-//     }while($(window.frames[0].document).find("input").attr('rel'));
-
-// });
 
 //前端判断登录 
 $(".share-btn, .comment-submit ,.follow").click(function(){
@@ -302,9 +295,9 @@ $(".post-nav-item").each(function(){
  $(".sub-ava").click(function() {
 
         $(".sub-form").submit();
-    })
+ });
         $("#select-file").change(function() {
-            $('.crop-img-wrap, .fixed-opacity').show();
+
             change();
         });
         function get_position(c) {
@@ -312,6 +305,10 @@ $(".post-nav-item").each(function(){
             $('#y').val(c.y);
             $('#w').val(c.w);
             $('#h').val(c.h);
+            console.log(c.x);
+            console.log(c.y);
+            console.log(c.w);
+            console.log(c.h);
         }
         function Jcrop_api() {
             $('#preview').Jcrop({
@@ -321,7 +318,8 @@ $(".post-nav-item").each(function(){
         }
 
         function change() {
-             var pic = document.getElementById("preview");
+
+            var pic = document.getElementById("preview");
              var file = document.getElementById("select-file");
              var ext=file.value.substring(file.value.lastIndexOf(".")+1).toLowerCase();
              // gif在IE浏览器暂时无法显示
@@ -345,7 +343,8 @@ $(".post-nav-item").each(function(){
              }else{
                  html5Reader(file);
              }
-         }
+
+        }
  
          function html5Reader(file){
              var file = file.files[0];
@@ -359,20 +358,17 @@ $(".post-nav-item").each(function(){
 
          $('#preview').load(function() {
             $("#r").val(this.width);
-            Jcrop_api();
+
+             $('.crop-img-wrap, .fixed-opacity, crop-img-content').show();
+
+             var imgThumbHeight = $('#preview').height();
+             $('.crop-img-content').css({
+                 'height': 50 + imgThumbHeight,
+                 'margin-top': -50 + (- (50 + imgThumbHeight /2))
+             });
+
+             Jcrop_api();
          })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });// /END

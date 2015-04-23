@@ -76,6 +76,7 @@
                         <i class="edit-button-icon"> </i>
                         <span class = "change-detail"> 修改</span>
                     </div>
+                <?php } ?>
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
                     <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
                     <!-- <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea> -->
@@ -84,7 +85,7 @@
                     <button type="submit" class = "submit-detail" name= "submit-detail"> 提交 </button>
                 </form>
             </div> <!-- /post-detail -->
-                <?php } ?>
+                
             
             <hr />
             <!-- post comment -->
