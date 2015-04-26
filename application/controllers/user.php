@@ -217,11 +217,14 @@ class User extends CI_Controller {
             $data['upload_data'] = $this ->upload->data();  //文件的一些信息
             var_dump($data['upload_data']);
             $fileName = $data['upload_data']['file_name'];  //取得文件名
-            $p_k = $data['upload_data']['image_width'] / $targetR;
+            $p_k = $targetR / $data['upload_data']['image_width'] ;/// ;
+            // $p_k = $targetR / $data['upload_data']['image_width'] ;/// ;
+
             $this -> crop_img($targetX, $targetY,$targetW, $targetH, $config['upload_path'], $fileName, $p_k);
             $res = $this ->m_user ->update_avatar($fileName,$userName);
             $userId = (($this ->session ->userdata('userId'))*1024+19940309)* 10 ;
-//             redirect(base_url() . '/index.php/user/index/' . $userId);
+            // redirect(base_url() . '/index.php/user/index/' . $userId);
+            // redirect( '/user/index/' . $userId);
         }
     }
 
@@ -229,15 +232,16 @@ class User extends CI_Controller {
         $config['image_library'] = 'gd2';
         $config['source_image'] = $path .  $fileName;
         $config['new_image'] = $path .  $fileName;
-        $config['maintain_ratio'] = FALSE;
+        $config['maintain_ratio'] = TRUE;
         $config['create_thumb'] = FALSE;
-        $config['quality'] = "100%";
+        // $config['quality'] = "100%";
         $config['x_axis'] = $targetX * $p_k;
         $config['y_axis'] = $targetY * $p_k;
         $config['width'] = $targetW * $p_k;
         $config['height'] = $targetH * $p_k;
         var_dump($config);
         $this->image_lib->initialize($config);
+        $this->image_lib->resize();
         if($this->image_lib->crop()){
             
             echo "<img src=" . "'/share/". $config['new_image'] . "'". ">";

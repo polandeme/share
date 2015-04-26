@@ -357,7 +357,11 @@ $(".post-nav-item").each(function(){
          }
 
          $('#preview').load(function() {
+            console.log(this.width);
+            console.log(this)
+            console.log($('#preview').width)
             $("#r").val(this.width);
+            // $("#r").val('300');
 
              $('.crop-img-wrap, .fixed-opacity, crop-img-content').show();
 
