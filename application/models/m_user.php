@@ -165,5 +165,6 @@ class M_user extends CI_Model {
         $res = $query ->result();
         return $res;
     }
+
 };
 ?>

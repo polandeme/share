@@ -42,16 +42,28 @@ class M_index extends CI_Model {
         foreach ($res as $row)
         { 
             $userow = $row ->pt_uid;
-            $sql = "SELECT u_name FROM sh_user where u_id = '$userow' LIMIT 1";
+            $sql = "SELECT u_name, u_motto, u_role1 FROM sh_user where u_id = '$userow' LIMIT 1";
             $query = $this ->db ->query($sql);
             $res = $query ->row_array();
-            $useres = $res['u_name'];
-            array_push($hotUser, $useres); 
+
+            array_push($hotUser, $res); 
         }
         return $hotUser;
     }
 
-    //
+    public function get_hot_role()
+    {
+        $sql = "SELECT pt_role, count(*) AS count 
+                FROM sh_posts 
+                WHERE sh_posts.pt_role != '' 
+                GROUP BY pt_role
+                ORDER BY count DESC
+                LIMIT 10";
+        $query = $this ->db ->query($sql);
+        $res = $query ->result();
+        return $res;
+    }
+
     public function is_uped($pt_id, $u_id) {  
         $u_id_r = ',' . $u_id . ',';
         $sql = "select * from sh_posts where locate('$u_id_r', pt_up_uid) AND pt_id = '$pt_id' ";

@@ -18,6 +18,18 @@ class M_log extends CI_Model {
 		return $this ->get_user_log($uid, $farray);
 	}
 
+	public function get_user_fans($uid) {
+		//查询所有关注的用户
+		$sql = "SELECT fw_friend_id FROM sh_follow WHERE fw_user_id = '$uid' AND (fw_relation = 1 OR fw_relation = 3)";
+		$query = $this ->db ->query($sql);
+		$res = $query ->result();
+		$sql1 = "SELECT fw_user_id FROM sh_follow WHERE fw_friend_id = '$uid' AND (fw_relation = 2)";
+		$query1 = $this ->db ->query($sql1);
+		$res1 = $query1 ->result();
+		$farray = array_merge($res, $res1);
+		return $farray;
+	}
+
 	/**
 	 *		将用户操作插入log表
 	 *		

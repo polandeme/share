@@ -206,10 +206,9 @@ $(".post-author").mouseenter(function(){
           dataType: "json",
           cache: false,
           success: function(msg){
-            $(".post-author-detail span").text(msg[0].u_up);
+            $(".post-author-detail .vote-num span").text(msg[0].u_up);
                 try {
                     relation = msg[0].relation.fw_relation;
-                    // console.log('relation');
                     that.attr('rel', relation);
                         if(relation  == 1) {
                         $(".follow").attr('rel',1);
@@ -263,8 +262,7 @@ $(".follow").click(function(){
 // user center page
     
 $('.user-avatar-img').click(function(){
-    alert('helo');
-    $(".upload-avatar-btn").show();
+    $(".upload-avatar-btn").css("display", "inline-block");
 });
 
 // keycode 

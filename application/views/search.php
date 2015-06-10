@@ -23,7 +23,6 @@
                                 <?php echo $row ->pt_cate; echo $row -> pt_content ?>
                             </a> 
                     </div>
-
                     <div class = "content-other-data">
                            <div class = "user-avata-msg post-author" data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" >
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $row ->u_avatar; ?>" >

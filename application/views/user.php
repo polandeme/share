@@ -7,10 +7,12 @@
             <div class ="user-msg-content">
                 <div class ="user-msg-left">
                     <div class = "user-msg-basic">
-                        <img src="<?php echo base_url() . "assets/uploads/images/avatar/". $user['u_avatar'];?>" class="user-avatar-img" />
-                        <!--<?php if(isset($id) && $user['u_sec_id'] == $id) {?>-->
-                        <span class="upload-avatar-btn po-hide">上传头像</span>
-                        <!--<?php }?>-->
+                        <div class="upload-wrap">
+                            <img src="<?php echo base_url() . "assets/uploads/images/avatar/". $user['u_avatar'];?>" class="user-avatar-img" />
+                            <?php if(isset($id) && $user['u_sec_id'] == $id) {?>
+                            <span class="upload-avatar-btn po-hide">上传头像</span>
+                            <?php }?>
+                        </div>
                         <div class ="user-reg-time">加入时间:<?php echo date("Y-m-d",$user['u_reg_time']); ?> </div>
                     </div>
                     <div class="msg-up-num">被赞 <span><?php echo $user['u_up'];?> </span></div>

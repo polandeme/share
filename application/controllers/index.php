@@ -6,6 +6,7 @@ class Index extends CI_Controller {
         $this ->load ->helper('url');
         $this ->load ->model('m_index');
         $this ->load ->model('m_rank');
+        $this ->load ->model('m_log');
         $this ->load ->library('session');
     }
 
@@ -16,7 +17,7 @@ class Index extends CI_Controller {
         $this ->load ->library('pagination');
         $config['base_url'] = base_url().'index.php/index/index';
         $config['total_rows'] = $this ->db ->count_all('sh_posts');
-        $config['per_page'] = 10;
+        $config['per_page'] = 20;
         $num = $config['per_page'];
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';
@@ -43,10 +44,23 @@ class Index extends CI_Controller {
         $this ->is_uped($data['title']);
         $data['cate'] = $this ->m_index ->get_hot_cate();     
         $data['user'] = $this ->m_index ->get_hot_user();     
-        // $data['role'] = $this ->m_index ->get_hot_role();     
+        $data['role'] = $this ->m_index ->get_hot_role();   
+        $data['fans'] = $this ->get_user_fans();  
         $sessionData = $this ->session ->all_userdata();
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('index', $data);
+    }
+    /**
+     * 得到用户的粉丝数
+     * @return Number 用户的粉丝数
+     * @author  Polandeme
+     * @date June 09 2015
+     *
+     */
+
+    public function get_user_fans() {
+        $userId = $this ->session ->userdata('id');
+        return count($this ->m_log ->get_user_fans($userId));
     }
 
     public function is_uped($pt_set) 

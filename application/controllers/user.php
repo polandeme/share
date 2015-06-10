@@ -120,6 +120,7 @@ class User extends CI_Controller {
                 'id'        => $userdata['u_sec_id']
             );
         $userSession = $this ->session ->set_userdata($data);
+        
         return  $this ->session ->all_userdata('$suerSession');
     }
 
@@ -170,7 +171,8 @@ class User extends CI_Controller {
                 'userMotto' => '',
                 'userSex'   => '',
                 'userAvat'  => '',
-                'userId'    => ''
+                'userId'    => '',
+                'id' => ''
             );
         $this ->session ->unset_userdata($data);
         redirect('/');
@@ -195,21 +197,24 @@ class User extends CI_Controller {
     public function upload_avat()
     {
         // header("Content-type:image/png");
+
         $config['upload_path'] = './assets/uploads/images/avatar/';
         $config['allowed_types'] = 'gif|jpg|png';    //设置上传的图片格式
         // $config['max_size'] = '500';              //设置上传图片的文件最大值
         $config['max_width']  = '4000';            //设置图片的最大宽度
         $config['max_height']  = '4000';
 
-        $userName = $_POST['userName'];
+       
+        $userName = $_POST['userName'];  
         $targetX = $_POST['x'];
         $targetY = $_POST['y'];
         $targetW = $_POST['w'];
         $targetH = $_POST['h'];
         $targetR = $_POST['r'];
         // $targetP_K
-
-        $config['file_name'] = $userName . time();
+         // 不要使用中文，不然会报错 A problem was encountered while attempting to move the uploaded file to the final destination.
+        // 这个错误一般是上传文件的文件名不能是中文名,这个很郁闷!还未解决,大家可以用其它方法,重新改一下文件名就可以解决了!  
+        $config['file_name'] = md5($userName) . time();
         $this->load->library('upload', $config);   //加载CI中的图片上传类，并递交设置的各参数值
         if(!$this->upload->do_upload("file")) {
             echo $this->upload->display_errors();
@@ -239,13 +244,13 @@ class User extends CI_Controller {
         $config['y_axis'] = $targetY * $p_k;
         $config['width'] = $targetW * $p_k;
         $config['height'] = $targetH * $p_k;
-        var_dump($config);
+        // var_dump($config);
         $this->image_lib->initialize($config);
         $this->image_lib->resize();
         if($this->image_lib->crop()){
             
-            echo "<img src=" . "'/share/". $config['new_image'] . "'". ">";
-            // redirect("/index.php/");
+            // echo "<img src=" . "'/share/". $config['new_image'] . "'". ">";
+            // redirect("/");
         } else {
             echo 'err';
             echo $this->upload->display_errors();

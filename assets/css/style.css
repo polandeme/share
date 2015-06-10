@@ -1,6 +1,12 @@
 /* commend */
 .po-hide {
     display: none;
+    /*margin-top: -20px;*/
+    background: #000;
+    opacity: 0.8;
+    position: absolute;
+    width: 100px;
+    z-index: 999;
 }
 .glyphicon {
     font-size: 1.2em;
@@ -168,6 +174,8 @@
 .header-nav {
     padding-left: 50px;
     padding-right: 111px;
+  /*  width: 1170px;
+    margin: 0 auto;*/
 }
 .nav-menu {
     background: #e7f0f7;
@@ -175,6 +183,8 @@
     position: fixed;
     z-index: 999;
     width: 100%;
+    top: 0;
+    left: 0;
 }
 .userName{
     position: absolute;
@@ -318,7 +328,7 @@
 }
 .follow {
     /*margin-top: 10px;*/
-    margin-left: 30px;
+    float: right;
     width: 80px;
     height: 30px;
     text-align: center;
@@ -397,7 +407,7 @@
 }
 /* globel */
 .g-sidebar {
-    height: 700px;
+    height: auto;
     /* border-left: 1px solid gray; */
     margin-left: 45px;
     padding-left: 0;
@@ -477,7 +487,7 @@
 .per-cate {
     background-color: #EEF4FF;
     border-radius: 4px;
-    float: left;
+    /*float: left;*/
     padding: 3px;
     margin-top:5px;
     margin-right: 5px;
@@ -491,16 +501,23 @@
 .sd-hot-cate {
     margin-top: 30px;
 }
-.sd-hot-role {
+.sd-hot-cate li {
+    margin-top: 10px;
+}
+
+.sd-hot-role, .sd-hot-user {
     float: left;
     margin-top: 30px;
+}
+.sd-hot-role-detail {
+
 }
 .user-avata-msg > img, .author-wrap-top > img {
     width: 40px;
     height: 40px;
 }
 
-/*index page*/
+/* index page */
 .voted {
     background-color: rgb(194, 230, 244);
 }
@@ -552,7 +569,19 @@
     margin-top: 15px;
     border: none;
 }
-
+.sd-hot-user-detail li{
+    /*border: 1px solid blue;*/
+    list-style: none;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #DADADA;
+}
+.hot-user-motto {
+    margin-top: 10px;
+}
+.paginatin-wrap {
+    text-align: center;
+}
 /* user page */
 
 .jcrop-holder {
@@ -570,4 +599,55 @@
     display: block;
     font-size: 18px;
     font-weight: 900;
+}
+.share-wrap {
+    width: 960px;
+    height: 10px;
+    /*border: 1px solid red;*/
+    margin-top: 100px;
+}
+.same-cate-group {
+    padding: 0;
+}
+.same-cate-group li {
+    list-style: none;
+}
+
+/* user page */
+.upload-wrap {
+    float: left;
+}
+
+/* setting page */
+.setting-nav {
+    float: left;
+    width: 100px;
+    border: 1px solid blue;
+}
+.setting-nav li {
+    display: block;
+} 
+.setting-content {
+    float: left;
+    margin-left: 10px;
+    /*border: 1px solid gray;*/
+}
+.setting-content-form  {
+    margin-left: 100px;
+    /*border: 1px solid gray;*/
+    display: block;
+}
+.setting-content-form label {
+    display: block;
+    margin-top: 50px;
+}
+.setting-content-form input {
+    float: right;
+    margin-left: 10px;
+}
+#settings-submit {
+    display: block;
+    margin-top: 10px;
+    width: 50px;
+    margin: 10px;
 }

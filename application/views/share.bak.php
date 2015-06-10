@@ -1,7 +1,7 @@
 <!-- wrap container -->
 <div class="wrap container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <!-- post-detail start -->
             <div class="post-detail">
                 <div class="post-detail-title">
@@ -86,14 +86,14 @@
                 <form class = "form-ckeditor" method="post" action= "<?php echo base_url();?>index.php/posts/add_post_detail">
                     <div class ="post-detail-word"><?php echo $post['pt_detail'];?></div>
                     <!-- <textarea class ="textarea" name="postDetail" rows="10" cols="80" ><?php echo $post['pt_detail']; ?></textarea> -->
-                    <script id="post-edit-container" class ="textarea" name="postDetail" type="text/plain"><?php if(isset($post['pt_detail']) ){echo $post['pt_detail'];} ?></script>
+                    <script id="post-edit-container" class ="textarea" name="postDetail" type="text/plain"><?php if(isset($post['pt_detail'])){echo $post['pt_detail'];} ?></script>
                     <input type="hidden" name = "postId" value = "<?php echo (($post['pt_id'] * 1024 + 19940309) * 10) ; ?>">
                     <button type="submit" class = "submit-detail btn btn-default" name= "submit-detail"> 提交 </button>
                 </form>
             </div> <!-- /post-detail -->
-            <hr />
                 
             <div class="comment-title">撰写评论</div>
+            <hr />
             <!-- post comment -->
             <div class ="comment">
                 <?php foreach ($comment as $row){ if(!empty($row ->ct_detail)) { echo $row ->ct_detail; ?><hr /> <?php }else { }}?>
@@ -108,27 +108,12 @@
         </div>
         <!-- /left label -->
         <!-- sidebar start -->
-        <div class="col-md-3 g-sidebar">
-            <span class="same-cate-title"> <?php echo $post['pt_cate']; ?></span>
-            <ul class="same-cate-group">
-            <?php foreach($sameCate as $row) {?>
-                <li>
-                    <a href ="<?php echo base_url() . "index.php/share/index/". ($row->pt_id *1024 + 19940309) * 10; ?>" >
-                        <?php if(empty($row->pt_role)){ echo $row ->u_name;  }
-                        else {?> <!-- 我是 --><?php echo $row ->pt_role; ?><?php }?>
-                            推荐了
-                        <?php echo $row -> pt_content ?>
-                    </a> 
-                </li>
-            <?php } ?>
-
-            </ul>
-
+        <div class="col-md-2 g-sidebar">
+            <!-- <?php echo $post['pt_detail']; ?> -->
         </div>
         <!-- /sidebar -->
     </div>
-</div>   
-<?php //var_dump($sameCate); ?>
+</div>
     <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
 <!-- /wrap -->
     <script src="<?php echo base_url(); ?>assets/js/lib/ckeditor-basic/ckeditor.js"> </script>
