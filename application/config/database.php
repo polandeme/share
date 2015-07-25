@@ -53,7 +53,7 @@ if($server = 'localhost') {
 }else {
 	$dbPwd = 'hgr1994030912';
 }
-// $dbPwd = '';//'hgr1994030912';
+$dbPwd = '';//'hgr1994030912';
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
