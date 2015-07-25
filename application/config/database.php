@@ -48,11 +48,7 @@
 $active_group = 'default';
 $active_record = TRUE;
 $server = $_SERVER['SERVER_NAME'];
-if($server = 'localhost') {
-	$dbPwd = '';
-}else {
-	$dbPwd = 'hgr1994030912';
-}
+
 $dbPwd = 'hgr1994030912';
 
 $db['default']['hostname'] = 'localhost';
