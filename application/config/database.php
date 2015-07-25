@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 $server = $_SERVER['SERVER_NAME'];
 
-$dbPwd = 'hgr1994030912';
+$dbPwd = '';//'hgr1994030912';
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
