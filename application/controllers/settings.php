@@ -4,15 +4,15 @@ class Settings extends CI_Controller {
     {
         parent::__construct();
         date_default_timezone_set('Asia/Shanghai');
-        // $this ->load ->helper('url');
-        // $this ->load ->model('m_settings');
+        $this ->load ->helper('url');
+        $this ->load ->model('m_settings');
         $this ->load ->library('session');
     }
 
     public function index()
     {   
-        echo "hello settings";
-        echo $_SERVER['SERVER_NAME'];
+        // echo "hello settings";
+        // echo $_SERVER['SERVER_NAME'];
 
         // $this -> check_if_login();
         // $postId = 2;
@@ -22,60 +22,60 @@ class Settings extends CI_Controller {
         $this ->load ->view('settings');
 
     }
-    function profile() {
+    // function profile() {
 
-        $this ->load ->library('form_validation');
-        $this ->form_validation ->set_rules('userName','UserName','is_unique[sh_user.u_name]');
-        $this ->form_validation ->set_rules('motto','motto','trim|xss_clean');
-        $this ->form_validation ->set_rules('role1','role1','trim|xss_clean');
-        $this ->form_validation ->set_rules('role2','role2','trim|xss_clean');
+    //     $this ->load ->library('form_validation');
+    //     $this ->form_validation ->set_rules('userName','UserName','is_unique[sh_user.u_name]');
+    //     $this ->form_validation ->set_rules('motto','motto','trim|xss_clean');
+    //     $this ->form_validation ->set_rules('role1','role1','trim|xss_clean');
+    //     $this ->form_validation ->set_rules('role2','role2','trim|xss_clean');
 
-        if(empty($this ->input ->post('userName'))) {
-           $userName = $this ->session ->userdata('userName');
+    //     if(empty($this ->input ->post('userName'))) {
+    //        $userName = $this ->session ->userdata('userName');
 
-        } else {
-            $userName = $this ->input ->post('userName');
-        }
+    //     } else {
+    //         $userName = $this ->input ->post('userName');
+    //     }
 
-        if(empty($this ->input ->post('motto')) ) {
-            $motto = $this ->session ->userdata('userMotto');
-        } else {
-            $motto = $this ->input ->post('motto');
-        }
+    //     if(empty($this ->input ->post('motto')) ) {
+    //         $motto = $this ->session ->userdata('userMotto');
+    //     } else {
+    //         $motto = $this ->input ->post('motto');
+    //     }
 
-        $data = array(
-            'role1'  => $this ->input ->post('role1'),
-            'role2'  => $this ->input ->post('role2'),
-            'userName' => $userName,
-            'motto' => $motto
-        );
+    //     $data = array(
+    //         'role1'  => $this ->input ->post('role1'),
+    //         'role2'  => $this ->input ->post('role2'),
+    //         'userName' => $userName,
+    //         'motto' => $motto
+    //     );
 
-        if ($this ->form_validation ->run() == False ) {
+    //     if ($this ->form_validation ->run() == False ) {
 
-            redirect('/user/register');
-        } else {
-            $userId = $this ->session ->userdata('userId');
+    //         redirect('/user/register');
+    //     } else {
+    //         $userId = $this ->session ->userdata('userId');
             
-            $this ->m_settings ->add_user($data, $userId);
+    //         $this ->m_settings ->add_user($data, $userId);
 
-            $userSession = $this ->session ->set_userdata("userName", $data['userName']);
-            $userSession = $this ->session ->set_userdata("userMotto", $data['motto']);
+    //         $userSession = $this ->session ->set_userdata("userName", $data['userName']);
+    //         $userSession = $this ->session ->set_userdata("userMotto", $data['motto']);
             
-            // var_dump($userSession);
-            redirect('/user/login');
-        }
-    }
-    /**
-     * 判断用户是否登录
-     * 利用session
-     */
-    public function check_if_login()
-    {
-        $userId = $this ->session ->userdata('userId');
-        if(empty($userId)) 
-        {
-            redirect('/user/login');
-        }
-    }
+    //         // var_dump($userSession);
+    //         redirect('/user/login');
+    //     }
+    // }
+    // /**
+    //  * 判断用户是否登录
+    //  * 利用session
+    //  */
+    // public function check_if_login()
+    // {
+    //     $userId = $this ->session ->userdata('userId');
+    //     if(empty($userId)) 
+    //     {
+    //         redirect('/user/login');
+    //     }
+    // }
 
 };
