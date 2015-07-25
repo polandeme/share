@@ -11,10 +11,9 @@ class Settings extends CI_Controller {
 
     public function index()
     {   
-        // echo "hello settings";
-        // echo $_SERVER['SERVER_NAME'];
+        echo "hello settings";
 
-        // $this -> check_if_login();
+        $this -> check_if_login();
         // $postId = 2;
         // $postId = ($postId / 10 -19940309) /1024;
         // $sessionData = $this ->session ->all_userdata();
