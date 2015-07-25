@@ -1,2 +1,2 @@
-assets/uploads/
-application/config/
+assets/uploads/*
+application/config/*

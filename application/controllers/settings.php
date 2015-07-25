@@ -11,6 +11,7 @@ class Settings extends CI_Controller {
 
     public function index()
     {   
+        echo "hello settings";
 
         $this -> check_if_login();
         $postId = 2;
@@ -21,7 +22,6 @@ class Settings extends CI_Controller {
 
     }
     function profile() {
-
 
         $this ->load ->library('form_validation');
         $this ->form_validation ->set_rules('userName','UserName','is_unique[sh_user.u_name]');
