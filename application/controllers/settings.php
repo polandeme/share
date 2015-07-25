@@ -12,6 +12,7 @@ class Settings extends CI_Controller {
     public function index()
     {   
         echo "hello settings";
+        echo $_SERVER['SERVER_NAME'];
 
         // $this -> check_if_login();
         // $postId = 2;
