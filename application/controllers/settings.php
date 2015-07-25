@@ -4,8 +4,8 @@ class Settings extends CI_Controller {
     {
         parent::__construct();
         date_default_timezone_set('Asia/Shanghai');
-        $this ->load ->helper('url');
-        $this ->load ->model('m_settings');
+        // $this ->load ->helper('url');
+        // $this ->load ->model('m_settings');
         $this ->load ->library('session');
     }
 
@@ -18,7 +18,7 @@ class Settings extends CI_Controller {
         // $postId = ($postId / 10 -19940309) /1024;
         // $sessionData = $this ->session ->all_userdata();
         // $this ->load ->view('template/header', $sessionData);
-        // $this ->load ->view('settings');
+        $this ->load ->view('settings');
 
     }
     function profile() {
