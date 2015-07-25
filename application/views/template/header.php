@@ -23,7 +23,7 @@
                     <span class="icon-bar"> </span>
                     <span class="icon-bar"> </span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url(); ?>"> Logo </a>
+                <a class="navbar-brand" href="<?php echo base_url(); ?>"> LoGo </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <form class="navbar-form navbar-left form-input" action = "<?php echo base_url(); ?>index.php/search"role="serch">
