@@ -5,7 +5,7 @@ class Settings extends CI_Controller {
         date_default_timezone_set('Asia/Shanghai');
         parent::__construct();
         $this ->load ->helper('url');
-        $this ->load ->model('m_settings');
+        // $this ->load ->model('m_settings');
         $this ->load ->library('session');
     }
 
