@@ -12,13 +12,14 @@ class Settings extends CI_Controller {
     public function index()
     {   
         echo "hello settings";
+        // return false;
 
         $this -> check_if_login();
         $postId = 2;
         $postId = ($postId / 10 -19940309) /1024;
         $sessionData = $this ->session ->all_userdata();
         $this ->load ->view('template/header', $sessionData);
-        $this ->load ->view('settings');
+        // $this ->load ->view('settings');
 
     }
     function profile() {
