@@ -5,7 +5,7 @@ class Settings extends CI_Controller {
         date_default_timezone_set('Asia/Shanghai');
         parent::__construct();
         $this ->load ->helper('url');
-        // $this ->load ->model('m_settings');
+        $this ->load ->model('m_settings');
         $this ->load ->library('session');
     }
 
@@ -14,12 +14,12 @@ class Settings extends CI_Controller {
         echo "hello settings";
         // return false;
 
-        // $this -> check_if_login();
-        // $postId = 2;
-        // $postId = ($postId / 10 -19940309) /1024;
-        // $sessionData = $this ->session ->all_userdata();
-        // $this ->load ->view('template/header', $sessionData);
-        // $this ->load ->view('settings');
+        $this -> check_if_login();
+        $postId = 2;
+        $postId = ($postId / 10 -19940309) / 1024;
+        $sessionData = $this ->session ->all_userdata();
+        $this ->load ->view('template/header', $sessionData);
+        $this ->load ->view('settings');
 
     }
     // function profile() {
@@ -69,13 +69,13 @@ class Settings extends CI_Controller {
     //  * 判断用户是否登录
     //  * 利用session
     //  */
-    // public function check_if_login()
-    // {
-    //     $userId = $this ->session ->userdata('userId');
-    //     if(empty($userId)) 
-    //     {
-    //         redirect('/user/login');
-    //     }
-    // }
+    public function check_if_login()
+    {
+        $userId = $this ->session ->userdata('userId');
+        if(empty($userId)) 
+        {
+            redirect('/user/login');
+        }
+    }
 
 };
