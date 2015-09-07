@@ -292,5 +292,10 @@ class User extends CI_Controller {
     {
        return $this ->m_user ->get_user_posts($uid); 
     }
+
+    /**
+     * 被关注时插入粉丝数加一
+     * 
+     */
 };
 ?>

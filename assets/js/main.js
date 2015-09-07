@@ -228,7 +228,7 @@ $(".post-author").mouseenter(function(){
                     } else  {
                         $(".follow").attr('rel',0);
                         $(".follow").text("关注").click(function() {
-                                    $(this).text("取消关注").attr('rel',1); //right
+                              $(this).text("取消关注").attr('rel',1); //right
                         });
                     } 
                   } catch(e)

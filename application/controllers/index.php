@@ -45,7 +45,7 @@ class Index extends CI_Controller {
         $data['cate'] = $this ->m_index ->get_hot_cate();     
         $data['user'] = $this ->m_index ->get_hot_user();     
         $data['role'] = $this ->m_index ->get_hot_role();   
-        $data['fans'] = $this ->get_user_fans();  
+        $data['fans'] = $this ->get_user_fans(); 
         $sessionData = $this ->session ->all_userdata();
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('index', $data);

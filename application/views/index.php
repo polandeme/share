@@ -9,6 +9,7 @@
         <!-- index post list -->
         <div class="col-md-9">
             <?php foreach ($title as $row) { ?>
+
                 <div class="per-content">
                     <div class="<?php echo 'vote ' . $row->is_up; ?>" rel="<?php echo $row ->pt_id;?>" id="post-<?php echo $row ->pt_id; ?>" > 
                          <div class="vote-up-num"><?php echo $row ->pt_up; ?></div>

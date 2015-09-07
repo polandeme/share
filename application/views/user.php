@@ -24,7 +24,6 @@
         </div>
     </div>
     <div class="fixed-opacity"></div>
-
     <?php if(isset($userName)) { ?>
     <div class="upload-avat">
         <form enctype="multipart/form-data" class="sub-form"  method="POST" action = "<?php echo base_url(); ?>index.php/user/upload_avat">
@@ -40,16 +39,22 @@
         </form>
 
     </div>
-
     <?php }?>
+    <div class="user-content">
+        <?php foreach($posts as $row) { ?>
+            <ul class="list">
+                <li class="item">
+                    <?php var_dump($row); ?>
+                    <a href="" > <?php echo '推荐了' . $row ->pt_cate . '  ' . $row ->pt_content; ?></a>
+                    <?php // echo $row ->pt_cate; ?>
+                </li>
+            </ul>
+
+        <?php } ?>
+    </div>
 
 </div>
 
-<?php foreach($posts as $row) {
-    echo $row ->pt_cate;
-    echo $row ->pt_content;
-}
-?>
 
 <!-- /wrap  -->
 
