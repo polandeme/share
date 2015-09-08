@@ -22,35 +22,35 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="fixed-opacity"></div>
-    <?php if(isset($userName)) { ?>
-    <div class="upload-avat">
-        <form enctype="multipart/form-data" class="sub-form"  method="POST" action = "<?php echo base_url(); ?>index.php/user/upload_avat">
-            <?php if(isset($id) && $user['u_sec_id'] == $id) {?>
-                <input type="file" id ="select-file" name="file" value="选择" >
-            <?php }?>
-            <input type="hidden" id="x" name='x'>
-            <input type="hidden" id="y" name='y'>
-            <input type="hidden" id="w" name='w'>
-            <input type="hidden" id="h" name="h">
-            <input type="hidden" id="r" name="r">
-            <input type="hidden" name = "userName" value= "<?php echo $userName; ?>" /> 
-        </form>
+        <div class="fixed-opacity"></div>
+        <?php if(isset($userName)) { ?>
+        <div class="upload-avat">
+            <form enctype="multipart/form-data" class="sub-form"  method="POST" action = "<?php echo base_url(); ?>index.php/user/upload_avat">
+                <?php if(isset($id) && $user['u_sec_id'] == $id) {?>
+                    <input type="file" id ="select-file" name="file" value="选择" >
+                <?php }?>
+                <input type="hidden" id="x" name='x'>
+                <input type="hidden" id="y" name='y'>
+                <input type="hidden" id="w" name='w'>
+                <input type="hidden" id="h" name="h">
+                <input type="hidden" id="r" name="r">
+                <input type="hidden" name = "userName" value= "<?php echo $userName; ?>" /> 
+            </form>
 
-    </div>
-    <?php }?>
-    <div class="user-content">
-        <?php foreach($posts as $row) { ?>
-            <ul class="list">
-                <li class="item">
-                    <?php var_dump($row); ?>
-                    <a href="" > <?php echo '推荐了' . $row ->pt_cate . '  ' . $row ->pt_content; ?></a>
-                    <?php // echo $row ->pt_cate; ?>
-                </li>
-            </ul>
+        </div>
+        <?php }?>
+        <div class="user-content col-md-12">
+            <?php foreach($posts as $row) { ?>
+                <ul class="list">
+                    <li class="item">
+                        <?php //var_dump($row); ?>
+                        <a class="post-item" href="<?php echo base_url(); ?>index.php/share/index/<?php echo ($row  ->pt_id *1024 + 19940309) * 10; ?>" > <?php echo '推荐了' . $row ->pt_cate . '  ' . $row ->pt_content; ?></a>
+                        <?php // echo $row ->pt_cate; ?>
+                    </li>
+                </ul>
 
-        <?php } ?>
+            <?php } ?>
+        </div>
     </div>
 
 </div>

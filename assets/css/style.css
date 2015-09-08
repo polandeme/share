@@ -1,4 +1,7 @@
 /* commend */
+li {
+    list-style-type: none;
+}
 .po-hide {
     display: none;
     /*margin-top: -20px;*/
@@ -440,7 +443,7 @@
 }
 .user-msg {
     height: auto;
-    margin-top: 8px;
+    margin-top: 10px;
     border: 1px solid gray;
 }
 .user-msg-basic {

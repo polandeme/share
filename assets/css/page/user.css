@@ -1,0 +1,8 @@
+.user-content {
+	border: 1px solid red;
+	padding: 0 15px;
+	margin-top: 15px;
+}
+.user-content .list {
+	padding-left: 0;
+}

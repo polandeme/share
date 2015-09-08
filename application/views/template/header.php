@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/jquery.Jcrop.min.css" type="text/css" /> 
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/user.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/page/user.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery-1.10.2.min.js" ></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery.Jcrop.min.js" ></script>
     <script> var base_url = "<?php echo base_url(); ?>"; </script>
