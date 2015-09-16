@@ -24,7 +24,7 @@ class M_index extends CI_Model {
                 FROM sh_posts 
                 GROUP BY pt_cate
                 ORDER BY count DESC
-                LIMIT 10";
+                LIMIT 7";
         $query = $this ->db ->query($sql);
         $res = $query ->result();
         return $res;

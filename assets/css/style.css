@@ -82,6 +82,7 @@ li {
     border-left: 2px solid #009a61 ;
     color: #333;
 }
+/* index*/
 /* register page
  * 2014-03-02
  */
@@ -274,31 +275,43 @@ li {
     /* float: left; */
     display: none;
 }
-.vote , .voted-up{
+.vote , .voted-up, .voted{
     cursor: pointer;
 }
 /* 替换 vote-up */
-.vote{
+.vote, .voted{
     float: left;
     width: 45px;
     height: 45px;
     text-align: center;
     font-size: 110%;
     border-radius: 3px;
-    padding-top: 3px;
+    /*padding-top: 3px;*/
     margin-top: 3px;
-    background-color: #eaf3f9;
+    background-color: #f1f8fb;
+    color: #2b6dad;
+    transition: color ease-in-out 100ms,
+                background-color ease-in-out 100ms,
+                border-color ease-in-out 100ms;
+    box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+    border: 1px solid #bbcadc;
     /* border: 1px solid red; */
 }
 .vote:hover {
-    background-color: #def6ff;
+    /*background-color: #def6ff;*/
+    color: #2865a1;
+    border: 1px solid #2865a1;
 }
 .post-author-name {
     color: blue;
 }
 
-.vote-up, .post-author {
+.vote-up, .post-author, .post-com-num {
     float: left;
+}
+.post-com-num {
+    margin-left: 20px;
+    color: rgb(119,120,122);
 }
 .post-author {
     margin-left: 15px;
@@ -437,7 +450,7 @@ li {
 }
 /* ---------------------------user center------------ */
 .msg-name {
-    margin-top: 80px;
+    /*margin-top: 80px;*/
     font-size: 24px;
     border-bottom: 1px solid gray;
 }
@@ -448,7 +461,7 @@ li {
 }
 .user-msg-basic {
     border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
+    /*border-bottom: 1px solid gray;*/
     width: 300px;
     float: left;
 }
@@ -489,12 +502,12 @@ li {
 }
 .per-cate {
     background-color: #EEF4FF;
-    border-radius: 4px;
+    /*border-radius: 4px;*/
     /*float: left;*/
     padding: 3px;
     margin-top:5px;
     margin-right: 5px;
-    font-size: 16px;
+    font-size: 14px;
     color: #5171D2;
     border: 1px solid #b6d5fb;
 }
@@ -522,7 +535,14 @@ li {
 
 /* index page */
 .voted {
-    background-color: rgb(194, 230, 244);
+    border: 1px solid #ddd;
+    background-color: #f6f6f6;
+    color: #999;
+    box-shadow: none;
+}
+.voted:hover {
+    color: #919191;
+    border: 1px solid #919191;
 }
 
 #preview {

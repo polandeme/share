@@ -102,7 +102,8 @@
                 <div class="sd-hot-role-detail">
                     <?php foreach($user as $hotUser) { ?>
                     <span><a class="per-role" href="#"><?php  
-                                    // $hotUser = $hotUser['u_name'];
+                    // var_dump($hotUser);
+                                    $hotUser = $hotUser['u_name'];
                                     if($hotUser != '') { echo $hotUser;} ?> 
                     </a></span>
                     <?php } ?>
@@ -113,6 +114,7 @@
                 <div class="sd-hot-role-detail">
                     <?php foreach($user  as $hotUser) { ?>
                     <span><a class="per-role" href="#"><?php  
+                                    $hotUser = $hotUser['u_name'];
                                     if($hotUser != '') { echo $hotUser;} ?> 
                           </a>
                     </span>

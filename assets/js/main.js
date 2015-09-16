@@ -149,10 +149,24 @@ $(".vote").click(function(){
             }
         }
     });
-    $(this).css(
-        'background-color', '#c2e6f4'
-    );
+    $(this).removeClass('vote').addClass('voted')
 });
+$('body').on('click', '.voted', function() {
+  var id = $(this).attr('rel');
+  var self = $(this);
+  $.ajax({
+    type: 'POST',
+    url: base_url + 'index.php/rank/down_vote',
+    data: {'id': id},
+    cache: false,
+    success: function(data) {
+      console.log(data);
+      $("#post-" + id).children(".vote-up-num").html(data);
+      self.removeClass('voted').addClass('vote');
+    }
+  })
+
+})
 
 
 function fetch_progress(){
