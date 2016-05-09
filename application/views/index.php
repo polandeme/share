@@ -85,7 +85,7 @@
                             </div>
                         </span>
                             <div class="post-com-num">
-                                评论(<span><?php echo $row ->pt_com_num; ?><span>)
+                                <!-- 评论(<span><?php echo $row ->pt_com_num; ?><span>) -->
                            </div>
 
                     </div>
