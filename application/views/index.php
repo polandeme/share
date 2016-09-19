@@ -12,15 +12,15 @@
 
                 <div class="per-content">
                     <div class="<?php echo $row->is_up ? $row->is_up : 'vote ' ; ?>" rel="<?php echo $row ->pt_id;?>" id="post-<?php echo $row ->pt_id; ?>" > 
-                         <div class="vote-up-num"><?php echo $row ->pt_up; ?></div>
+                         <div class="vote-up-num"><?php echo $row ->pt_up ? $row ->pt_up : 0; ?></div>
                          <div>票</div>
                     </div>
                     <div class = "content_title">
                             <a href ="<?php echo base_url() . "index.php/share/index/". ($row->pt_id *1024 + 19940309) * 10; ?>?aaa=111" >
-                            <?php 
-                                if(empty($row->pt_role)){ 
-                                    echo $row ->u_role1 ? ($row -> u_role1) : (($row -> u_role2) ?($row -> u_role2) : ($row -> u_name) );  
-                                }else {?> 
+<?php 
+if(empty($row->pt_role)){ 
+    echo $row ->u_role1 ? ($row -> u_role1) : (($row -> u_role2) ?($row -> u_role2) : ($row -> u_name) );  
+}else {?> 
                                 <!-- 我是 --><?php echo $row ->pt_role; ?><?php }?>
                                     推荐了
                                 <?php echo $row ->pt_cate; echo $row -> pt_content ?>
@@ -54,9 +54,9 @@
                            </div>
                             <!-- /avata -->
                             <div class="content_date"> 
-                                <?php 
-                                    $date = $row ->pt_date;
-                                    echo substr($date,0,10); ?>
+<?php 
+    $date = $row ->pt_date;
+    echo substr($date,0,10); ?>
                            </div>
 
                             <span class="post-author post-author-msg " data-id = "<?php echo $row ->u_sec_id; ?>" rel = "2" >
@@ -111,7 +111,8 @@
                 <div class="sd-hot-cate-detail">
                     <?php foreach($cate as $hotCate) { ?>
                         <li>
-                        <a class="per-cate" href="<?php echo base_url(); ?>index.php/search/search_cate?search=<?php echo $hotCate ->pt_cate; ?>">
+                        <a class="per-cate" 
+                           href="<?php echo base_url(); ?>index.php/search/search_cate?search=<?php echo $hotCate ->pt_cate; ?>">
                             <?php  echo $hotCate ->pt_cate; ?> 
                         </a>
                         </li>
@@ -134,16 +135,16 @@
                     <?php foreach($user  as $hotUser) { ?>
                     <li>
                         <a class="per-user" href="#">
-                            <?php  
-                                if($hotUser != '') { echo $hotUser['u_name'] ;} 
-                            ?> 
+<?php  
+    if($hotUser != '') { echo $hotUser['u_name'] ;} 
+?> 
                         </a>
-                        <?php if(!empty($hotUser['u_role1']))
-                            echo '(' . $hotUser['u_role1'] . ')' ; ?>
+<?php if(!empty($hotUser['u_role1']))
+echo '(' . $hotUser['u_role1'] . ')' ; ?>
                         <div class="hot-user-motto">
-                            <?php  
-                                if($hotUser != '') { echo $hotUser['u_motto'];} 
-                            ?> 
+<?php  
+if($hotUser != '') { echo $hotUser['u_motto'];} 
+?> 
                         </div>
                     </li>
                     <?php } ?>
@@ -154,6 +155,12 @@
 
     </div>
 </div>
-    <a href="javascript:;" class="go-top center"><!-- <span class="glyphicon glyphicon-arrow-up"></span> --> <span></span></a>
+    <a href="javascript:;" class="go-top center"><span></span></a>
+
+<script src="<?php echo base_url(); ?>assets/js/lib/require.js" 
+data-main="<?php echo base_url(); ?>assets/js/index">
+    </script>
+
+    <!-- <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js" ></script> -->
 </body>
 </html> 

@@ -78,7 +78,7 @@ li {
     padding: 8px 12px;
     color: #888;
 }
-.post-nav-item:hover ,.actived{
+.post-nav-item:hover, .actived{
     border-left: 2px solid #009a61 ;
     color: #333;
 }
@@ -86,6 +86,21 @@ li {
 /* register page
  * 2014-03-02
  */
+
+.reg-tips {
+    display: inline-block;
+    margin-left: 10px;
+}
+.reg-tips .glyphicon-ok {
+    color: #57cb1d;
+}
+.reg-tips .glyphicon-remove {
+    color: #eb5e4d;
+}
+
+.reg-content .form-control {
+    display: inline-block;
+}
 .reg-content .form-group , .reg-content input{
     height: 30px;
     border-radius: 0;
@@ -93,7 +108,7 @@ li {
 .reg-content .form-group {
     margin-top: 20px;
 }
-.reg-content button[type=submit] {
+.reg-content button[type=button] {
     margin-left: 80px;
 }
 .form-control {
@@ -674,3 +689,8 @@ li {
     width: 50px;
     margin: 10px;
 }
+
+
+/**
+ **********register*********
+ */

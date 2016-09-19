@@ -32,13 +32,16 @@ class M_user extends CI_Model {
             'u_email' => $user['userEmail'],
             'u_password' => $userPwd,
             'u_motto'   =>  '比较懒，什么都没写:-D',
+            'u_up'      => 0,
             'u_avatar'  => 'default.jpg',
             'u_reg_ip' => $user['userIp'],
             'u_reg_time' => $user['regTime'],
             'u_sec_id'        => SHA1($user['userName'])
         );
 
-        $this ->db ->insert('sh_user', $data);
+        // print_r($data);
+
+        // $this ->db ->insert('sh_user', $data);
     }
 
     /**

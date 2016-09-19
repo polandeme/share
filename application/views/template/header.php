@@ -11,7 +11,9 @@
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery-1.10.2.min.js" ></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery.Jcrop.min.js" ></script>
     <script> var base_url = "<?php echo base_url(); ?>"; </script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js" ></script>
+
+    <!-- <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js" ></script> -->
+
 </head>
 <body>
     <!-- head -->
@@ -42,17 +44,17 @@
                     <ul class="nav navbar-nav navbar-right">
                     <li class="user-link">
 
-                        <a  href="<?php echo base_url();?>index.php/user/index/<?php echo ($userId *1024 + 19940309)*10 ;?>" class = "link-user-name" data-userId = "<?php echo $id; ?>"> <?php echo $userName; ?></a>
+                        <a  href="<?php echo base_url();?>index.php/user/index/<?php echo ($userId *1024 + 19940309)*10 ;?>" class="link-user-name" data-userId="<?php echo $id; ?>"> <?php echo $userName; ?></a>
                         <div class="user-items" id="user-tab">
                             <div class="border"> </div> 
-                                              
+
                             <a  class="logout" href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
                             <div class="user-avatar">
                                 <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
                             </div>
-                            <?php 
-                                echo $userMotto;
-                            ?>     
+<?php 
+echo $userMotto;
+?>     
                         </div>     
                     </li>
                     </ul> 
