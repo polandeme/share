@@ -65,6 +65,9 @@ class M_index extends CI_Model {
     }
 
     public function is_uped($pt_id, $u_id) {  
+        if(!$u_id) {
+            return false;
+        }
         $u_id_r = ',' . $u_id . ',';
         $sql = "select * from sh_posts where locate('$u_id_r', pt_up_uid) AND pt_id = '$pt_id' ";
         $query = $this ->db -> query($sql);

@@ -20,9 +20,19 @@ class Rank extends CI_Controller {
             
               $this ->m_log ->insert_log($userId, $pid, 'zan');
 
-              echo $this ->m_rank ->add_vote($pid,$userId); 
+              $this ->m_rank ->add_vote($pid,$userId); 
+              $data = array(
+                  'status' => 'success',
+                  'msg' => '点赞成功'
+              );
+              echo json_encode($data);
            } else {
-               echo '已赞';
+               //echo '已赞';
+               $data = array(
+                   'status' => 'fail',
+                   'msg' => '你已经点过赞了'
+               );
+               echo json_encode($data);
            }
        }
     }

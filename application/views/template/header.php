@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/bootstrap.min.css" type="text/css" /> 
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/jquery.Jcrop.min.css" type="text/css" /> 
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/user.css" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/css/page/user.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/page/user.css" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/page/home.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery-1.10.2.min.js" ></script>
     <script type="text/javascript" src="<?php echo base_url();?>assets/js/lib/jquery.Jcrop.min.js" ></script>
     <script> var base_url = "<?php echo base_url(); ?>"; </script>
@@ -37,24 +38,37 @@
                 </form>
                     <?php if(empty($userName)){ ?> <!-- 未登录 -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo base_url();?>index.php/user/login"> 登录</a> </li>
-                        <li><a href="<?php echo base_url(); ?>index.php/user/register">注册</a> </li>
+                        <li><a href="<?php echo base_url();?>user/login"> 登录</a> </li>
+                        <li><a href="<?php echo base_url(); ?>user/register">注册</a> </li>
                     </ul> 
                     <?php } else {?> <!-- 登录 -->
                     <ul class="nav navbar-nav navbar-right">
                     <li class="user-link">
-
-                        <a  href="<?php echo base_url();?>index.php/user/index/<?php echo ($userId *1024 + 19940309)*10 ;?>" class="link-user-name" data-userId="<?php echo $id; ?>"> <?php echo $userName; ?></a>
+                        <div class="user-s-avatar">
+                            <img src="<?php echo base_url('assets/uploads/images/avatar\/') . $userAvat; ?>">
+                        </div> 
+                        <div class="top-arrow"></div>
                         <div class="user-items" id="user-tab">
-                            <div class="border"> </div> 
-
                             <a  class="logout" href="<?php echo base_url() ?>index.php/user/logout"> 退出登录 </a>
-                            <div class="user-avatar">
-                                <img src="<?php echo base_url(); ?>assets/uploads/images/avatar/<?php echo $userAvat; ?>">
+                            <div class="user-m-avatar">
+                                <img src="<?php echo base_url('assets/uploads/images/avatar\/') . $userAvat; ?>">
                             </div>
-<?php 
-echo $userMotto;
-?>     
+                            <div class="nav-profile">
+                                <div class="nav-name" id="navName">
+                                    <?php echo $userName; ?>
+                                </div>
+                                <div class="nav-motto">
+                                    <?php echo $userMotto; ?>     
+                                </div>
+                            </div>
+                            <div class="user-center-link">
+                                <button class="btn btn-default">个人中心</button>
+                            </div>
+                            <div class="navcard-footer">
+                                <button class="btn navcar-setting">设置</button>
+                                <button class="btn navcar-quit">退出</button>
+                            </div>
+        
                         </div>     
                     </li>
                     </ul> 

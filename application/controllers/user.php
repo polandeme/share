@@ -11,7 +11,6 @@ class User extends CI_Controller {
 
     /**
      * 判断是否登录进入个人中心
-     *
      * @param   用户id(缩写/name)
      * @Date    Mar 13 2014
      */
@@ -75,6 +74,7 @@ class User extends CI_Controller {
             'userIp'    => $this ->input ->ip_address(),
             'regTime'   => time()
         );
+        //var_dump($data);
         //将用户密码加密
         $userPwd = SHA1($data['userPwd'] . $data['regTime']. "ShArE");
         if ($this ->form_validation ->run() == False ) {
@@ -150,17 +150,30 @@ class User extends CI_Controller {
      */
     public function check_register()
     {
-        $name = $_GET['name']; 
+        $name = $_POST['name']; 
         $flag = $this ->m_user ->check_register($name);
-        if($flag)
-        {
+        if($flag) {
            echo TRUE; 
-        }
-        else {
+        } else {
             echo FALSE ;
         }
     }
 
+
+    /**
+     * ajax 注册时检测邮箱是否存在
+     * @return  FALSE  不存在邮箱
+     */
+    public function check_email()
+    {
+        $email = $_POST['email']; 
+        $flag = $this ->m_user ->check_email($email);
+        if($flag) {
+           echo TRUE; 
+        } else {
+            echo FALSE ;
+        }
+    }
     // 退出登录跳转到首页
     public function logout()
     {

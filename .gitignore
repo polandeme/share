@@ -1,2 +1,3 @@
 application/config/database.php
 assets/uploads/
+assets/node_modules/

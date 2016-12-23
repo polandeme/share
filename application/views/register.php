@@ -5,7 +5,7 @@
         <form class="form-horizontal row" action="<?php echo base_url(); ?>index.php/user/add_user" method="post"  role="form">
             <div class="form-group">
                 <label for="userName" class="col-sm-2 control-label"> 用户名 </label>
-                <div class="col-sm-10">
+                <div class="reg-user col-sm-10">
                     <input type="text" 
                            class="form-control" 
                            id="userName" 
@@ -15,14 +15,23 @@
                     <span class="reg-tips tips">
                         <span class="glyphicon glyphicon-ok"></span>
                         <span class="glyphicon glyphicon-remove"></span>
-                        <span class="reg-tips-text">用户名已被占用</span>
+                        <span class="reg-tips-text"></span>
                     </span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="Email" class="col-sm-2 control-label"> 邮箱 </label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="userEm" name="userEmail" placeholder="请输入邮箱">
+                <div class="reg-email col-sm-10">
+                    <input type="email" 
+                           class="form-control" 
+                           id="userEm" 
+                           name="userEmail" 
+                           placeholder="请输入邮箱">
+                    <span class="reg-tips tips">
+                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="glyphicon glyphicon-remove"></span>
+                        <span class="reg-tips-text"></span>
+                    </span>
                 </div>
             </div>
             <div class="form-group">
@@ -58,5 +67,10 @@
     </div>
 </div>
 <!-- /content -->
+
+<script src="<?php echo base_url(); ?>assets/js/lib/require.js" 
+        data-main="<?php echo base_url(); ?>assets/js/register">
+</script>
+
 </body>
 </html>

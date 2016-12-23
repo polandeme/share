@@ -1,5 +1,5 @@
 <!-- wrap -->
-<div class="wrap container">
+<div class="wrap container home-wrap">
 <!--     <div class ="show-select"> 
         <span class="glyphicon glyphicon-align-justify">
         </span> 
@@ -9,18 +9,19 @@
         <!-- index post list -->
         <div class="col-md-9">
             <?php foreach ($title as $row) { ?>
-
                 <div class="per-content">
-                    <div class="<?php echo $row->is_up ? $row->is_up : 'vote ' ; ?>" rel="<?php echo $row ->pt_id;?>" id="post-<?php echo $row ->pt_id; ?>" > 
+                    <div class="<?php echo $row->is_up ? $row->is_up : 'vote '; ?>" 
+                         rel="<?php echo $row ->pt_id;?>" 
+                         id="post-<?php echo $row ->pt_id; ?>" > 
                          <div class="vote-up-num"><?php echo $row ->pt_up ? $row ->pt_up : 0; ?></div>
                          <div>票</div>
                     </div>
                     <div class = "content_title">
                             <a href ="<?php echo base_url() . "index.php/share/index/". ($row->pt_id *1024 + 19940309) * 10; ?>?aaa=111" >
-<?php 
-if(empty($row->pt_role)){ 
-    echo $row ->u_role1 ? ($row -> u_role1) : (($row -> u_role2) ?($row -> u_role2) : ($row -> u_name) );  
-}else {?> 
+                                <?php 
+                                    if(empty($row->pt_role)) { 
+                                        echo $row ->u_role1 ? ($row -> u_role1) : (($row -> u_role2) ?($row -> u_role2) : ($row -> u_name) );  
+                                    }else {?> 
                                 <!-- 我是 --><?php echo $row ->pt_role; ?><?php }?>
                                     推荐了
                                 <?php echo $row ->pt_cate; echo $row -> pt_content ?>
@@ -158,8 +159,8 @@ if($hotUser != '') { echo $hotUser['u_motto'];}
     <a href="javascript:;" class="go-top center"><span></span></a>
 
 <script src="<?php echo base_url(); ?>assets/js/lib/require.js" 
-data-main="<?php echo base_url(); ?>assets/js/index">
-    </script>
+        data-main="<?php echo base_url(); ?>assets/js/index">
+</script>
 
     <!-- <script type="text/javascript" src="<?php echo base_url();?>assets/js/main.js" ></script> -->
 </body>

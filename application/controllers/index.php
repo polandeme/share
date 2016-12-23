@@ -47,6 +47,7 @@ class Index extends CI_Controller {
         $data['role'] = $this ->m_index ->get_hot_role();   
         $data['fans'] = $this ->get_user_fans(); 
         $sessionData = $this ->session ->all_userdata();
+        //var_dump($data);
         $this ->load ->view('template/header', $sessionData);
         $this ->load ->view('index', $data);
     }
@@ -55,9 +56,7 @@ class Index extends CI_Controller {
      * @return Number 用户的粉丝数
      * @author  Polandeme
      * @date June 09 2015
-     *
      */
-
     public function get_user_fans() {
         $userId = $this ->session ->userdata('id');
         return count($this ->m_log ->get_user_fans($userId));

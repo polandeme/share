@@ -4,6 +4,7 @@ class M_comment extends CI_Model {
     {
         parent::__construct();
     }
+
     public function insert_comment($data)
     {
         // var_dump($data);

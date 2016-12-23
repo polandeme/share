@@ -41,7 +41,7 @@ class M_user extends CI_Model {
 
         // print_r($data);
 
-        // $this ->db ->insert('sh_user', $data);
+        $this ->db ->insert('sh_user', $data);
     }
 
     /**
@@ -75,6 +75,11 @@ class M_user extends CI_Model {
         return $query ->num_rows();
     }
 
+    public function check_email($email)
+    {
+        $query = $this ->db ->query("SELECT u_email FROM sh_user WHERE u_email = '".$email."' limit 1");
+        return $query ->num_rows();
+    }
     /**
      *  用户关注处理
      *      如果第一次关注插入一条记录

@@ -90,12 +90,15 @@ li {
 .reg-tips {
     display: inline-block;
     margin-left: 10px;
+    /*display: none;*/
 }
 .reg-tips .glyphicon-ok {
     color: #57cb1d;
+    display: none;
 }
 .reg-tips .glyphicon-remove {
     color: #eb5e4d;
+    display: none;
 }
 
 .reg-content .form-control {
@@ -208,32 +211,12 @@ li {
 .userName{
     position: absolute;
 }
-.user-link:hover {
-    background: #FFF;
-}
-.user-items {
-    height: 200px;
-    border: 2px solid #D9D9D9;
-    border-top: none;
-    right: -2px;
-    border-radius: 3px;
-    width: 200px;
-    position: absolute;
-    display: none;
-    background: #fff;
-    z-index: 1;
-}
 .navbar {
     border-bottom: none;
 }
 .border {
     width: 133px;
     border: thin solid #E6E3E3;
-}
-.user-avatar img {
-    width: 60px;
-    height: 60px;
-    float: left;
 }
 .separate {
     border: 1px solid red; 
@@ -329,13 +312,13 @@ li {
     color: rgb(119,120,122);
 }
 .post-author {
-    margin-left: 15px;
+    /*margin-left: 15px;*/
 }
 .post-author a {
     color: rgb(119,120,122);
 }
 .post-author > a:hover {
-    background-color: #ecf7fb;
+    /*background-color: #ecf7fb;*/
 }
 .post-author-wrap {
     margin: 10px;
@@ -432,7 +415,8 @@ li {
 }
 .form-ckeditor{
     float: left;
-    margin-top: 50px;
+    margin-top: 15px;
+
     width: 610px;
     /*height: 100px;*/
 }
@@ -554,10 +538,11 @@ li {
     background-color: #f6f6f6;
     color: #999;
     box-shadow: none;
+    cursor: auto;
 }
 .voted:hover {
-    color: #919191;
-    border: 1px solid #919191;
+    /*color: #919191;*/
+    /*border: 1px solid #919191;*/
 }
 
 #preview {
@@ -694,3 +679,109 @@ li {
 /**
  **********register*********
  */
+
+/**
+ * common css
+ */
+.user-s-avatar {
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    background-size: 32px 32px;
+    margin-top: 9px;
+    border-radius: 50%;
+}
+.top-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    border-left: 9px solid ;
+    border-right: 9px solid ;
+    border-bottom: 9px solid ;
+    border-color: transparent;
+    border-bottom-color: #fff;
+}
+.user-items {
+    height: 200px;
+    border: 1px solid #D9D9D9;
+    border-top: none;
+    padding: 15px 10px;
+    right: -2px;
+    border-radius: 3px;
+    width: 330px;
+    position: absolute;
+    display: none;
+    background: #fff;
+    z-index: 1;
+    margin-top: 9px;
+    -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+.top-arrow {
+    display: none;
+}
+.user-link:hover {
+    /*background: #FFF;*/
+}
+.user-m-avatar img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.nav-profile {
+    float: left;
+    /*border: 1px solid;*/
+    margin-left: 15px;
+}
+.nav-profile .nav-name {
+    font-weight: 700;
+    /*text-align: center;*/
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.nav-motto {
+    float: left;
+    width: 210px;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+}
+.navcard-footer {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 15px;
+    bottom: 0;
+    background: #f5f5f5;
+    border-top: 1px solid #ccc;
+    border-color: rgba(0,0,0,.2);
+    margin-left: -10px;
+}
+.user-center-link {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+.navcar-setting,
+.navcar-quit {
+    height: 35px;
+    background: #f5f5f5;
+    border-top: 1px solid #ccc;
+    border-color: rgba(0,0,0,.2);
+}
+.navcar-quit {
+    float: right;
+    margin-top: 7.5px;
+}
+.navcar-setting:hover,
+.navcar-quit:hover {
+    background: #FFF;
+}
+/**
+ * /common css
+ */
+

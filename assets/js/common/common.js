@@ -1,10 +1,21 @@
-require(['./common/config'], function(config) {
-    var $addNode = $("<input type='text' class='form-control input-iam' id='iam-input' name='inputRole'placeholder='I am'><span class='share-words'>我推荐 </span>");
+define([
+    './config'
+], function (config) {
+    var $addNode = $("<input type='text' \
+                      class='form-control input-iam' \
+                      id='iam-input' \
+                      name='inputRole' \
+                      placeholder='I am'> \
+                          <span class='share-words'> \
+                              我推荐 \
+                          </span> \
+                    ");
     var $addName = $("<input type='text' class='form-control input-name' id='iam-input'name='inputContent' placeholder=''>");
-    $(".user-link").hover(function() {
+    $(".user-link").click(function() {
+        console.log('click');
         $(".user-items").toggle();
+        $(".top-arrow").toggle();
     })
-
 
     $("#input-search").click(function(){
         if($("#input-search").width() <= 90 ){
@@ -38,8 +49,7 @@ require(['./common/config'], function(config) {
             "color": "red"
         });
 
-        $("#input-search").animate(
-        {
+        $("#input-search").animate({
             width: '70px'
         });
         $(".iam").after($addNode);
@@ -62,5 +72,29 @@ require(['./common/config'], function(config) {
             scrollTop: '0px'
         }, 200)
     });
+    
+    var common = {
 
+        /**
+         * 用户登录验证，
+         * 前端简单通过显示状态进行判断，避免发送过多无用请求
+         * 但是后端必须做相对应校验才可以。
+         * @date 2016-10-30
+         */
+        loginAuth: function () {
+            if(!this.isLogin()) {
+                location.href = "user/login";
+            } else {
+
+            }
+        },
+        isLogin: function () {
+            var $nameEL = $('#navName');
+            if($nameEL && $nameEL.text().length < 3) {
+                return false;
+            }
+            return true;
+        }
+    };
+    return common;
 })

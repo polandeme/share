@@ -15,6 +15,8 @@
 |
 */
 $config['base_url']	= '/share/';
+$config['avatar_dir']	= '/share/assets/uploads/images/avatar/';
+$config['css_dir']	= '/share/';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,8 @@ $config['base_url']	= '/share/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+# http://tech-marsw.logdown.com/blog/2013/07/28/ci-simple-web-sites-to-mod-rewrite-remove-indexphp
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

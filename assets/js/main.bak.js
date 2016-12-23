@@ -3,7 +3,7 @@ $(function() {
     var $addNode = $("<input type='text' class='form-control input-iam' id='iam-input' name='inputRole'placeholder='I am'><span class='share-words'>我推荐 </span>");
     var $addName = $("<input type='text' class='form-control input-name' id='iam-input'name='inputContent' placeholder=''>");
 $(".user-link").hover(function() {
-    $(".user-items").toggle();
+    //$(".user-items").toggle();
 })
 
   function check_brower() {

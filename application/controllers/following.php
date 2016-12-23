@@ -13,7 +13,6 @@ class Following extends CI_Controller {
 	 *		对用户的操作插入一条记录到log表
 	 *		得到当前用户的id:$uid，被操作文章$pid
 	 */
-
 	public function index() {
        
 		if(!$this ->is_login()) {
